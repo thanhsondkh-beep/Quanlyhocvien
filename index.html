@@ -1,0 +1,1718 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E4A3F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Học việc Dược">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 26 26%27%3E%3Crect width=%2726%27 height=%2726%27 rx=%276%27 fill=%27%230E4A3F%27/%3E%3Cpath d=%27M10 5h6v5h5v6h-5v5h-6v-5H5v-6h5z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+<title>Học việc Khoa Dược</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g900:#0B3B8C; --g700:#1663D6; --g500:#2F80ED; --g100:#E4EEFD; --g050:#F2F7FE;
+  --paper:#F4F7FC; --ink:#17233A; --muted:#64748B; --line:#E2E8F1; --white:#fff;
+  --ok:#1E9E5A; --ok100:#E3F5EA; --amber:#B86A00; --amber100:#FFF1DD; --orange:#F08A24;
+  --red:#C2362B; --red100:#FDE8E6; --grey100:#EEF2F7;
+  --s1:#2F80ED; --s2:#0E9AA0; --s3:#7B61FF; --s4:#E07B1A; --s5:#1E9E5A;
+  --r:14px; --shadow:0 1px 2px rgba(16,42,90,.06),0 4px 14px rgba(16,42,90,.06);
+  --font:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--g700)}
+:focus-visible{outline:2px solid var(--g500);outline-offset:2px}
+h1,h2,h3,h4{line-height:1.25;margin:0 0 .5em;font-weight:600}
+h1{font-size:1.5rem;letter-spacing:-.01em} h2{font-size:1.15rem} h3{font-size:1.02rem}
+p{margin:.3em 0 .8em}
+.muted{color:var(--muted)} .small{font-size:.86rem} .nowrap{white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+.ic{flex:none;vertical-align:middle}
+
+/* ---------- shell ---------- */
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.side{background:var(--white);border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.logo{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;text-decoration:none;color:var(--g900)}
+.logo b{display:block;font-size:.98rem;line-height:1.2;font-weight:700}
+.logo span{font-size:.8rem;color:var(--g700);font-weight:600}
+.side a.nv{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:#3A4A63;margin-bottom:2px;font-weight:500}
+.side a.nv:hover{background:var(--g050);color:var(--g700)}
+.side a.nv.on{background:var(--g700);color:#fff;box-shadow:0 4px 12px rgba(22,99,214,.25)}
+.side .grp{font-size:.76rem;color:var(--muted);margin:14px 12px 6px}
+.side .badge{margin-left:auto}
+.side .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:14px;padding:12px 28px;background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:15}
+.search{flex:1;max-width:420px;position:relative}
+.search input[type=search]{width:100%;padding:9px 12px 9px 38px;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
+.search .ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.topbar .sp{flex:1}
+.bell{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;color:#3A4A63;text-decoration:none}
+.bell:hover{background:var(--g050)}
+.bell i{position:absolute;top:5px;right:5px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--red);color:#fff;font-size:.68rem;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+.me{display:flex;align-items:center;gap:10px}
+.me .t{line-height:1.25;font-size:.86rem} .me .t b{display:block;font-size:.9rem}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2F80ED,#0B3B8C);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.9rem;flex:none}
+main{padding:24px 28px 60px;max-width:1240px;width:100%;min-width:0}
+.demo-bar{background:var(--amber100);color:#5d3c08;padding:7px 28px;font-size:.86rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.demo-bar select{width:auto;max-width:100%;padding:3px 6px;border-radius:6px;border:1px solid #e3c896;background:#fff}
+.mobilebar,.sheet{display:none}
+.mlogo{display:none;align-items:center;gap:8px;text-decoration:none;color:var(--g700);font-size:.74rem;line-height:1.2;font-weight:600}
+.mlogo b{display:block;color:var(--g900);font-size:.9rem}
+.mlogo svg{width:32px;height:32px}
+
+/* ---------- building blocks ---------- */
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.card-h h2,.card-h h3{margin:0}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.grid-review{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--g700);background:var(--g700);color:#fff;padding:9px 16px;border-radius:10px;cursor:pointer;font-weight:600;text-decoration:none;font-size:.92rem}
+.btn:hover{background:var(--g900);border-color:var(--g900)}
+.btn.ghost{background:#fff;color:var(--g700);border-color:#C9DAF5} .btn.ghost:hover{background:var(--g050)}
+.btn.danger{background:#fff;color:var(--red);border-color:#F1C0BB} .btn.danger:hover{background:var(--red100)}
+.btn.ok{background:var(--ok);border-color:var(--ok)}
+.btn.sm{padding:5px 11px;font-size:.84rem;border-radius:8px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.link{background:none;border:0;color:var(--g700);cursor:pointer;padding:0;font-weight:600;font-size:.88rem;text-decoration:none}
+label.f{display:block;font-size:.86rem;color:var(--muted);margin-bottom:10px}
+label.f>span{display:block;margin-bottom:4px}
+input[type=text],input[type=email],input[type=password],input[type=number],input[type=date],input[type=search],select,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+textarea{min-height:80px;resize:vertical}
+input[type=number]{max-width:120px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-weight:600;color:var(--muted);font-size:.82rem;background:#F7F9FD}
+tr:last-child td{border-bottom:0}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff}
+.tbl-wrap table th:first-child,.tbl-wrap table td:first-child{padding-left:16px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:20px;font-size:.78rem;font-weight:600;background:var(--g100);color:var(--g700);white-space:nowrap}
+.tag.ok{background:var(--ok100);color:var(--ok)} .tag.amber{background:var(--amber100);color:var(--amber)} .tag.red{background:var(--red100);color:var(--red)} .tag.grey{background:var(--grey100);color:var(--muted)}
+.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed #CBD6E6;border-radius:var(--r);background:#fff}
+.toast{pointer-events:none;position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:10px;z-index:60;font-size:.92rem;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.toast.err{background:var(--red)}
+.tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px}
+.tabs button,.tabs a{border:1px solid var(--line);background:#fff;padding:7px 14px;cursor:pointer;border-radius:9px;color:#3A4A63;white-space:nowrap;font-weight:500;text-decoration:none;font-size:.9rem}
+.tabs button.on,.tabs a.on{background:var(--sc,var(--g700));border-color:var(--sc,var(--g700));color:#fff}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:4px;width:18px;height:18px;accent-color:var(--g700);flex:none}
+.done-line{color:var(--muted)}
+.bar{height:8px;background:var(--grey100);border-radius:6px;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:6px}
+.score{font-size:1.9rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--g900);line-height:1}
+.ms-cell{min-width:46px;text-align:center}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem}
+.kv dt{color:var(--muted)} .kv dd{margin:0}
+.dls{background:var(--g050);border-left:3px solid var(--g500);padding:7px 11px;border-radius:0 8px 8px 0;font-size:.9rem}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:.85rem}
+.thread .c{border-top:1px solid var(--line);padding:10px 0}
+.thread .c:first-child{border-top:0}
+.thread .c .m{font-size:.82rem;color:var(--muted)}
+
+/* ---------- home ---------- */
+.hero{position:relative;overflow:hidden;border-radius:var(--r);background:linear-gradient(105deg,#fff 0%,#fff 38%,#EAF2FF 62%,#D7E7FF 100%);border:1px solid var(--line);padding:24px 26px;margin-bottom:18px;min-height:150px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 4px;font-size:1.55rem}
+.hero p{margin:0;color:var(--muted);max-width:46ch}
+.hero .art{position:absolute;right:0;top:0;height:100%;width:52%;pointer-events:none}
+.hero .slogan{position:absolute;right:26px;top:50%;transform:translateY(-50%);text-align:right;color:var(--g900);font-weight:600;font-size:1.02rem;line-height:1.6}
+.home-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:18px}
+.donut-wrap{display:flex;align-items:center;gap:22px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:104px}
+.stat .si{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff}
+.stat b{font-size:1.5rem;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.82rem;color:#3A4A63;line-height:1.3}
+.st-blue{background:#EAF2FF} .st-blue .si{background:var(--g500)}
+.st-green{background:var(--ok100)} .st-green .si{background:var(--ok)}
+.st-orange{background:#FFF0E2} .st-orange .si{background:var(--orange)}
+.st-grey{background:#EFF2F6} .st-grey .si{background:#8193AD}
+.home-mid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px}
+.next{display:flex;gap:16px;align-items:center}
+.next .thumb{width:96px;height:80px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
+.next .meta{flex:1;min-width:0}
+.next .meta b{display:block;font-size:1.02rem;margin-bottom:6px}
+.nt{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;text-decoration:none;color:var(--ink);background:#fff}
+.nt:hover{border-color:#C9DAF5;background:var(--g050)}
+.nt .d{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none}
+.nt .tx{flex:1;font-size:.9rem;line-height:1.4}
+.nt .tm{font-size:.76rem;color:var(--muted);white-space:nowrap}
+.nt.new{border-left:3px solid var(--g500)}
+
+/* ---------- roadmap list ---------- */
+.steps .st{display:flex;align-items:center;gap:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;text-decoration:none;color:var(--ink)}
+.steps .st:hover{border-color:#C9DAF5;background:var(--g050)}
+.steps .st.cur{border-color:var(--g500);box-shadow:0 0 0 3px var(--g100)}
+.steps .no{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;border:2px solid var(--sc);color:var(--sc);background:#fff}
+.steps .no.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.steps .tt{flex:1;min-width:0}
+.steps .tt b{display:block}
+.steps .pc{width:120px;text-align:right}
+.steps .pc .bar{margin-top:5px}
+.stage-head{border-left:5px solid var(--sc);padding:4px 0 4px 14px;margin-bottom:14px}
+.stage-head .k{font-size:.86rem;color:var(--sc);font-weight:600}
+
+/* ---------- rail ---------- */
+.rail{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px 12px;margin-bottom:18px;box-shadow:var(--shadow)}
+.rail-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.rail-head .now{font-size:1.02rem;font-weight:600}
+.rail-grid{display:grid;grid-template-columns:repeat(26,minmax(0,1fr));gap:3px}
+.rail-band{height:30px;border-radius:7px;color:#fff;font-size:.78rem;display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;cursor:pointer;border:0;text-align:left;font-weight:600}
+.rail-band:hover{filter:brightness(1.08)}
+.rail-wk{height:18px;border-radius:4px;background:var(--grey100);font-size:.66rem;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.rail-wk.past{background:var(--g100);color:var(--g700)}
+.rail-wk.cur{background:var(--g700);color:#fff;font-weight:700}
+.rail-ms{height:20px;display:flex;align-items:center;justify-content:center}
+.rail-ms span{width:11px;height:11px;transform:rotate(45deg);background:#fff;border:2px solid var(--ink);display:block}
+.rail-ms.ok span{background:var(--ok);border-color:var(--ok)}
+.rail-ms.bad span{background:var(--red);border-color:var(--red)}
+.rail-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:8px}
+.rail-legend i{display:inline-block;width:9px;height:9px;transform:rotate(45deg);border:2px solid var(--ink);margin-right:6px;vertical-align:middle}
+
+/* ---------- docs ---------- */
+.doc{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px}
+.doc .fi{width:42px;height:46px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.7rem;flex:none;flex-direction:column;gap:1px}
+.fi.pdf{background:#E5533D} .fi.docx{background:#2B6BD6} .fi.xlsx{background:#1E8E4E} .fi.video{background:#2F80ED} .fi.link{background:#7A8BA6}
+.doc .dt{flex:1;min-width:0}
+.doc .dt b{display:block;line-height:1.35}
+.doc .dt .m{font-size:.8rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;margin-top:3px}
+.doc .act{display:flex;gap:6px;align-items:center}
+.iconbtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;display:inline-flex;align-items:center;justify-content:center;color:var(--g700);cursor:pointer;text-decoration:none}
+.iconbtn:hover{background:var(--g050)}
+.iconbtn.off{color:#B6C2D3;cursor:default}
+
+/* ---------- exams & evaluations ---------- */
+.ex{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px}
+.ex .xi{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+.ex .xt{flex:1;min-width:0}
+.ex .xt b{display:block}
+.ex .xt .m{font-size:.8rem;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
+.ex .xr{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.pt{font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--g900)}
+.pt small{font-size:.8rem;color:var(--muted);font-weight:500}
+.q{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fff}
+.q .qn{font-size:.82rem;color:var(--muted);margin-bottom:4px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+.opt:hover{background:var(--g050)}
+.opt input{margin-top:4px;accent-color:var(--g700)}
+.opt.right{background:var(--ok100);border-color:var(--ok)} .opt.wrong{background:var(--red100);border-color:var(--red)}
+.timer{position:sticky;top:64px;z-index:5;background:var(--g900);color:#fff;padding:10px 16px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.timer b{font-variant-numeric:tabular-nums;font-size:1.15rem}
+details.ev summary{list-style:none;cursor:pointer}
+details.ev summary::-webkit-details-marker{display:none}
+
+/* ---------- charts ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;gap:14px;align-items:center;box-shadow:var(--shadow)}
+.kpi .si{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.kpi b{font-size:1.55rem;line-height:1.1;display:block;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.84rem;color:var(--muted)}
+.charts{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:#3A4A63}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.dleg{list-style:none;padding:0;margin:0;font-size:.88rem}
+.dleg li{display:flex;align-items:center;gap:8px;padding:5px 0}
+.dleg li i{width:10px;height:10px;border-radius:50%;flex:none}
+.dleg li span{flex:1}
+.chart svg text{font-family:var(--font)}
+.bar-hit:hover rect{opacity:.85}
+
+/* ---------- login ---------- */
+.login{max-width:440px;margin:7vh auto;padding:0 16px}
+.login .panel{padding:26px}
+
+/* ---------- certificate ---------- */
+.cert{border:3px double var(--g900);border-radius:6px;padding:34px 30px;text-align:center;background:#fff;margin-top:14px}
+.cert .h{font-weight:600;font-size:.95rem}
+.cert h2{font-size:1.5rem;color:var(--g900);margin:18px 0 10px;letter-spacing:.02em}
+.cert .nm{font-size:1.4rem;font-weight:700;margin:8px 0}
+@media print{
+  body *{visibility:hidden}
+  .cert,.cert *{visibility:visible}
+  .cert{position:absolute;left:0;top:0;width:100%;border-width:4px}
+}
+
+@media (max-width:1100px){
+  .home-top,.home-mid,.charts{grid-template-columns:minmax(0,1fr)}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){.grid-review{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:820px){
+  .app{grid-template-columns:1fr}
+  .side{display:none}
+  .topbar{padding:10px 16px;gap:10px}
+  .topbar .search{display:none}
+  .mlogo{display:flex}
+  .me .t{display:none}
+  main{padding:16px 16px calc(96px + env(safe-area-inset-bottom))}
+  .demo-bar{padding:7px 16px}
+  .mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 14px rgba(16,42,90,.08)}
+  .mobilebar a,.mobilebar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;font-size:.72rem;color:#5B6B84;text-decoration:none;border:0;background:none;border-radius:10px;min-height:52px;justify-content:center}
+  .mobilebar .on{color:var(--g700);font-weight:600}
+  .mobilebar .on .ic{color:var(--g700)}
+  .sheet.open{display:block;position:fixed;inset:0;z-index:40;background:rgba(15,30,60,.35)}
+  .sheet .in{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom))}
+  .sheet .in a,.sheet .in button{display:flex;align-items:center;gap:12px;padding:13px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;width:100%;border:0;background:none;text-align:left}
+  .sheet .in a:hover{background:var(--g050)}
+  .sheet .grab{width:42px;height:5px;border-radius:3px;background:#D5DDE8;margin:0 auto 10px}
+  input[type=text],input[type=email],input[type=password],input[type=number],input[type=date],input[type=search],select,textarea{font-size:16px}
+  .check input,.opt input{width:22px;height:22px;margin-top:1px}
+  .opt{padding:11px 10px;min-height:44px}
+  .btn{min-height:42px} .btn.sm{min-height:36px}
+  .card,.panel{padding:16px}
+  h1{font-size:1.3rem}
+  .hero{padding:18px;min-height:0}
+  .hero .art,.hero .slogan{display:none}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis{grid-template-columns:1fr 1fr}
+  .donut-wrap{gap:16px}
+  .next{flex-direction:column;align-items:stretch}
+  .next .thumb{width:100%;height:64px}
+  .steps .pc{width:76px}
+  .rail-band{font-size:0;padding:0}
+  .rail-wk{font-size:0}
+  .wk table,.wk tbody,.wk tr,.wk td{display:block;width:100%}
+  .wk thead{display:none}
+  .wk tr{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .wk tr:last-child{border-bottom:0}
+  .wk td{border:0;padding:0 !important}
+  .wk td.wkno{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+  .wk td.wkno::before{content:"Tuần "}
+  .wk td.wkdls{margin-top:8px}
+  .wk td.wkdls .muted{display:none}
+  .ex{flex-wrap:wrap} .ex .xr{flex-direction:row;align-items:center;width:100%;justify-content:space-between}
+  .doc .act .iconbtn{width:42px;height:42px}
+  .exam-submit{position:sticky;bottom:calc(74px + env(safe-area-inset-bottom));background:var(--paper);padding:10px 0}
+  .exam-submit .btn{flex:1;justify-content:center}
+  .timer{top:60px}
+  .toast{bottom:calc(86px + env(safe-area-inset-bottom));max-width:90vw;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app"><div class="login"><p class="muted">Đang tải…</p></div></div>
+
+<script type="module">
+/* =====================================================================
+   CẤU HÌNH — điền cấu hình Firebase của project dùng chung vào đây.
+   Để trống apiKey => app chạy CHẾ ĐỘ DEMO (dữ liệu lưu trong trình duyệt).
+   ===================================================================== */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyB6gTQkJtaJjRP2pAFvph9M1DnjdzdxXxk",
+  authDomain: "thanhtoan-565e2.firebaseapp.com",
+  projectId: "thanhtoan-565e2",
+  storageBucket: "thanhtoan-565e2.firebasestorage.app",
+  messagingSenderId: "561186647169",
+  appId: "1:561186647169:web:54ed934f82a4eb4f75b180"
+};
+// Email được tự động cấp quyền quản trị (admin) ở lần đăng nhập đầu tiên
+const ADMIN_EMAILS = ["thanhsondkh@gmail.com"];
+// Tiền tố collection để dùng chung project Firebase với các app khác
+const PREFIX = "hv_";
+const FB_VER = "10.12.2";
+
+/* =====================================================================
+   NỘI DUNG LỘ TRÌNH MẶC ĐỊNH (admin chỉnh được trong "Cấu hình lộ trình")
+   ===================================================================== */
+const ROADMAP_DEFAULT = {
+  version: 1,
+  title: "Lộ trình học việc 6 tháng cho dược sĩ đại học – định hướng Dược lâm sàng",
+  hospitalName: "BỆNH VIỆN ĐA KHOA HẢI HẬU",
+  department: "KHOA DƯỢC",
+  totalWeeks: 26,
+  weights: { kt: 30, kn: 40, sp: 20, td: 10 },
+  passScore: 70, minPartPercent: 50,
+  courseFormula: "Điểm cuối khóa = trung bình M1–M5 × 40% + M6 × 60%",
+  stages: [
+    { id: "s1", no: 1, name: "Định hướng", from: 1, to: 2, months: "Tháng 1", milestone: "M1",
+      goal: "Biết khoa Dược làm gì, ai làm gì, văn bản nào điều chỉnh việc đó – trước khi chạm vào thuốc.",
+      items: [
+        { w: "1", content: "Chức năng, 14 nhiệm vụ của khoa Dược và 6 bộ phận", basis: "Điều 2, 3, 6 TT 22/2011", dls: "Đọc Điều 6, 7 NĐ 131/2020: phân biệt DLS tại khoa Dược và DLS tại khoa lâm sàng" },
+        { w: "1–2", content: "Đi theo từng vị trí (trưởng khoa, nghiệp vụ, thủ kho, thống kê, DLS, pha chế), mỗi vị trí nửa ngày", basis: "Điều 7–12 TT 22/2011", dls: "Đọc Chương 1 QĐ 3809/QĐ-BYT: vai trò, nhiệm vụ, kỹ năng DSLS" },
+        { w: "1", content: "Khung pháp lý: Luật Dược 2016 sửa đổi 2024 (Điều 80–81), NĐ 163/2025", basis: "Luật Dược; NĐ 163/2025", dls: "" },
+        { w: "2", content: "Quy định nội bộ, SOP của khoa, phần mềm HIS và các ứng dụng tra cứu của khoa", basis: "Quy định nội bộ", dls: "Bắt đầu sổ tay “20 thuốc đầu tiên”: hoạt chất, nhóm, chỉ định, 1 lưu ý an toàn" },
+        { w: "2", content: "An toàn: thuốc LASA, thuốc nguy cơ cao, kiểm soát nhiễm khuẩn trong kho", basis: "QĐ 29/QĐ-BYT mục 3.6.1.2", dls: "" }
+      ],
+      products: ["Sơ đồ tổ chức khoa Dược tự vẽ", "Bảng “vị trí – việc chính – văn bản”", "Sổ tay 20 thuốc đầu tiên"],
+      readings: ["NĐ 131/2020/NĐ-CP – Điều 3–7 (kỹ)", "QĐ 3809/QĐ-BYT – Chương 1 (kỹ)", "Luật Dược 105/2016 + Luật 44/2024 – Điều 80–81", "TT 22/2011/TT-BYT – Điều 2–15", "NĐ 163/2025/NĐ-CP – tra cứu"] },
+    { id: "s2", no: 2, name: "Kho, cấp phát, bảo quản", from: 3, to: 6, months: "Tháng 1–2", milestone: "M2",
+      goal: "Làm đúng và đủ một vòng thuốc từ lúc nhập kho đến lúc tới tay điều dưỡng, kể cả thuốc kiểm soát đặc biệt.",
+      items: [
+        { w: "3", content: "Kiểm nhập: đối chiếu hóa đơn – thực tế – kết quả thầu; kiểm tra cảm quan 100% thuốc nhập; biên bản riêng thuốc KSĐB", basis: "Điều 15 TT 22/2011", dls: "So tờ HDSD thuốc mới trúng thầu với thuốc cũ, viết phiếu “thay đổi cần biết” gửi khoa lâm sàng" },
+        { w: "4", content: "Bảo quản theo GSP: nhiệt độ, độ ẩm, chuỗi lạnh, FEFO; tách thuốc LASA và thuốc nguy cơ cao", basis: "Điều 3, 4 TT 22/2011; Phụ lục 1 QĐ 29", dls: "Lập danh sách thuốc bảo quản lạnh và hạn dùng sau mở nắp (Phụ lục 2.2 QĐ 3809)" },
+        { w: "5", content: "Duyệt phiếu lĩnh, cấp phát nội trú; thuốc trả lại; tủ trực – tủ cấp cứu; “3 tra, 5 đối”", basis: "Điều 15 TT 22/2011; TT 23/2011", dls: "Đánh dấu bất thường khi duyệt phiếu lĩnh: số lượng, trùng hoạt chất, kháng sinh ưu tiên quản lý" },
+        { w: "6", content: "Thuốc KSĐB: kho/tủ riêng có khóa, bàn giao ca, sổ theo dõi Phụ lục VIII, hủy thuốc, báo cáo năm trước 15/01, báo cáo đột xuất trong 48 giờ", basis: "Điều 3, 5, 7 TT 18/2026", dls: "Đối chiếu morphin/thuốc hướng thần xuất ra với y lệnh; kiểm tra liều và chuyển đổi opioid (Phụ lục 4.8 QĐ 3809)" }
+      ],
+      products: ["Biên bản kiểm nhập tự lập (có người hướng dẫn ký)", "Biên bản kiểm tra tủ trực một khoa lâm sàng", "Bảng thuốc bảo quản lạnh / LASA của bệnh viện"],
+      readings: ["TT 23/2011/TT-BYT (kỹ)", "TT 18/2026/TT-BYT – Điều 3, 5, 7 (kỹ)", "QĐ 29/QĐ-BYT – mục 3.6.1.2 (lướt)"] },
+    { id: "s3", no: 3, name: "Danh mục thuốc, cung ứng, BHYT", from: 7, to: 10, months: "Tháng 2–3", milestone: "M3",
+      goal: "Đọc được danh mục thuốc bệnh viện như một công cụ điều trị, không chỉ là danh sách mua sắm.",
+      items: [
+        { w: "7", content: "Xây dựng danh mục: mô hình bệnh tật, danh mục kỹ thuật, kinh phí; tiêu chí lựa chọn thuốc; Hội đồng Thuốc và Điều trị", basis: "Điều 14 TT 22/2011; TT 21/2013", dls: "Viết 1 phiếu đề xuất bổ sung/loại 1 thuốc với bằng chứng hiệu quả – an toàn – chi phí" },
+        { w: "8", content: "Danh mục BHYT: cột ghi chú điều kiện thanh toán, thuốc dấu (*), thuốc ung thư", basis: "TT 37/2024 Điều 8–13; TT 27/2025", dls: "Lập bảng thuốc có điều kiện thanh toán kèm chỉ định/ICD được thanh toán" },
+        { w: "9", content: "Cung ứng: dự trù, kế hoạch lựa chọn nhà thầu, theo dõi hợp đồng; bảng kê chi phí KCB", basis: "Điều 14 TT 22/2011; QĐ 697/QĐ-BYT", dls: "Khi thiếu hàng: đề xuất thuốc thay thế và thông báo khoa lâm sàng" },
+        { w: "10", content: "Thống kê, phân tích ABC, VEN, ma trận ABC/VEN; báo cáo công tác khoa Dược", basis: "Điều 10 TT 22/2011; TT 21/2013", dls: "Chạy ABC/VEN 1 kỳ, chọn 3 thuốc nhóm A–N đề xuất rà soát" }
+      ],
+      products: ["Báo cáo ABC/VEN 1 quý", "Phiếu đề xuất thuốc trình HĐT&ĐT", "Bảng thuốc có điều kiện thanh toán BHYT"],
+      readings: ["TT 21/2013/TT-BYT (kỹ)", "TT 37/2024/TT-BYT – Điều 8–13 (kỹ)", "TT 27/2025/TT-BYT (lướt)", "QĐ 697/QĐ-BYT – mục thuốc (lướt)"] },
+    { id: "s4", no: 4, name: "Kê đơn, thông tin thuốc, ADR", from: 11, to: 14, months: "Tháng 3–4", milestone: "M4",
+      goal: "Kiểm soát được đơn thuốc trước khi cấp phát, xử lý được một câu hỏi thông tin thuốc và một ca ADR.",
+      items: [
+        { w: "11–12", content: "Duyệt đơn ngoại trú và đơn ra viện: thẩm quyền, số ngày kê (30/90 ngày), đơn N, H, hiệu lực đơn 05 ngày, đơn kết hợp thuốc cổ truyền", basis: "TT 26/2025; TT 55/2025", dls: "Kiểm mỗi đơn theo 6 điểm Điều 7 khoản 2 NĐ 131/2020" },
+        { w: "13", content: "Thông tin thuốc: trả lời câu hỏi, biên soạn bản tin, kiểm soát hoạt động giới thiệu thuốc", basis: "Điều 6 khoản 3 NĐ 131; TT 31/2025 Chương V", dls: "" },
+        { w: "14", content: "Giám sát ADR: phát hiện (thuốc tín hiệu), báo cáo (7/15 ngày làm việc), đánh giá (WHO, Naranjo, CTCAE), dự phòng", basis: "QĐ 29/QĐ-BYT", dls: "Đánh giá lại 3 báo cáo ADR cũ; đối chiếu danh mục thuốc nguy cơ cao với Phụ lục 11" }
+      ],
+      products: ["100 đơn đã duyệt có ghi nhận vấn đề", "3 phiếu trả lời thông tin thuốc", "1 bản tin thuốc", "1 báo cáo ADR hoàn chỉnh"],
+      readings: ["TT 26/2025/TT-BYT (kỹ)", "TT 55/2025/TT-BYT – Điều 3, 6–9 (kỹ)", "TT 31/2025/TT-BYT – Chương V", "QĐ 29/QĐ-BYT – mục III, Phụ lục 1, 3, 5, 7, 11 (kỹ)"] },
+    { id: "s5", no: 5, name: "Dược lâm sàng tại khoa lâm sàng", from: 15, to: 26, months: "Tháng 4–6", milestone: "M6",
+      goal: "Thực hiện đủ 4 hoạt động Điều 7 NĐ 131/2020 trên từng người bệnh: khai thác thông tin, xem xét y lệnh, hướng dẫn điều dưỡng, phối hợp tư vấn người bệnh.",
+      items: [
+        { w: "15–16", content: "Nội tổng hợp – tim mạch: THA, suy tim, rung nhĩ, mạch vành", basis: "QĐ 3809 Chương 3", dls: "Phiếu khai thác tiền sử, kế hoạch điều trị, theo dõi" },
+        { w: "17–18", content: "Nội tiết – đái tháo đường: hiệu chỉnh liều theo thận, hạ đường huyết, bút tiêm insulin", basis: "QĐ 3809 Chương 2", dls: "" },
+        { w: "19–20", content: "Ngoại – Hồi sức: kháng sinh dự phòng, tối ưu liều, xuống thang 48–72 giờ, chuyển tiêm sang uống, duyệt kháng sinh Nhóm 1", basis: "QĐ 5631/QĐ-BYT", dls: "Hồi cứu 30 bệnh án có kháng sinh, phản hồi cho khoa" },
+        { w: "21–22", content: "Hô hấp / phòng khám ngoại trú: COPD, hen, kỹ thuật dùng thuốc hít, tư vấn đơn ngoại trú", basis: "HDĐT Bộ Y tế", dls: "" },
+        { w: "23–24", content: "Chuyên đề: phân tích sử dụng thuốc hoặc đánh giá can thiệp", basis: "Điều 6 khoản 5, 7 NĐ 131/2020", dls: "" },
+        { w: "25–26", content: "Đi buồng độc lập có hậu kiểm, báo cáo chuyên đề, đánh giá cuối khóa M6", basis: "", dls: "" }
+      ],
+      products: ["50 người bệnh theo dõi đủ quy trình", "15 can thiệp được ghi nhận (kèm tỷ lệ chấp nhận)", "2 ca bình bệnh án", "10 lượt tư vấn người bệnh ra viện", "Báo cáo chuyên đề"],
+      readings: ["Ôn NĐ 131 Điều 7 + QĐ 3809 Chương 1", "QĐ 3809 – Chương 3, 2 theo khoa luân chuyển", "QĐ 5631/QĐ-BYT – mục II–IV, Phụ lục 2–6", "QĐ 3809 – Chương 4 (nếu có ung thư)"] }
+  ],
+  milestones: [
+    { id: "M1", stage: "s1", week: 2, name: "Định hướng", knowledge: "15 câu: TT 22/2011, Luật Dược Điều 80, NĐ 131 Điều 6–7", skills: "Tra cứu thuốc trên HIS và ứng dụng của khoa", products: "Sơ đồ tổ chức, sổ tay 20 thuốc", autonomy: "Mức 1 với mọi vị trí", checklists: [] },
+    { id: "M2", stage: "s2", week: 6, name: "Kho, cấp phát", knowledge: "20 câu + 2 tình huống (hàng thiếu khi kiểm nhập; lệch số thuốc gây nghiện tủ trực)", skills: "Bảng kiểm A (kiểm nhập), B (cấp phát), C (tủ trực, thuốc KSĐB)", products: "Biên bản kiểm nhập, biên bản kiểm tra tủ trực, bảng thuốc lạnh/LASA", autonomy: "Mức 3 kiểm nhập, cấp phát; mức 2 thuốc KSĐB", checklists: ["A"] },
+    { id: "M3", stage: "s3", week: 10, name: "Danh mục, BHYT", knowledge: "20 câu: TT 21/2013, TT 37/2024, TT 27/2025 + 1 bài phân tích ABC/VEN", skills: "Bảng kiểm D (ABC/VEN), dự trù bổ sung", products: "Báo cáo ABC/VEN, phiếu đề xuất thuốc", autonomy: "Mức 3", checklists: [] },
+    { id: "M4", stage: "s4", week: 14, name: "Kê đơn, ADR", knowledge: "10 đơn thuốc cài lỗi (tìm ≥ 80% lỗi trong 45 phút) + 1 ca ADR (điền báo cáo, quy kết Naranjo)", skills: "Bảng kiểm E (duyệt đơn), F (thông tin thuốc)", products: "100 đơn đã duyệt, bản tin thuốc, báo cáo ADR", autonomy: "Mức 3 duyệt đơn ngoại trú", checklists: ["E"] },
+    { id: "M5", stage: "s5", week: 19, name: "Giữa kỳ DLS", knowledge: "Vấn đáp 1 ca tim mạch hoặc đái tháo đường (20 phút)", skills: "Bảng kiểm G (đi buồng), H (tư vấn)", products: "20 phiếu theo dõi người bệnh, 5 can thiệp", autonomy: "Mức 2 đi buồng", checklists: ["G"] },
+    { id: "M6", stage: "s5", week: 26, name: "Cuối khóa", knowledge: "Bài viết tổng hợp 60 phút + ca lâm sàng không chuẩn bị trước", skills: "Quan sát 1 buổi đi buồng thật, 1 ca duyệt kháng sinh Nhóm 1", products: "2 ca bình bệnh án, báo cáo chuyên đề, sổ can thiệp", autonomy: "Mức 3 đi buồng; mức 4 duyệt đơn", checklists: ["G"] }
+  ],
+  criticalErrors: [
+    "Sai lệch số lượng thuốc gây nghiện, hướng thần, tiền chất mà không báo cáo ngay",
+    "Cấp phát sai thuốc, sai hàm lượng, thuốc hết hạn mà không tự phát hiện",
+    "Bỏ qua tiền sử dị ứng hoặc chống chỉ định tuyệt đối đã ghi trên bệnh án",
+    "Tự ý thay đổi y lệnh hoặc tư vấn người bệnh trái y lệnh mà không trao đổi bác sĩ"
+  ],
+  autonomy: [
+    { level: 1, desc: "Quan sát, nêu được các bước", use: "Chưa giao" },
+    { level: 2, desc: "Làm dưới giám sát trực tiếp", use: "Làm cùng người hướng dẫn" },
+    { level: 3, desc: "Làm độc lập, người hướng dẫn hậu kiểm trong ngày", use: "Giao việc có ký kiểm tra" },
+    { level: 4, desc: "Làm độc lập, tự phát hiện và xử lý sai sót", use: "Giao việc chính thức, có thể kèm người mới" }
+  ],
+  classification: [
+    { name: "Giỏi", min: 85, action: "Giao nhiệm vụ người làm công tác DLS bằng văn bản; đề xuất tham gia nhóm quản lý kháng sinh" },
+    { name: "Khá", min: 75, action: "Giao việc chính thức các vị trí đạt mức 4; vị trí còn lại hậu kiểm 1 tháng" },
+    { name: "Đạt", min: 70, action: "Giao việc có hậu kiểm 3 tháng, có kế hoạch bổ sung cụ thể" },
+    { name: "Chưa đạt", min: 0, action: "Học lại giai đoạn chưa đạt (tối đa 1 lần), đánh giá lại sau 4 tuần" }
+  ],
+  productRubric: [
+    { name: "Đúng quy định, căn cứ", levels: ["Không có căn cứ", "Có căn cứ hết hiệu lực", "Đúng văn bản, thiếu điều khoản", "Trích đúng điều, khoản, văn bản còn hiệu lực"] },
+    { name: "Phân tích vấn đề thuốc", levels: ["Sai vấn đề", "Bỏ sót vấn đề quan trọng", "Đúng các vấn đề chính", "Đủ, đúng, xếp ưu tiên"] },
+    { name: "Đề xuất", levels: ["Không phù hợp", "Chung chung", "Cụ thể, khả thi", "Cụ thể, khả thi, có bằng chứng"] },
+    { name: "Trình bày", levels: ["Không trình bày được", "Lan man", "Rõ ràng", "Rõ ràng, đúng giờ, trả lời tốt câu hỏi"] },
+    { name: "Tính hữu ích", levels: ["Không dùng được", "Cần làm lại nhiều", "Dùng được sau khi sửa nhỏ", "Được khoa áp dụng"] }
+  ],
+  checklists: {
+    A: { name: "Bảng kiểm A – Kiểm nhập thuốc", items: ["Đối chiếu tên, hàm lượng, đơn vị tính với hóa đơn và kết quả thầu*", "Kiểm số lô, hạn dùng*", "Kiểm hãng, nước sản xuất, quy cách đóng gói", "Kiểm tra cảm quan", "Kiểm điều kiện bảo quản khi nhận (thuốc lạnh)", "Biên bản riêng cho thuốc kiểm soát đặc biệt*", "Lập biên bản khi hư hỏng, thừa, thiếu", "Vào sổ/phần mềm đúng, đủ"] },
+    E: { name: "Bảng kiểm E – Duyệt đơn thuốc", items: ["Kiểm hành chính, thẩm quyền người kê, mẫu đơn (thường / N / H)", "Chỉ định phù hợp chẩn đoán (ICD)*", "Chống chỉ định, dị ứng*", "Liều, số lần, thời điểm, đường dùng; đối tượng đặc biệt", "Số ngày kê đúng giới hạn", "Trùng hoạt chất, tương tác cần xử trí", "Điều kiện thanh toán BHYT", "Trao đổi với bác sĩ đúng kênh, ghi nhận kết quả"] },
+    G: { name: "Bảng kiểm G – Đi buồng dược lâm sàng", items: ["Chuẩn bị: đọc bệnh án, tóm tắt dữ kiện lâm sàng, cận lâm sàng", "Phỏng vấn tiền sử dùng thuốc (kể cả thuốc tự mua, đông y)", "Tính chức năng thận và kiểm liều theo thận*", "Xác định đúng vấn đề liên quan đến thuốc, xếp ưu tiên", "Đề xuất can thiệp có bằng chứng, nói rõ ràng với bác sĩ", "Hướng dẫn điều dưỡng (pha, tốc độ truyền, thời điểm)", "Kế hoạch theo dõi hiệu quả, ADR", "Ghi phiếu theo dõi, sổ can thiệp đầy đủ"] }
+  }
+};
+
+const ROLE_LABEL = { admin: "Quản trị", truongkhoa: "Trưởng khoa", phokhoa: "Phó khoa", hocvien: "Học viên", "cho-duyet": "Chờ duyệt" };
+const PERMS = [
+  ["review", "Nhận xét, chấm điểm mốc"],
+  ["publish", "Công bố / chốt kết quả cho học viên"],
+  ["createExam", "Tạo, sửa đề lượng giá"],
+  ["grade", "Chấm bài lượng giá"],
+  ["docs", "Quản lý tài liệu"],
+  ["editRoadmap", "Sửa nội dung lộ trình"]
+];
+const DEFAULT_PERMS = {
+  truongkhoa: { review: true, publish: true, createExam: true, grade: true, docs: true, editRoadmap: false },
+  phokhoa: { review: true, publish: false, createExam: true, grade: true, docs: true, editRoadmap: false }
+};
+
+/* =====================================================================
+   SAMPLE QUESTION BANK (từ các văn bản đã đọc)
+   ===================================================================== */
+const SAMPLE_Q = {
+  M1: [
+    { type: "mcq", text: "Theo TT 22/2011/TT-BYT, khoa Dược bệnh viện có bao nhiêu nhiệm vụ?", options: ["10", "12", "14", "16"], answer: 2, points: 1 },
+    { type: "mcq", text: "Theo NĐ 131/2020/NĐ-CP, người làm công tác dược lâm sàng (trừ cơ sở YHCT) phải có trình độ tối thiểu:", options: ["Trung cấp ngành dược", "Cao đẳng ngành dược", "Tốt nghiệp đại học ngành dược", "Dược sĩ chuyên khoa I"], answer: 2, points: 1 },
+    { type: "mcq", text: "Khi xem xét y lệnh theo Điều 7 NĐ 131/2020, nội dung nào KHÔNG thuộc 6 điểm cần xem xét?", options: ["Chỉ định, chống chỉ định", "Liều dùng, tương tác thuốc", "Phản ứng có hại của thuốc", "Giá thuốc trúng thầu"], answer: 3, points: 1 },
+    { type: "mcq", text: "Chậm nhất đến 01/01/2031, cơ sở KCB phải bảo đảm số người làm DLS tối thiểu:", options: ["1 người/200 giường nội trú", "1 người/150 giường nội trú", "1 người/100 giường nội trú và 2 người/1.000 đơn ngoại trú BHYT/ngày", "1 người/50 giường nội trú"], answer: 2, points: 1 },
+    { type: "essay", text: "Trình bày 4 hoạt động người làm DLS phải thực hiện trên mỗi người bệnh theo Điều 7 NĐ 131/2020.", points: 4, rubric: "Khai thác thông tin người bệnh (1); xem xét thuốc kê/y lệnh theo 6 điểm (1); hướng dẫn điều dưỡng (1); phối hợp tư vấn người bệnh (1)." }
+  ],
+  M2: [
+    { type: "mcq", text: "Theo TT 18/2026/TT-BYT, khi phát hiện nhầm lẫn, thất thoát thuốc gây nghiện, cơ sở phải gửi báo cáo bằng văn bản trong vòng:", options: ["24 giờ", "48 giờ", "72 giờ", "7 ngày"], answer: 1, points: 1 },
+    { type: "mcq", text: "Báo cáo năm về xuất, nhập, tồn, sử dụng thuốc KSĐB của cơ sở KCB gửi trước ngày:", options: ["31/12", "15/01", "15/02", "30/9"], answer: 1, points: 1 },
+    { type: "mcq", text: "Theo TT 22/2011/TT-BYT, toàn bộ thuốc nhận về phải được kiểm nhập trong thời gian tối đa:", options: ["24 giờ", "3 ngày", "1 tuần", "1 tháng"], answer: 2, points: 1 },
+    { type: "mcq", text: "Thuốc gây nghiện tại tủ trực khoa lâm sàng phải:", options: ["Để chung với thuốc thường để dễ lấy", "Để ngăn/ô riêng, tủ có khóa, bàn giao ca có ký sổ", "Chỉ để tại khoa Dược", "Do bác sĩ trực giữ"], answer: 1, points: 1 },
+    { type: "essay", text: "Nêu các bước kiểm nhập một thuốc mới trúng thầu và một thông tin DLS anh/chị sẽ gửi khoa lâm sàng về thuốc đó.", points: 4, rubric: "Đối chiếu hóa đơn – thực tế – kết quả thầu (1); số lô, hạn dùng, cảm quan, bảo quản (1); biên bản, vào sổ (1); thông tin DLS cụ thể, đúng nguồn (1)." }
+  ],
+  M3: [
+    { type: "mcq", text: "Theo TT 37/2024/TT-BYT, quỹ BHYT thanh toán khi chỉ định thuốc phù hợp với tài liệu nào?", options: ["Tài liệu quảng cáo của công ty", "Tờ HDSD được cấp phép, HDĐT của Bộ Y tế hoặc Dược thư Quốc gia", "Ý kiến của người giới thiệu thuốc", "Kinh nghiệm cá nhân của bác sĩ"], answer: 1, points: 1 },
+    { type: "mcq", text: "Thuốc có ký hiệu dấu (*) trong danh mục BHYT là thuốc:", options: ["Được dùng không hạn chế", "Phải hội chẩn trước khi sử dụng, trừ trường hợp cấp cứu", "Chỉ dùng ngoại trú", "Không được BHYT thanh toán"], answer: 1, points: 1 },
+    { type: "mcq", text: "Trong phân tích ABC, nhóm A thường chiếm khoảng bao nhiêu % tổng giá trị tiền thuốc?", options: ["10–20%", "40–50%", "75–80%", "95–100%"], answer: 2, points: 1 },
+    { type: "essay", text: "Từ ma trận ABC/VEN, nhóm thuốc nào cần ưu tiên rà soát? Giải thích và nêu đề xuất trình Hội đồng Thuốc và Điều trị.", points: 4, rubric: "Nêu đúng nhóm AN (và BN) (1); giải thích chi phí – tính thiết yếu (1); đề xuất cụ thể (1); có căn cứ TT 21/2013 (1)." }
+  ],
+  M4: [
+    { type: "mcq", text: "Theo TT 26/2025/TT-BYT, số ngày sử dụng mỗi thuốc trong đơn ngoại trú thông thường tối đa là:", options: ["7 ngày", "10 ngày", "30 ngày", "90 ngày"], answer: 2, points: 1 },
+    { type: "mcq", text: "Kê đơn thuốc gây nghiện điều trị bệnh cấp tính, số lượng thuốc không vượt quá:", options: ["3 ngày", "5 ngày", "7 ngày", "10 ngày"], answer: 2, points: 1 },
+    { type: "mcq", text: "Đơn thuốc có giá trị mua, lĩnh thuốc trong thời hạn tối đa:", options: ["3 ngày", "05 ngày", "7 ngày", "10 ngày"], answer: 1, points: 1 },
+    { type: "mcq", text: "Theo QĐ 29/QĐ-BYT, ADR gây tử vong hoặc đe dọa tính mạng phải gửi Trung tâm DI&ADR không muộn hơn:", options: ["48 giờ", "7 ngày làm việc", "15 ngày làm việc", "Trước ngày 5 tháng kế tiếp"], answer: 1, points: 1 },
+    { type: "mcq", text: "Theo thang Naranjo, biến cố được quy kết “chắc chắn” khi tổng điểm:", options: ["≥ 5", "≥ 7", "≥ 9", "≥ 12"], answer: 2, points: 1 },
+    { type: "essay", text: "Cho đơn thuốc ngoại trú do người hướng dẫn cung cấp: phát hiện các vấn đề và đề xuất xử trí.", points: 5, rubric: "Mỗi vấn đề phát hiện đúng 1 điểm (tối đa 4); đề xuất xử trí phù hợp 1 điểm." }
+  ],
+  M5: [
+    { type: "mcq", text: "Theo QĐ 5631/QĐ-BYT, thời gian sử dụng kháng sinh Nhóm 1 cho mỗi lần duyệt không vượt quá:", options: ["5 ngày", "7 ngày", "10 ngày", "14 ngày"], answer: 3, points: 1 },
+    { type: "mcq", text: "Rà soát để áp dụng liệu pháp xuống thang kháng sinh nên thực hiện trong khoảng:", options: ["24 giờ", "48–72 giờ", "5–7 ngày", "Sau khi ra viện"], answer: 1, points: 1 },
+    { type: "essay", text: "Phân tích một ca bệnh tim mạch hoặc đái tháo đường: liệt kê vấn đề liên quan đến thuốc và kế hoạch theo dõi.", points: 8, rubric: "Thu thập đủ thông tin (2); vấn đề thuốc đúng, xếp ưu tiên (3); can thiệp có bằng chứng (2); kế hoạch theo dõi (1)." }
+  ],
+  M6: [
+    { type: "mcq", text: "Với trường hợp cấp cứu/ngoài giờ hành chính, kháng sinh Nhóm 1 cần được duyệt trong vòng:", options: ["6 giờ", "12 giờ", "24–48 giờ", "72 giờ"], answer: 2, points: 1 },
+    { type: "essay", text: "Ca lâm sàng không chuẩn bị trước: trình bày quy trình DLS trên người bệnh và các can thiệp đề xuất.", points: 10, rubric: "Khai thác thông tin (2); xác định vấn đề (3); can thiệp và trao đổi với bác sĩ (3); theo dõi, tư vấn (2)." }
+  ]
+};
+
+/* =====================================================================
+   DATA LAYER: Firebase hoặc Demo (localStorage)
+   ===================================================================== */
+let Store, AuthSvc, DEMO = !FIREBASE_CONFIG.apiKey;
+const clean = o => JSON.parse(JSON.stringify(o));
+const nowISO = () => new Date().toISOString();
+function deepMerge(a, b) { const o = { ...(a || {}) }; for (const k in b) { const v = b[k]; o[k] = (v && typeof v === "object" && !Array.isArray(v) && o[k] && typeof o[k] === "object" && !Array.isArray(o[k])) ? deepMerge(o[k], v) : v; } return o; }
+
+async function initFirebase() {
+  const base = `https://www.gstatic.com/firebasejs/${FB_VER}`;
+  const appM = await import(`${base}/firebase-app.js`);
+  const authM = await import(`${base}/firebase-auth.js`);
+  const fsM = await import(`${base}/firebase-firestore.js`);
+  const app = appM.initializeApp(FIREBASE_CONFIG);
+  const auth = authM.getAuth(app);
+  const db = fsM.getFirestore(app);
+  const c = n => PREFIX + n;
+  Store = {
+    async get(col, id) { const s = await fsM.getDoc(fsM.doc(db, c(col), id)); return s.exists() ? { id: s.id, ...s.data() } : null; },
+    async set(col, id, data, merge = true) { await fsM.setDoc(fsM.doc(db, c(col), id), clean(data), { merge }); },
+    async add(col, data) { const r = await fsM.addDoc(fsM.collection(db, c(col)), clean(data)); return r.id; },
+    async del(col, id) { await fsM.deleteDoc(fsM.doc(db, c(col), id)); },
+    async list(col, filters = []) {
+      const q = fsM.query(fsM.collection(db, c(col)), ...filters.map(f => fsM.where(f[0], f[1], f[2])));
+      const s = await fsM.getDocs(q); return s.docs.map(d => ({ id: d.id, ...d.data() }));
+    }
+  };
+  AuthSvc = {
+    onChange: cb => authM.onAuthStateChanged(auth, u => cb(u ? { uid: u.uid, email: u.email } : null)),
+    signIn: (e, p) => authM.signInWithEmailAndPassword(auth, e, p),
+    async signUp(e, p) { const r = await authM.createUserWithEmailAndPassword(auth, e, p); return r.user.uid; },
+    signOut: () => authM.signOut(auth),
+    reset: e => authM.sendPasswordResetEmail(auth, e),
+    async createUser(e, p) {
+      const sec = appM.getApps().find(a => a.name === "hv-secondary") || appM.initializeApp(FIREBASE_CONFIG, "hv-secondary");
+      const sa = authM.getAuth(sec);
+      const r = await authM.createUserWithEmailAndPassword(sa, e, p);
+      await authM.signOut(sa); return r.user.uid;
+    }
+  };
+}
+
+function initDemo() {
+  const KEY = "hv_demo_db_v1"; let mem = null;
+  const load = () => { if (mem) return mem; try { mem = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { } if (!mem) mem = seedDemo(); return mem; };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) { } };
+  const coll = n => { const d = load(); d[n] = d[n] || {}; return d[n]; };
+  const delay = () => new Promise(r => setTimeout(r, 40));
+  Store = {
+    async get(col, id) { await delay(); const v = coll(col)[id]; return v ? { id, ...clean(v) } : null; },
+    async set(col, id, data, merge = true) { await delay(); const c = coll(col); c[id] = merge ? deepMerge(c[id], clean(data)) : clean(data); save(); },
+    async add(col, data) { const id = "d" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); await this.set(col, id, data, false); return id; },
+    async del(col, id) { await delay(); delete coll(col)[id]; save(); },
+    async list(col, filters = []) {
+      await delay();
+      return Object.entries(coll(col)).map(([id, v]) => ({ id, ...clean(v) }))
+        .filter(o => filters.every(([f, op, val]) => op === "==" ? o[f] === val : op === "in" ? val.includes(o[f]) : op === "array-contains" ? (o[f] || []).includes(val) : true));
+    }
+  };
+  let cb = null, cur = null;
+  try { cur = JSON.parse(sessionStorage.getItem("hv_demo_user") || "null"); } catch (e) { }
+  AuthSvc = {
+    onChange(f) { cb = f; setTimeout(() => f(cur), 0); },
+    async signIn(email) { const u = Object.entries(coll("users")).find(([, v]) => v.email === email); if (!u) throw new Error("Không có tài khoản demo với email này"); cur = { uid: u[0], email }; try { sessionStorage.setItem("hv_demo_user", JSON.stringify(cur)); } catch (e) { } cb(cur); },
+    async signUp(email) { const uid = "u" + Date.now().toString(36); cur = { uid, email }; try { sessionStorage.setItem("hv_demo_user", JSON.stringify(cur)); } catch (e) { } setTimeout(() => cb(cur), 120); return uid; },
+    async signOut() { cur = null; try { sessionStorage.removeItem("hv_demo_user"); } catch (e) { } cb(null); },
+    async reset() { },
+    async createUser() { return "u" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); },
+    resetAll() { try { localStorage.removeItem(KEY); } catch (e) { } mem = null; }
+  };
+}
+
+function seedDemo() {
+  const d = new Date(); const ago = w => new Date(d.getTime() - w * 7 * 864e5).toISOString().slice(0, 10);
+  const db = { users: {}, progress: {}, reviews: {}, comments: {}, exams: {}, examKeys: {}, attempts: {}, config: {}, docs: {} };
+  DOCS_SEED.forEach(([title, category, type, stage], i) => db.docs["doc" + i] = { title, category, type, stage, url: i % 3 === 0 ? "https://drive.google.com/" : "", sizeNote: ["1,8 MB", "3,1 MB", "5,2 MB"][i % 3], date: new Date(d.getTime() - (i + 2) * 864e5).toISOString() });
+  db.docs.v1 = { title: "Bài giảng: Theo dõi nồng độ thuốc trong điều trị", category: "video", type: "video", stage: "s5", url: "https://www.youtube.com/", sizeNote: "45 phút", date: nowISO() };
+  db.docs.q1 = { title: "Quy trình dược lâm sàng tại bệnh viện (QT-DS)", category: "quytrinh", type: "docx", stage: "s5", url: "https://drive.google.com/", sizeNote: "1,8 MB", date: nowISO() };
+  db.users.admin = { name: "Đỗ Thanh Sơn", email: "admin@demo.vn", role: "admin", active: true, createdAt: nowISO() };
+  db.users.tk = { name: "Trưởng khoa Dược (demo)", email: "truongkhoa@demo.vn", role: "truongkhoa", active: true, perms: DEFAULT_PERMS.truongkhoa, createdAt: nowISO() };
+  db.users.pk = { name: "Phó khoa Dược (demo)", email: "phokhoa@demo.vn", role: "phokhoa", active: true, perms: DEFAULT_PERMS.phokhoa, createdAt: nowISO() };
+  db.users.hv1 = { name: "Nguyễn Văn An", email: "an@demo.vn", role: "hocvien", active: true, startDate: ago(9.5), mentorUid: "admin", cohort: "Khóa 1/2026", createdAt: nowISO() };
+  db.users.hv2 = { name: "Trần Thị Bình", email: "binh@demo.vn", role: "hocvien", active: true, startDate: ago(2.5), mentorUid: "pk", cohort: "Khóa 1/2026", createdAt: nowISO() };
+  db.users.pend = { name: "Lê Minh Châu", email: "chau@demo.vn", role: "cho-duyet", active: false, createdAt: nowISO() };
+  const t = {}; ["s1_i0", "s1_i1", "s1_i2", "s1_i3", "s1_i4", "s1_p0", "s1_p1", "s1_p2", "s2_i0", "s2_i1", "s2_i2", "s2_i3", "s2_p0", "s2_p1", "s3_i0", "s3_i1"].forEach(k => t[k] = true);
+  db.progress.hv1 = { learnerUid: "hv1", tasks: t, products: { s1_p0: { text: "Đã vẽ sơ đồ 6 bộ phận, gửi bản giấy cho anh Sơn.", link: "", at: nowISO() }, s2_p0: { text: "Biên bản kiểm nhập lô amoxicilin 500 mg ngày 12/9.", link: "", at: nowISO() } } };
+  db.progress.hv2 = { learnerUid: "hv2", tasks: { s1_i0: true, s1_i1: true }, products: {} };
+  db.reviews.hv1_M1 = { learnerUid: "hv1", milestone: "M1", scores: { kt: 86, kn: 80, sp: 85, td: 90 }, autonomy: 1, critical: [], strengths: "Chủ động, ghi chép cẩn thận.", improve: "Cần đọc kỹ hơn Điều 6 NĐ 131.", published: true, locked: true, reviewerUid: "tk", reviewerName: "Trưởng khoa Dược (demo)", at: nowISO() };
+  db.reviews.hv1_M2 = { learnerUid: "hv1", milestone: "M2", scores: { kt: 75, kn: 78, sp: 70, td: 85 }, autonomy: 3, critical: [], strengths: "Kiểm nhập đúng quy trình.", improve: "Bảng thuốc LASA còn thiếu nhóm insulin.", published: true, locked: false, reviewerUid: "pk", reviewerName: "Phó khoa Dược (demo)", at: nowISO() };
+  db.comments.c1 = { learnerUid: "hv1", milestone: "M2", text: "Em làm tốt phần tủ trực khoa Nội. Tuần sau tập trung vào danh mục BHYT.", byUid: "tk", byName: "Trưởng khoa Dược (demo)", byRole: "truongkhoa", visibleToLearner: true, at: nowISO() };
+  const qs = SAMPLE_Q.M1.map((q, i) => ({ ...q, id: "q" + (i + 1) }));
+  db.exams.e1 = { title: "Lượng giá M1 – Định hướng", milestone: "M1", durationMin: 20, open: true, shuffle: false, assigned: "all", questions: qs.map(({ answer, rubric, ...q }) => q), createdBy: "admin", createdAt: nowISO() };
+  db.examKeys.e1 = { answers: Object.fromEntries(qs.filter(q => q.type === "mcq").map(q => [q.id, q.answer])), rubrics: Object.fromEntries(qs.filter(q => q.type === "essay").map(q => [q.id, q.rubric])) };
+  db.attempts["e1_hv1"] = { examId: "e1", examTitle: "Lượng giá M1 – Định hướng", milestone: "M1", learnerUid: "hv1", learnerName: "Nguyễn Văn An", answers: { q1: 2, q2: 2, q3: 3, q4: 1, q5: "Khai thác thông tin người bệnh; xem xét y lệnh; hướng dẫn điều dưỡng; tư vấn người bệnh." }, status: "da-nop", startedAt: nowISO(), submittedAt: nowISO() };
+  return db;
+}
+
+/* =====================================================================
+   APP STATE & HELPERS
+   ===================================================================== */
+const S = { user: null, me: null, cfg: null, usersCache: null };
+const $app = document.getElementById("app");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nl = s => esc(s).replace(/\n/g, "<br>");
+const fmtDate = iso => { if (!iso) return ""; const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleDateString("vi-VN"); };
+const fmtDT = iso => { if (!iso) return ""; const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleString("vi-VN", { hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" }); };
+const role = () => S.me?.role;
+const isAdmin = () => role() === "admin";
+const isLeader = () => ["truongkhoa", "phokhoa"].includes(role());
+const isStaff = () => isAdmin() || isLeader();
+const can = p => isAdmin() || (isLeader() && !!S.me?.perms?.[p]);
+const stageColor = no => `var(--s${no})`;
+function toast(msg, err) { const t = document.createElement("div"); t.className = "toast" + (err ? " err" : ""); t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), err ? 4500 : 2200); }
+function errMsg(e) {
+  const m = String(e?.code || e?.message || e);
+  if (m.includes("permission")) return "Bạn không có quyền thực hiện thao tác này.";
+  if (m.includes("invalid-credential") || m.includes("wrong-password") || m.includes("user-not-found")) return "Email hoặc mật khẩu không đúng.";
+  if (m.includes("email-already-in-use")) return "Email này đã có tài khoản.";
+  if (m.includes("weak-password")) return "Mật khẩu cần ít nhất 6 ký tự.";
+  if (m.includes("network")) return "Mất kết nối mạng, thử lại sau.";
+  return m;
+}
+function weekOf(startDate) {
+  if (!startDate) return null;
+  const s = new Date(startDate + "T00:00:00"); const diff = Math.floor((Date.now() - s.getTime()) / 864e5);
+  if (diff < 0) return 0; return Math.floor(diff / 7) + 1;
+}
+function stageOfWeek(cfg, w) { return cfg.stages.find(s => w >= s.from && w <= s.to) || (w > cfg.totalWeeks ? cfg.stages[cfg.stages.length - 1] : cfg.stages[0]); }
+function taskIds(st) { return [...st.items.map((_, i) => `${st.id}_i${i}`), ...st.products.map((_, i) => `${st.id}_p${i}`)]; }
+function stageProgress(st, prog) { const ids = taskIds(st); const n = ids.filter(id => prog?.tasks?.[id]).length; return { n, total: ids.length, pct: ids.length ? Math.round(n * 100 / ids.length) : 0 }; }
+function totalProgress(cfg, prog) { let n = 0, t = 0; cfg.stages.forEach(s => { const p = stageProgress(s, prog); n += p.n; t += p.total; }); return t ? Math.round(n * 100 / t) : 0; }
+function msTotal(cfg, r) {
+  if (!r?.scores) return null; const w = cfg.weights; const sc = r.scores;
+  if ([sc.kt, sc.kn, sc.sp, sc.td].some(v => v === "" || v == null || isNaN(v))) return null;
+  return Math.round((sc.kt * w.kt + sc.kn * w.kn + sc.sp * w.sp + sc.td * w.td) / (w.kt + w.kn + w.sp + w.td) * 10) / 10;
+}
+function msResult(cfg, r) {
+  const t = msTotal(cfg, r); if (t == null) return null;
+  const sc = r.scores; const low = ["kt", "kn", "sp", "td"].some(k => sc[k] < cfg.minPartPercent);
+  const crit = (r.critical || []).length > 0;
+  return { total: t, pass: t >= cfg.passScore && !low && !crit, low, crit };
+}
+function courseScore(cfg, reviews) {
+  const by = Object.fromEntries(reviews.map(r => [r.milestone, msTotal(cfg, r)]));
+  const firsts = ["M1", "M2", "M3", "M4", "M5"].map(m => by[m]);
+  if (firsts.some(v => v == null) || by.M6 == null) return null;
+  const v = Math.round(((firsts.reduce((a, b) => a + b, 0) / 5) * 0.4 + by.M6 * 0.6) * 10) / 10;
+  const anyCrit = reviews.some(r => (r.critical || []).length);
+  const cls = anyCrit ? cfg.classification[cfg.classification.length - 1] : cfg.classification.find(c => v >= c.min);
+  return { v, cls };
+}
+async function loadCfg() { let c = null; try { c = await Store.get("config", "roadmap"); } catch (e) { } S.cfg = c?.data ? c.data : ROADMAP_DEFAULT; }
+async function allUsers(force) { if (!S.usersCache || force) S.usersCache = await Store.list("users"); return S.usersCache; }
+function seededShuffle(arr, seed) { const a = [...arr]; let h = 0; for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0; for (let i = a.length - 1; i > 0; i--) { h = (h * 1103515245 + 12345) >>> 0; const j = h % (i + 1);[a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* =====================================================================
+   SHELL & ROUTER
+   ===================================================================== */
+const ICONS = {
+  home: "M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z",
+  route: "M6 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM6 17V9a4 4 0 0 1 4-4h6M18 7v8a4 4 0 0 1-4 4H8",
+  book: "M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z",
+  quiz: "M9 11l2 2 4-4M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
+  clip: "M9 3h6v3H9zM7 4.5H5.5A1.5 1.5 0 0 0 4 6v14.5A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H17M8 12h8M8 16h5",
+  award: "M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM8.2 13.9 7 22l5-3 5 3-1.2-8.1",
+  bell: "M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0",
+  users: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8",
+  target: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",
+  gear: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z",
+  shield: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4",
+  search: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3",
+  more: "M5 12h.01M12 12h.01M19 12h.01",
+  check: "M20 6 9 17l-5-5",
+  checkc: "M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14l-3-3",
+  clock: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2",
+  hourglass: "M6 2h12M6 22h12M17 2v4.2a3 3 0 0 1-.9 2.1L12 12l-4.1-3.7A3 3 0 0 1 7 6.2V2M7 22v-4.2a3 3 0 0 1 .9-2.1L12 12l4.1 3.7a3 3 0 0 1 .9 2.1V22",
+  arrow: "M5 12h14M13 6l6 6-6 6",
+  chev: "M9 6l6 6-6 6",
+  back: "M15 6l-6 6 6 6",
+  download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3",
+  ext: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3",
+  file: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6",
+  chart: "M3 3v18h18M7 16v-4M12 16V8M17 16v-7",
+  logout: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9",
+  plus: "M12 5v14M5 12h14",
+  edit: "M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z",
+  trash: "M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6",
+  pill: "M10.5 20.5a5 5 0 0 1-7-7l10-10a5 5 0 0 1 7 7zM8.5 8.5l7 7",
+  play: "M6 4l14 8-14 8z",
+  msg: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
+  star: "M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z",
+  printer: "M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"
+};
+const ic = (n, s = 20, extra = "") => `<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="${n === "play" ? "currentColor" : "none"}" stroke="currentColor" stroke-width="${n === "more" ? 3 : 2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}><path d="${ICONS[n] || ""}"/></svg>`;
+const initials = n => (n || "?").replace(/\(.*?\)/g, "").trim().split(/\s+/).filter(w => /^\p{L}/u.test(w)).slice(-2).map(w => w[0]).join("").toUpperCase() || "?";
+const LOGO = `<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C9BFF"/><stop offset="1" stop-color="#0B3B8C"/></linearGradient></defs><path d="M15 3h10v12h12v10H25v12H15V25H3V15h12z" fill="url(#lg1)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><rect x="15.5" y="14" width="9" height="13" rx="4.5" transform="rotate(35 20 20.5)" fill="#fff"/><rect x="15.5" y="20.5" width="9" height="6.5" rx="3.2" transform="rotate(35 20 20.5)" fill="#7FD3A8"/></svg>`;
+
+function navFor() {
+  if (role() === "hocvien") return [
+    { g: "", href: "#/trangchu", label: "Trang chủ", short: "Trang chủ", icon: "home" },
+    { g: "", href: "#/lotrinh", label: "Lộ trình học", short: "Lộ trình", icon: "route" },
+    { g: "", href: "#/tailieu", label: "Tài liệu", short: "Tài liệu", icon: "book" },
+    { g: "", href: "#/luonggia", label: "Lượng giá", short: "Lượng giá", icon: "quiz", alias: ["#/lambai"] },
+    { g: "", href: "#/danhgia", label: "Đánh giá", short: "Đánh giá", icon: "clip" },
+    { g: "", href: "#/ketqua", label: "Kết quả – Chứng nhận", short: "Kết quả", icon: "award" },
+    { g: "", href: "#/thongbao", label: "Thông báo", short: "Thông báo", icon: "bell", badge: true }
+  ];
+  if (isStaff()) {
+    const n = [
+      { g: "Theo dõi", href: "#/trangchu", label: "Tổng quan đào tạo", short: "Tổng quan", icon: "chart" },
+      { g: "Theo dõi", href: "#/hocvien", label: "Quản lý học viên", short: "Học viên", icon: "users" },
+      { g: "Theo dõi", href: "#/de", label: "Lượng giá", short: "Lượng giá", icon: "quiz", alias: ["#/nganhang", "#/ketquald", "#/baithi", "#/cham"] },
+      { g: "Theo dõi", href: "#/tailieu", label: "Tài liệu", short: "Tài liệu", icon: "book" },
+      { g: "Theo dõi", href: "#/thongbao", label: "Việc cần làm", short: "Việc cần làm", icon: "bell", badge: true },
+      { g: "Lộ trình", href: "#/daotao", label: "Lộ trình đào tạo", short: "Lộ trình", icon: "route" },
+      { g: "Lộ trình", href: "#/danhgia", label: "Lộ trình đánh giá", short: "Đánh giá", icon: "target" }
+    ];
+    if (isAdmin()) n.push({ g: "Quản trị", href: "#/nguoidung", label: "Người dùng và phân quyền", short: "Người dùng", icon: "shield" });
+    if (isAdmin() || can("editRoadmap")) n.push({ g: "Quản trị", href: "#/cauhinh", label: "Cấu hình lộ trình", short: "Cấu hình", icon: "gear" });
+    return n;
+  }
+  return [];
+}
+function shell(inner) {
+  const h = (location.hash || "").split("?")[0];
+  const items = navFor();
+  const isOn = it => h === it.href || h.startsWith(it.href + "/") || (it.alias || []).some(a => h.startsWith(a));
+  const badge = S.notifCount ? `<span class="tag red badge">${S.notifCount}</span>` : "";
+  let lastG = null;
+  const side = items.map(it => { const g = it.g !== lastG && it.g ? `<div class="grp">${esc(it.g)}</div>` : ""; lastG = it.g; return `${g}<a class="nv ${isOn(it) ? "on" : ""}" href="${it.href}">${ic(it.icon)}<span>${esc(it.label)}</span>${it.badge ? badge : ""}</a>`; }).join("");
+  const mob = items.slice(0, 4).map(it => `<a href="${it.href}" class="${isOn(it) ? "on" : ""}">${ic(it.icon, 22)}<span>${esc(it.short)}</span></a>`).join("")
+    + `<button data-act="sheet" class="${items.slice(4).some(isOn) ? "on" : ""}" aria-label="Thêm">${ic("more", 22)}<span>Thêm${S.notifCount ? ` (${S.notifCount})` : ""}</span></button>`;
+  const sheet = `<div class="sheet" id="sheet" data-act="sheetClose"><div class="in"><div class="grab"></div>${items.slice(4).map(it => `<a href="${it.href}">${ic(it.icon)}<span>${esc(it.label)}</span>${it.badge ? badge : ""}</a>`).join("")}<button data-act="logout">${ic("logout")}<span>Đăng xuất</span></button></div></div>`;
+  const demo = DEMO ? `<div class="demo-bar"><b>Chế độ demo</b> – dữ liệu chỉ lưu trong trình duyệt này. Xem với vai trò:
+    <select data-change="demoSwitch">${["admin@demo.vn|Quản trị", "truongkhoa@demo.vn|Trưởng khoa", "phokhoa@demo.vn|Phó khoa", "an@demo.vn|Học viên – Nguyễn Văn An", "binh@demo.vn|Học viên – Trần Thị Bình"].map(x => { const [e, l] = x.split("|"); return `<option value="${e}" ${S.user?.email === e ? "selected" : ""}>${l}</option>`; }).join("")}</select>
+    <button class="btn sm ghost" data-act="demoReset">Xóa dữ liệu demo</button></div>` : "";
+  const sub = role() === "hocvien" ? "Dược sĩ học việc" : ROLE_LABEL[role()] || "";
+  return `${demo}<div class="app">
+    <aside class="side" aria-label="Điều hướng"><a class="logo" href="#/trangchu">${LOGO}<div><b>Lộ trình đào tạo</b><span>Dược sĩ lâm sàng</span></div></a>${side}
+      <div class="foot"><a class="nv" href="#" data-act="logout">${ic("logout")}<span>Đăng xuất</span></a></div></aside>
+    <div style="min-width:0">
+      <header class="topbar">
+        <a class="mlogo" href="#/trangchu">${LOGO}<span><b>Lộ trình đào tạo</b>Dược sĩ lâm sàng</span></a>
+        <form class="search" data-form="search" role="search">${ic("search", 18)}<input type="search" name="q" placeholder="Tìm tài liệu, văn bản…" value="${esc(S.docQ || "")}" aria-label="Tìm tài liệu"></form>
+        <div class="sp"></div>
+        <a class="bell" href="#/thongbao" aria-label="Thông báo">${ic("bell", 22)}${S.notifCount ? `<i>${S.notifCount > 9 ? "9+" : S.notifCount}</i>` : ""}</a>
+        <div class="me"><div class="av">${esc(initials(S.me?.name))}</div><div class="t"><b>${esc(S.me?.name || S.user?.email)}</b><span class="muted">${esc(sub)}</span></div></div>
+      </header>
+      <main id="main">${inner}</main>
+    </div></div>
+    <nav class="mobilebar" aria-label="Điều hướng">${mob}</nav>${sheet}`;
+}
+let routeToken = 0;
+async function route() {
+  if (!S.user) return renderLogin();
+  if (!S.me || S.me.role === "cho-duyet" || S.me.active === false) return renderPending();
+  const parts = (location.hash || "").replace(/^#\/?/, "").split("?")[0].split("/");
+  const [p, a] = parts;
+  if (!p) { location.hash = "#/trangchu"; return; }
+  const my = ++routeToken;
+  if (!$app.querySelector("#main")) $app.innerHTML = shell(`<p class="muted">Đang tải…</p>`);
+  let html = "";
+  try {
+    await refreshNotifs();
+    const views = role() === "hocvien"
+      ? { trangchu: vLearnerHome, lotrinh: () => a ? vLearnerStage(S.user.uid, a) : vLearnerRoadmap(S.user.uid), tailieu: vDocs, luonggia: () => vLearnerExams(a), lambai: () => vTakeExam(a), danhgia: () => vLearnerEvals(S.user.uid), ketqua: () => vLearnerResults(S.user.uid), thongbao: vNotifs }
+      : { trangchu: vStaffHome, hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
+    html = views[p] ? await views[p]() : `<div class="empty">Không tìm thấy trang. <a href="#/trangchu">Về trang chủ</a></div>`;
+  } catch (e) { console.error(e); html = `<div class="empty">Không tải được dữ liệu: ${esc(errMsg(e))}</div>`; }
+  if (my !== routeToken) return;
+  $app.innerHTML = shell(html);
+  afterRender();
+}
+let afterHooks = [];
+function onAfter(fn) { afterHooks.push(fn); }
+function afterRender() { const h = afterHooks; afterHooks = []; h.forEach(f => f()); }
+
+/* =====================================================================
+   LOGIN / PENDING
+   ===================================================================== */
+function renderLogin(mode = "in") {
+  const demoHint = DEMO ? `<div class="panel" style="background:var(--amber100);border-color:#e8cf9f"><b>Chế độ demo.</b> Chưa có cấu hình Firebase nên dữ liệu chỉ lưu trong trình duyệt. Chọn một vai trò để xem thử:
+    <div class="row" style="margin-top:10px">${[["admin@demo.vn", "Quản trị"], ["truongkhoa@demo.vn", "Trưởng khoa"], ["phokhoa@demo.vn", "Phó khoa"], ["an@demo.vn", "Học viên"]].map(([e, l]) => `<button class="btn sm ghost" data-act="demoLogin" data-email="${e}">${l}</button>`).join("")}</div></div>` : "";
+  $app.innerHTML = `<div class="login">
+    <div class="row" style="margin-bottom:18px;color:var(--g900)">${LOGO.replace('fill="#fff" fill-opacity=".14"', 'fill="#17614F"')}<h1 style="margin:0;font-size:1.3rem">Học việc Khoa Dược</h1></div>
+    ${demoHint}
+    <div class="panel">
+      ${mode === "in" ? `<h2>Đăng nhập</h2>
+      <form data-form="login">
+        <label class="f"><span>Email</span><input type="email" name="email" required autocomplete="username"></label>
+        <label class="f"><span>Mật khẩu</span><input type="password" name="pw" required autocomplete="current-password"></label>
+        <div class="row"><button class="btn" type="submit">Đăng nhập</button><button type="button" class="btn ghost" data-act="forgot">Quên mật khẩu</button></div>
+      </form>
+      <p class="small muted" style="margin-top:16px">Chưa có tài khoản? <a href="#" data-act="toSignup">Đăng ký</a> – tài khoản mới chờ quản trị duyệt và phân quyền.</p>`
+      : `<h2>Đăng ký tài khoản</h2>
+      <form data-form="signup">
+        <label class="f"><span>Họ và tên</span><input type="text" name="name" required></label>
+        <label class="f"><span>Email</span><input type="email" name="email" required autocomplete="username"></label>
+        <label class="f"><span>Mật khẩu (ít nhất 6 ký tự)</span><input type="password" name="pw" required minlength="6" autocomplete="new-password"></label>
+        <div class="row"><button class="btn" type="submit">Đăng ký</button><button type="button" class="btn ghost" data-act="toLogin">Quay lại đăng nhập</button></div>
+      </form>`}
+    </div></div>`;
+}
+function renderPending() {
+  $app.innerHTML = `<div class="login"><div class="panel"><h2>Tài khoản đang chờ duyệt</h2>
+    <p>Xin chào ${esc(S.me?.name || S.user.email)}. Quản trị khoa Dược cần phân quyền cho tài khoản này trước khi bạn dùng được ứng dụng.</p>
+    <button class="btn ghost" data-act="logout">Đăng xuất</button></div></div>`;
+}
+
+/* =====================================================================
+   SHARED: 26-week rail
+   ===================================================================== */
+function rail(cfg, week, reviews = [], opts = {}) {
+  const W = cfg.totalWeeks;
+  const bands = cfg.stages.map(s => `<button class="rail-band" style="grid-column:${s.from}/${s.to + 1};background:${stageColor(s.no)}" data-act="${opts.stageAct || "pickStage"}" data-stage="${s.id}" title="Giai đoạn ${s.no}: ${esc(s.name)} (tuần ${s.from}–${s.to})">${s.no}. ${esc(s.name)}</button>`).join("");
+  const weeks = Array.from({ length: W }, (_, i) => { const w = i + 1; return `<div class="rail-wk ${week && w < week ? "past" : ""} ${w === week ? "cur" : ""}">${w}</div>`; }).join("");
+  const rv = Object.fromEntries(reviews.map(r => [r.milestone, r]));
+  const ms = Array.from({ length: W }, (_, i) => {
+    const m = cfg.milestones.find(x => x.week === i + 1); if (!m) return `<div class="rail-ms"></div>`;
+    const res = rv[m.id] ? msResult(cfg, rv[m.id]) : null;
+    return `<div class="rail-ms ${res ? (res.pass ? "ok" : "bad") : ""}" title="${m.id} – ${esc(m.name)} (tuần ${m.week})${res ? `: ${res.total} điểm` : ""}"><span></span></div>`;
+  }).join("");
+  let now = "";
+  if (week == null) now = "Chưa có ngày bắt đầu";
+  else if (week === 0) now = "Chưa bắt đầu";
+  else if (week > W) now = "Đã hoàn thành 26 tuần";
+  else { const st = stageOfWeek(cfg, week); const next = cfg.milestones.find(m => m.week >= week); now = `Tuần ${week}/${W} · Giai đoạn ${st.no}: ${st.name}${next ? ` · Mốc ${next.id} ở tuần ${next.week}` : ""}`; }
+  return `<div class="rail"><div class="rail-head"><div class="now">${esc(now)}</div>${opts.right || ""}</div>
+    <div class="rail-grid">${bands}</div><div class="rail-grid" style="margin-top:4px">${weeks}</div><div class="rail-grid" style="margin-top:2px">${ms}</div>
+    <div class="rail-legend"><span><i></i>Mốc đánh giá</span><span><i style="background:var(--g500);border-color:var(--g500)"></i>Đạt</span><span><i style="background:var(--red);border-color:var(--red)"></i>Chưa đạt</span></div></div>`;
+}
+
+/* =====================================================================
+   HỌC VIÊN: LỘ TRÌNH
+   ===================================================================== */
+const DOC_CATS = [["vanban", "Văn bản pháp quy"], ["hdtd", "Hướng dẫn điều trị"], ["quytrinh", "Quy trình"], ["thongtin", "Thông tin thuốc"], ["video", "Bài giảng video"]];
+const DOC_TYPES = [["pdf", "PDF"], ["docx", "DOCX"], ["xlsx", "XLSX"], ["video", "Video"], ["link", "Liên kết"]];
+const DOCS_SEED = [
+  ["Luật Dược 105/2016/QH13", "vanban", "pdf", "s1"], ["Luật 44/2024/QH15 sửa đổi Luật Dược", "vanban", "pdf", "s1"],
+  ["Nghị định 163/2025/NĐ-CP hướng dẫn Luật Dược", "vanban", "pdf", "s1"], ["Nghị định 131/2020/NĐ-CP về hoạt động dược lâm sàng", "vanban", "pdf", "s1"],
+  ["Thông tư 22/2011/TT-BYT tổ chức, hoạt động khoa Dược", "vanban", "pdf", "s1"], ["Thông tư 23/2011/TT-BYT sử dụng thuốc trong cơ sở có giường bệnh", "vanban", "pdf", "s2"],
+  ["Thông tư 18/2026/TT-BYT thuốc phải kiểm soát đặc biệt", "vanban", "pdf", "s2"], ["Thông tư 21/2013/TT-BYT Hội đồng Thuốc và Điều trị", "vanban", "pdf", "s3"],
+  ["Thông tư 37/2024/TT-BYT danh mục, thanh toán BHYT thuốc hóa dược", "vanban", "pdf", "s3"], ["Thông tư 27/2025/TT-BYT thuốc dược liệu, cổ truyền BHYT", "vanban", "pdf", "s3"],
+  ["Quyết định 697/QĐ-BYT mẫu bảng kê chi phí KCB", "vanban", "pdf", "s3"], ["Thông tư 26/2025/TT-BYT kê đơn thuốc ngoại trú", "vanban", "pdf", "s4"],
+  ["Thông tư 55/2025/TT-BYT kê đơn thuốc cổ truyền, kết hợp", "vanban", "pdf", "s4"], ["Thông tư 31/2025/TT-BYT hướng dẫn Luật Dược (thông tin thuốc)", "vanban", "pdf", "s4"],
+  ["QĐ 29/QĐ-BYT hướng dẫn giám sát phản ứng có hại của thuốc (ADR)", "hdtd", "pdf", "s4"],
+  ["QĐ 3809/QĐ-BYT thực hành dược lâm sàng trong một số bệnh không lây nhiễm", "hdtd", "pdf", "s5"],
+  ["QĐ 5631/QĐ-BYT quản lý sử dụng kháng sinh trong bệnh viện", "hdtd", "pdf", "s5"]
+];
+const docIcon = t => `<div class="fi ${t}">${t === "video" ? ic("play", 18) : t === "link" ? ic("ext", 18) : t === "docx" ? "W" : t === "xlsx" ? "X" : "PDF"}</div>`;
+function relTime(iso) { if (!iso) return ""; const d = (Date.now() - new Date(iso).getTime()) / 1000; if (d < 3600) return Math.max(1, Math.round(d / 60)) + " phút trước"; if (d < 86400) return Math.round(d / 3600) + " giờ trước"; if (d < 7 * 86400) return Math.round(d / 86400) + " ngày trước"; return fmtDate(iso); }
+function seenKey() { return "hv_seen_" + (S.user?.uid || ""); }
+function getSeen() { try { return localStorage.getItem(seenKey()) || ""; } catch (e) { return ""; } }
+function setSeen() { try { localStorage.setItem(seenKey(), nowISO()); } catch (e) { } }
+
+/* ---------- thông báo ---------- */
+async function buildNotifs() {
+  const out = [];
+  if (role() === "hocvien") {
+    const uid = S.user.uid;
+    const [exams, atts, reviews, comments, docs] = await Promise.all([
+      Store.list("exams", [["open", "==", true]]), Store.list("attempts", [["learnerUid", "==", uid]]),
+      Store.list("reviews", [["learnerUid", "==", uid], ["published", "==", true]]),
+      Store.list("comments", [["learnerUid", "==", uid], ["visibleToLearner", "==", true]]), Store.list("docs").catch(() => [])]);
+    const aBy = Object.fromEntries(atts.map(a => [a.examId, a]));
+    exams.filter(e => (e.assigned === "all" || (e.assigned || []).includes?.(uid)) && !aBy[e.id]).forEach(e => out.push({ icon: "quiz", tone: "orange", text: `Có bài lượng giá mới: ${e.title} (${e.questions?.length || 0} câu, ${e.durationMin} phút)`, at: e.updatedAt || e.createdAt, href: "#/lambai/" + e.id }));
+    atts.filter(a => a.status === "da-cham").forEach(a => out.push({ icon: "checkc", tone: "green", text: `Bài ${a.examTitle || ""} đã được chấm: ${a.percent}%`, at: a.gradedAt, href: "#/lambai/" + a.examId }));
+    reviews.forEach(r => { const t = msTotal(S.cfg, r); out.push({ icon: "clip", tone: "blue", text: `Lãnh đạo khoa đã đánh giá mốc ${r.milestone}: ${t} điểm`, at: r.at, href: "#/danhgia" }); });
+    comments.forEach(c => out.push({ icon: "msg", tone: "blue", text: `${c.byName} nhận xét mốc ${c.milestone}: “${String(c.text).slice(0, 80)}${c.text.length > 80 ? "…" : ""}”`, at: c.at, href: "#/danhgia" }));
+    docs.filter(d => d.date && Date.now() - new Date(d.date).getTime() < 30 * 864e5).sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 3).forEach(d => out.push({ icon: "book", tone: "grey", text: `Tài liệu mới: ${d.title}`, at: d.date, href: "#/tailieu" }));
+    const seen = getSeen(); out.forEach(n => n.isNew = !!n.at && n.at > seen);
+    S.notifCount = out.filter(n => n.isNew).length;
+  } else if (isStaff()) {
+    const [users, atts, reviews, progs] = await Promise.all([allUsers(), Store.list("attempts"), Store.list("reviews"), Store.list("progress")]);
+    const uBy = Object.fromEntries(users.map(u => [u.id, u]));
+    if (can("grade")) atts.filter(a => a.status === "da-nop").forEach(a => out.push({ icon: "hourglass", tone: "orange", text: `Bài chờ chấm: ${a.learnerName} – ${a.examTitle || a.examId}`, at: a.submittedAt, href: "#/cham/" + a.id, task: true }));
+    users.filter(u => u.role === "hocvien" && u.active !== false).forEach(u => {
+      const w = weekOf(u.startDate); if (w == null) return;
+      S.cfg.milestones.filter(m => w >= m.week && !reviews.find(r => r.learnerUid === u.id && r.milestone === m.id)).forEach(m =>
+        out.push({ icon: "clip", tone: "blue", text: `Đến hạn đánh giá mốc ${m.id}: ${u.name}`, at: "", href: `#/hocvien/${u.id}/${m.id}`, task: true }));
+    });
+    if (isAdmin()) users.filter(u => u.role === "cho-duyet").forEach(u => out.push({ icon: "shield", tone: "red", text: `Tài khoản chờ duyệt: ${u.name} (${u.email})`, at: u.createdAt, href: "#/nguoidung", task: true }));
+    progs.forEach(p => Object.entries(p.products || {}).forEach(([k, v]) => { if (v.at && Date.now() - new Date(v.at).getTime() < 14 * 864e5) out.push({ icon: "file", tone: "grey", text: `${uBy[p.id]?.name || "Học viên"} nộp sản phẩm: ${String(v.text || "").slice(0, 70)}`, at: v.at, href: "#/hocvien/" + p.id }); }));
+    S.notifCount = out.filter(n => n.task).length;
+  }
+  out.sort((a, b) => (b.task ? 1 : 0) - (a.task ? 1 : 0) || String(b.at || "").localeCompare(String(a.at || "")));
+  return out;
+}
+async function refreshNotifs() { try { S.notifs = await buildNotifs(); } catch (e) { S.notifs = []; S.notifCount = 0; } }
+const TONE = { blue: ["#EAF2FF", "#1663D6"], green: ["#E3F5EA", "#1E9E5A"], orange: ["#FFF0E2", "#D9721A"], red: ["#FDE8E6", "#C2362B"], grey: ["#EFF2F6", "#5B6B84"] };
+function notifItem(n) { const [bg, fg] = TONE[n.tone] || TONE.grey; return `<a class="nt ${n.isNew ? "new" : ""}" href="${n.href}"><span class="d" style="background:${bg};color:${fg}">${ic(n.icon, 17)}</span><span class="tx">${esc(n.text)}</span><span class="tm">${n.at ? relTime(n.at) : ""}</span></a>`; }
+async function vNotifs() {
+  const list = S.notifs || []; const staff = isStaff();
+  if (!staff) { setSeen(); S.notifCount = 0; }
+  const tasks = list.filter(n => n.task), rest = list.filter(n => !n.task);
+  return `<h1>${staff ? "Việc cần làm" : "Thông báo"}</h1>
+    ${staff ? `<p class="muted">Bài chờ chấm, mốc đến hạn đánh giá${isAdmin() ? ", tài khoản chờ duyệt" : ""} và sản phẩm học viên vừa nộp.</p>
+      <div class="card"><div class="card-h"><h2>Cần xử lý (${tasks.length})</h2></div>${tasks.length ? tasks.map(notifItem).join("") : `<div class="empty">Không có việc tồn đọng.</div>`}</div>
+      <div class="card"><div class="card-h"><h2>Hoạt động gần đây</h2></div>${rest.length ? rest.map(notifItem).join("") : `<p class="muted small">Chưa có hoạt động trong 14 ngày qua.</p>`}</div>`
+      : `<div class="card">${list.length ? list.map(notifItem).join("") : `<div class="empty">Chưa có thông báo.</div>`}</div>`}`;
+}
+
+/* ---------- biểu đồ vòng ---------- */
+function donut(pct, size = 150, color = "#1E9E5A", label = "") {
+  const r = size / 2 - 12, c = 2 * Math.PI * r, v = Math.max(0, Math.min(100, pct));
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Hoàn thành ${v}%"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="#E7EDF6" stroke-width="16"/>
+    <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${color}" stroke-width="16" stroke-linecap="round" stroke-dasharray="${c * v / 100} ${c}" transform="rotate(-90 ${size / 2} ${size / 2})"/>
+    <text x="50%" y="${label ? "47%" : "50%"}" text-anchor="middle" dominant-baseline="central" font-size="${size / 5.2}" font-weight="700" fill="#17233A">${Math.round(v)}%</text>${label ? `<text x="50%" y="64%" text-anchor="middle" font-size="11" fill="#64748B">${esc(label)}</text>` : ""}</svg>`;
+}
+
+/* ---------- học viên: trang chủ ---------- */
+function taskStats(cfg, prog, week) {
+  let total = 0, done = 0, doing = 0, todo = 0;
+  cfg.stages.forEach(s => taskIds(s).forEach(id => { total++; if (prog?.tasks?.[id]) done++; else if (week && s.from <= week) doing++; else todo++; }));
+  return { total, done, doing, todo, pct: total ? Math.round(done * 100 / total) : 0 };
+}
+function nextTask(cfg, prog, week) {
+  const order = cfg.stages.filter(s => !week || s.from <= Math.max(week, 1)).concat(cfg.stages.filter(s => week && s.from > week));
+  for (const s of order) {
+    const i = s.items.findIndex((_, k) => !prog?.tasks?.[`${s.id}_i${k}`]); if (i >= 0) return { st: s, text: s.items[i].content, sub: `Tuần ${s.items[i].w}`, dls: s.items[i].dls };
+    const j = s.products.findIndex((_, k) => !prog?.tasks?.[`${s.id}_p${k}`]); if (j >= 0) return { st: s, text: "Nộp sản phẩm: " + s.products[j], sub: "Sản phẩm cuối giai đoạn" };
+  }
+  return null;
+}
+const HERO_ART = `<svg class="art" viewBox="0 0 520 170" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+  <circle cx="420" cy="40" r="90" fill="#CFE2FF" opacity=".55"/><circle cx="300" cy="160" r="70" fill="#E1ECFF" opacity=".8"/>
+  <g transform="translate(150 28)" opacity=".9"><rect x="0" y="10" width="78" height="104" rx="10" fill="#fff" stroke="#9CC0F5" stroke-width="2"/><rect x="22" y="2" width="34" height="16" rx="5" fill="#2F80ED"/>
+    <path d="M14 42h50M14 58h50M14 74h34" stroke="#BFD6F7" stroke-width="5" stroke-linecap="round"/><path d="M16 92l8 8 16-18" stroke="#1E9E5A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(250 96) rotate(-30)"><rect x="0" y="0" width="58" height="24" rx="12" fill="#2F80ED"/><rect x="29" y="0" width="29" height="24" rx="12" fill="#fff" stroke="#2F80ED" stroke-width="2"/><rect x="29" y="0" width="12" height="24" fill="#fff"/></g>
+  <g transform="translate(108 104) rotate(20)"><rect x="0" y="0" width="44" height="18" rx="9" fill="#7FD3A8"/><rect x="22" y="0" width="22" height="18" rx="9" fill="#fff" stroke="#7FD3A8" stroke-width="2"/><rect x="22" y="0" width="9" height="18" fill="#fff"/></g>
+  <path d="M120 30h8v-8h8v8h8v8h-8v8h-8v-8h-8z" fill="#9CC0F5"/><circle cx="268" cy="40" r="6" fill="#7FD3A8"/><circle cx="96" cy="70" r="4" fill="#9CC0F5"/></svg>`;
+async function vLearnerHome() {
+  const cfg = S.cfg, uid = S.user.uid;
+  const [prog, docs] = await Promise.all([Store.get("progress", uid), Store.list("docs").catch(() => [])]);
+  const w = weekOf(S.me.startDate); const ts = taskStats(cfg, prog, w); const nx = nextTask(cfg, prog, w);
+  const first = (S.me.name || "").trim().split(/\s+/).pop();
+  const nDocs = nx ? docs.filter(d => d.stage === nx.st.id).length : 0;
+  return `<section class="hero">${HERO_ART}<div class="slogan">Kiến thức vững vàng<br>Thực hành an toàn<br>Vì người bệnh</div>
+      <h1>Chào ${esc(first)}, chúc một ngày học hiệu quả!</h1><p>Cùng hoàn thành lộ trình 6 tháng để trở thành dược sĩ lâm sàng của khoa.</p></section>
+    <div class="home-top">
+      <div class="card"><h2>Tiến độ hoàn thành lộ trình</h2><div class="donut-wrap">${donut(ts.pct, 150)}<div><div class="muted">Đã hoàn thành</div><div style="font-size:1.25rem;font-weight:700">${ts.done}/${ts.total} việc</div>
+        <div class="small muted" style="margin-top:6px">${w == null ? "Chưa có ngày bắt đầu" : w === 0 ? "Chưa đến ngày bắt đầu" : w > cfg.totalWeeks ? "Đã qua 26 tuần" : `Tuần ${w}/${cfg.totalWeeks} · Giai đoạn ${stageOfWeek(cfg, w).no}`}</div></div></div></div>
+      <div class="card"><div class="stats">
+        <div class="stat st-blue"><span class="si">${ic("book", 19)}</span><b>${ts.total}</b><span>Việc trong toàn lộ trình</span></div>
+        <div class="stat st-green"><span class="si">${ic("check", 19)}</span><b>${ts.done}</b><span>Đã hoàn thành</span></div>
+        <div class="stat st-orange"><span class="si">${ic("clock", 19)}</span><b>${ts.doing}</b><span>Đang học</span></div>
+        <div class="stat st-grey"><span class="si">${ic("hourglass", 19)}</span><b>${ts.todo}</b><span>Chưa học</span></div></div></div>
+    </div>
+    <div class="home-mid">
+      <div class="card"><h2>Việc tiếp theo</h2>${nx ? `<div class="next"><div class="thumb" style="background:linear-gradient(135deg,${["", "#4C9BFF", "#25B9BE", "#9C86FF", "#F2A24D", "#3CC07A"][nx.st.no]},${stageColor(nx.st.no)})">${ic(["", "route", "pill", "book", "quiz", "clip"][nx.st.no], 34)}</div>
+        <div class="meta"><b>${esc(nx.text)}</b><span class="tag" style="background:${stageColor(nx.st.no)};color:#fff">Giai đoạn ${nx.st.no} · ${esc(nx.st.name)}</span>
+          <div class="small muted" style="margin-top:8px;display:flex;gap:14px;flex-wrap:wrap"><span>${ic("clock", 15)} ${esc(nx.sub)}</span><span>${ic("book", 15)} ${nDocs} tài liệu của giai đoạn</span></div>
+          ${nx.dls ? `<div class="dls" style="margin-top:8px">${esc(nx.dls)}</div>` : ""}</div>
+        <a class="btn" href="#/lotrinh/${nx.st.id}">Tiếp tục học ${ic("arrow", 17)}</a></div>` : `<div class="empty">Bạn đã hoàn thành mọi việc của lộ trình.</div>`}</div>
+      <div class="card"><div class="card-h"><h2>${ic("bell", 20, 'style="color:#F2A23D"')} Thông báo</h2><a class="link" href="#/thongbao">Xem tất cả</a></div>
+        ${(S.notifs || []).slice(0, 4).map(notifItem).join("") || `<p class="muted small">Chưa có thông báo.</p>`}</div>
+    </div>`;
+}
+
+/* ---------- học viên: lộ trình ---------- */
+let pickedStage = null;
+async function vLearnerRoadmap(uid) {
+  const cfg = S.cfg;
+  const [prog, reviews] = await Promise.all([Store.get("progress", uid), Store.list("reviews", [["learnerUid", "==", uid], ["published", "==", true]])]);
+  const w = weekOf(S.me.startDate); const cur = w ? stageOfWeek(cfg, Math.max(1, w)) : null;
+  const rows = cfg.stages.map(s => { const p = stageProgress(s, prog);
+    return `<a class="st ${cur?.id === s.id ? "cur" : ""}" href="#/lotrinh/${s.id}" style="--sc:${stageColor(s.no)}"><span class="no ${p.pct === 100 ? "done" : ""}">${p.pct === 100 ? ic("check", 18) : s.no}</span>
+      <span class="tt"><b>${esc(s.name)}</b><span class="small muted">Tuần ${s.from}–${s.to} · ${esc(s.months)} · ${p.total} việc${cur?.id === s.id ? " · đang học" : ""}</span></span>
+      <span class="pc"><b class="num" style="color:${p.pct === 100 ? "var(--ok)" : "var(--g700)"}">${p.pct}%</b><div class="bar"><i style="width:${p.pct}%;background:${p.pct === 100 ? "var(--ok)" : "var(--g500)"}"></i></div></span>${ic("chev", 18, 'style="color:#9AA9BF"')}</a>`; }).join("");
+  return `<h1>Lộ trình đào tạo dược sĩ lâm sàng</h1><p class="muted">${esc(cfg.title)}${S.me.startDate ? ` · Bắt đầu ${fmtDate(S.me.startDate)}` : ""}</p>
+    ${rail(cfg, w, reviews, { stageAct: "goStageRoadL" })}<div class="steps">${rows}</div>`;
+}
+async function vLearnerStage(uid, stageId) {
+  const cfg = S.cfg; const st = cfg.stages.find(s => s.id === stageId) || cfg.stages[0];
+  const [prog, docs] = await Promise.all([Store.get("progress", uid), Store.list("docs").catch(() => [])]);
+  return `<a class="link" href="#/lotrinh">${ic("back", 16)} Lộ trình học</a><div style="height:10px"></div>
+    ${stageTabs(cfg, st, prog, "#/lotrinh/")}${stagePanel(cfg, st, prog, true, docs)}`;
+}
+function stageTabs(cfg, st, prog, base) {
+  return `<div class="tabs" role="tablist">${cfg.stages.map(s => { const p = prog === null ? null : stageProgress(s, prog); return `<a role="tab" class="${s.id === st.id ? "on" : ""}" style="--sc:${stageColor(s.no)}" href="${base}${s.id}">GĐ ${s.no}${p ? ` · ${p.pct}%` : ""}</a>`; }).join("")}</div>`;
+}
+function stagePanel(cfg, st, prog, editable, docs = []) {
+  const ms = cfg.milestones.filter(m => m.stage === st.id);
+  const p = stageProgress(st, prog);
+  const items = st.items.map((it, i) => {
+    const id = `${st.id}_i${i}`; const done = !!prog?.tasks?.[id];
+    return `<tr><td class="nowrap num wkno">${esc(it.w)}</td><td><label class="check"><input type="checkbox" ${done ? "checked" : ""} ${editable ? "" : "disabled"} data-change="tick" data-id="${id}"><span class="${done ? "done-line" : ""}">${esc(it.content)}</span></label>${it.basis ? `<div class="small muted" style="margin:4px 0 0 28px">Căn cứ: ${esc(it.basis)}</div>` : ""}</td><td class="wkdls">${it.dls ? `<div class="dls">${esc(it.dls)}</div>` : `<span class="muted small">–</span>`}</td></tr>`;
+  }).join("");
+  const prods = st.products.map((pr, i) => {
+    const id = `${st.id}_p${i}`; const done = !!prog?.tasks?.[id]; const sub = prog?.products?.[id];
+    return `<div class="q"><label class="check"><input type="checkbox" ${done ? "checked" : ""} ${editable ? "" : "disabled"} data-change="tick" data-id="${id}"><b>${esc(pr)}</b></label>
+      ${sub ? `<p class="small" style="margin:8px 0 0">${nl(sub.text)}${sub.link ? ` · <a href="${esc(sub.link)}" target="_blank" rel="noopener">Mở tệp</a>` : ""} <span class="muted">(${fmtDT(sub.at)})</span></p>` : (editable ? "" : `<p class="small muted" style="margin:8px 0 0">Chưa nộp</p>`)}
+      ${editable ? `<details><summary class="small" style="cursor:pointer;margin-top:8px;color:var(--g700);font-weight:600">${sub ? "Sửa sản phẩm đã nộp" : "Chưa nộp – bấm để nộp sản phẩm"}</summary><form data-form="product" data-id="${id}" style="margin-top:10px">
+        <label class="f"><span>Mô tả sản phẩm đã nộp / nơi lưu</span><textarea name="text" rows="2">${esc(sub?.text || "")}</textarea></label>
+        <label class="f"><span>Đường dẫn tệp (Google Drive…), nếu có</span><input type="text" name="link" value="${esc(sub?.link || "")}" placeholder="https://"></label>
+        <button class="btn sm" type="submit">Lưu sản phẩm</button></form></details>` : ""}</div>`;
+  }).join("");
+  const sdocs = docs.filter(d => d.stage === st.id);
+  return `<div class="panel"><div class="stage-head" style="--sc:${stageColor(st.no)}"><div class="k">Giai đoạn ${st.no} · Tuần ${st.from}–${st.to} · ${esc(st.months)}</div><h2 style="margin:2px 0 4px">${esc(st.name)}</h2><p style="margin:0">${esc(st.goal)}</p></div>
+    <div class="row small" style="margin-bottom:12px"><span class="muted">Đã xong ${p.n}/${p.total} việc</span><div class="bar" style="width:160px"><i style="width:${p.pct}%"></i></div><b class="num">${p.pct}%</b></div>
+    <h3>Việc cần làm theo tuần</h3>
+    <div class="tbl-wrap wk"><table><thead><tr><th>Tuần</th><th>Nội dung thực hành</th><th>Lồng ghép dược lâm sàng</th></tr></thead><tbody>${items}</tbody></table></div></div>
+    <div class="grid2"><div class="panel"><h3>Sản phẩm cuối giai đoạn</h3>${prods}</div>
+    <div><div class="panel"><h3>Tài liệu đọc trong giai đoạn</h3><ol style="margin:0 0 6px;padding-left:20px">${st.readings.map(r => `<li>${esc(r)}</li>`).join("")}</ol>
+      ${sdocs.length ? `<div style="margin-top:12px">${sdocs.map(docRow).join("")}</div>` : ""}<a class="link" href="#/tailieu">Mở thư viện tài liệu</a></div>
+    ${ms.map(m => `<div class="panel"><h3>Mốc ${m.id} – tuần ${m.week}: ${esc(m.name)}</h3><dl class="kv"><dt>Kiến thức</dt><dd>${esc(m.knowledge)}</dd><dt>Sản phẩm</dt><dd>${esc(m.products)}</dd></dl></div>`).join("")}</div></div>`;
+}
+
+/* ---------- tài liệu ---------- */
+let docCat = "all", docEdit = null;
+function docRow(d) {
+  const st = S.cfg.stages.find(s => s.id === d.stage);
+  const canDocs = can("docs");
+  return `<div class="doc">${docIcon(d.type)}<div class="dt"><b>${esc(d.title)}</b><div class="m"><span class="tag grey">${esc((DOC_TYPES.find(t => t[0] === d.type) || [, d.type])[1])}</span>${d.sizeNote ? `<span>${esc(d.sizeNote)}</span>` : ""}${st ? `<span>GĐ ${st.no}</span>` : ""}${d.date ? `<span>${ic("clock", 13)} ${fmtDate(d.date)}</span>` : ""}</div></div>
+    <div class="act">${d.url ? `<a class="iconbtn" href="${esc(d.url)}" target="_blank" rel="noopener" aria-label="Mở ${esc(d.title)}">${ic(d.type === "video" || d.type === "link" ? "ext" : "download", 19)}</a>` : `<span class="iconbtn off" title="Chưa gắn đường dẫn tệp">${ic("download", 19)}</span>`}
+      ${canDocs ? `<button class="iconbtn" data-act="docEdit" data-id="${d.id}" aria-label="Sửa">${ic("edit", 17)}</button><button class="iconbtn" style="color:var(--red)" data-act="docDel" data-id="${d.id}" aria-label="Xóa">${ic("trash", 17)}</button>` : ""}</div></div>`;
+}
+async function vDocs() {
+  const docs = (await Store.list("docs").catch(() => [])).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")) || (a.title || "").localeCompare(b.title || "", "vi"));
+  const q = (S.docQ || "").toLowerCase().trim();
+  const list = docs.filter(d => (docCat === "all" || d.category === docCat) && (!q || (d.title || "").toLowerCase().includes(q)));
+  const e = docEdit ? docs.find(d => d.id === docEdit) || {} : {};
+  const form = can("docs") ? `<details class="panel" ${docEdit ? "open" : ""}><summary style="cursor:pointer;font-weight:600">${docEdit ? "Sửa tài liệu" : "Thêm tài liệu"}</summary>
+    <form data-form="doc" data-id="${esc(docEdit || "")}" style="margin-top:12px"><div class="grid2">
+      <label class="f"><span>Tên tài liệu</span><input type="text" name="title" required value="${esc(e.title || "")}"></label>
+      <label class="f"><span>Đường dẫn (Google Drive, YouTube…)</span><input type="text" name="url" value="${esc(e.url || "")}" placeholder="https://"></label>
+      <label class="f"><span>Nhóm</span><select name="category">${DOC_CATS.map(([k, l]) => `<option value="${k}" ${e.category === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+      <label class="f"><span>Loại tệp</span><select name="type">${DOC_TYPES.map(([k, l]) => `<option value="${k}" ${e.type === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+      <label class="f"><span>Giai đoạn</span><select name="stage"><option value="">Chung</option>${S.cfg.stages.map(s => `<option value="${s.id}" ${e.stage === s.id ? "selected" : ""}>GĐ ${s.no}: ${esc(s.name)}</option>`).join("")}</select></label>
+      <label class="f"><span>Ghi chú dung lượng / thời lượng</span><input type="text" name="sizeNote" value="${esc(e.sizeNote || "")}" placeholder="5,2 MB hoặc 45 phút"></label></div>
+      <div class="row"><button class="btn" type="submit">${docEdit ? "Lưu thay đổi" : "Thêm tài liệu"}</button>${docEdit ? `<button type="button" class="btn ghost" data-act="docCancel">Hủy</button>` : ""}
+      ${!docs.length ? `<button type="button" class="btn ghost" data-act="docSeed">Nạp danh mục ${DOCS_SEED.length} văn bản đã dùng trong lộ trình</button>` : ""}</div></form></details>` : "";
+  return `<h1>Tài liệu học tập</h1>${form}
+    <div class="tabs">${[["all", "Tất cả"], ...DOC_CATS].map(([k, l]) => `<button class="${docCat === k ? "on" : ""}" data-act="docCat" data-k="${k}">${l}</button>`).join("")}</div>
+    <form class="search" data-form="search" style="max-width:none;margin-bottom:14px">${ic("search", 18)}<input type="search" name="q" placeholder="Tìm tài liệu…" value="${esc(S.docQ || "")}" aria-label="Tìm tài liệu"></form>
+    ${list.length ? list.map(docRow).join("") : `<div class="empty">${docs.length ? "Không có tài liệu khớp." : "Thư viện chưa có tài liệu."}${!docs.length && can("docs") ? " Bấm “Thêm tài liệu” hoặc nạp danh mục văn bản có sẵn." : ""}</div>`}`;
+}
+
+/* =====================================================================
+   HỌC VIÊN: LƯỢNG GIÁ
+   ===================================================================== */
+let examTimer = null;
+async function vTakeExam(examId) {
+  clearInterval(examTimer);
+  const uid = S.user.uid; const aid = `${examId}_${uid}`;
+  const exam = await Store.get("exams", examId);
+  if (!exam) return `<div class="empty">Bài lượng giá không tồn tại hoặc đã đóng.</div>`;
+  let att = await Store.get("attempts", aid);
+  if (att?.status === "da-nop") return `<h1>${esc(exam.title)}</h1><div class="empty">Bạn đã nộp bài lúc ${fmtDT(att.submittedAt)}. Kết quả hiện khi lãnh đạo khoa chấm xong.</div>`;
+  const qs = exam.shuffle ? seededShuffle(exam.questions, uid + examId) : exam.questions;
+  if (att?.status === "da-cham") {
+    const body = qs.map((q, i) => {
+      const ans = att.answers?.[q.id];
+      if (q.type === "mcq") {
+        const ok = att.mcqResult?.[q.id];
+        return `<div class="q"><div class="qn">Câu ${i + 1} · trắc nghiệm · ${q.points} điểm · ${ok ? "đúng" : "sai"}</div><div>${nl(q.text)}</div>${q.options.map((o, k) => `<div class="opt ${ans === k ? (ok ? "right" : "wrong") : ""}"><input type="radio" disabled ${ans === k ? "checked" : ""}><span>${esc(o)}</span></div>`).join("")}</div>`;
+      }
+      return `<div class="q"><div class="qn">Câu ${i + 1} · tự luận · ${att.essayScores?.[q.id] ?? 0}/${q.points} điểm</div><div>${nl(q.text)}</div><div class="dls" style="margin-top:8px">${nl(ans || "(không trả lời)")}</div>${att.essayComments?.[q.id] ? `<p class="small" style="margin-top:8px"><b>Nhận xét:</b> ${nl(att.essayComments[q.id])}</p>` : ""}</div>`;
+    }).join("");
+    return `<h1>${esc(exam.title)}</h1><div class="panel row"><div class="score">${att.percent}%</div><div><b>${att.total}/${att.maxTotal} điểm</b><div class="small muted">Chấm bởi ${esc(att.gradedByName || "")} · ${fmtDT(att.gradedAt)}</div></div></div>${att.generalComment ? `<div class="panel"><b>Nhận xét chung:</b> ${nl(att.generalComment)}</div>` : ""}${body}<a class="btn ghost" href="#/luonggia">Về danh sách</a>`;
+  }
+  if (!exam.open) return `<div class="empty">Bài lượng giá này đã đóng.</div>`;
+  if (!att) {
+    att = { examId, examTitle: exam.title, milestone: exam.milestone, learnerUid: uid, learnerName: S.me.name, answers: {}, status: "dang-lam", startedAt: nowISO() };
+    await Store.set("attempts", aid, att, false);
+  }
+  const end = new Date(att.startedAt).getTime() + exam.durationMin * 60000;
+  const body = qs.map((q, i) => q.type === "mcq"
+    ? `<div class="q"><div class="qn">Câu ${i + 1} · trắc nghiệm · ${q.points} điểm</div><div style="margin-bottom:6px">${nl(q.text)}</div>${q.options.map((o, k) => `<label class="opt"><input type="radio" name="${q.id}" value="${k}" ${att.answers?.[q.id] === k ? "checked" : ""} data-change="ans" data-q="${q.id}" data-aid="${aid}"><span>${esc(o)}</span></label>`).join("")}</div>`
+    : `<div class="q"><div class="qn">Câu ${i + 1} · tự luận · ${q.points} điểm</div><div style="margin-bottom:6px">${nl(q.text)}</div><textarea rows="6" data-input="ansText" data-q="${q.id}" data-aid="${aid}">${esc(att.answers?.[q.id] || "")}</textarea></div>`).join("");
+  onAfter(() => {
+    const el = document.getElementById("countdown");
+    const tick = async () => {
+      const left = Math.max(0, end - Date.now()); const m = Math.floor(left / 60000), s = Math.floor(left % 60000 / 1000);
+      if (el) el.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+      if (left <= 0) { clearInterval(examTimer); await submitAttempt(aid, true); }
+    };
+    tick(); examTimer = setInterval(tick, 1000);
+  });
+  return `<h1>${esc(exam.title)}</h1>
+    <div class="timer"><span>Mốc ${esc(exam.milestone)} · ${qs.length} câu · bài tự lưu khi bạn trả lời</span><span>Còn lại <b id="countdown">--:--</b></span></div>
+    ${body}
+    <div class="row exam-submit"><button class="btn" data-act="submitExam" data-aid="${aid}">Nộp bài</button><span class="small muted">Nộp xong không sửa được nữa.</span></div>`;
+}
+let saveTimers = {};
+async function saveAnswer(aid, q, val) {
+  try { await Store.set("attempts", aid, { answers: { [q]: val }, lastSaved: nowISO() }); } catch (e) { toast(errMsg(e), true); }
+}
+async function submitAttempt(aid, auto) {
+  for (const k in saveTimers) { clearTimeout(saveTimers[k]); }
+  document.querySelectorAll('[data-input="ansText"]').forEach(t => { /* flush */ });
+  const patch = { status: "da-nop", submittedAt: nowISO() };
+  const texts = {}; document.querySelectorAll('[data-input="ansText"]').forEach(t => texts[t.dataset.q] = t.value);
+  if (Object.keys(texts).length) patch.answers = texts;
+  try { await Store.set("attempts", aid, patch); clearInterval(examTimer); toast(auto ? "Hết giờ – bài đã được nộp tự động." : "Đã nộp bài."); location.hash = "#/luonggia"; route(); }
+  catch (e) { toast(errMsg(e), true); }
+}
+
+/* =====================================================================
+   HỌC VIÊN: KẾT QUẢ
+   ===================================================================== */
+async function vLearnerExams(tab) {
+  const uid = S.user.uid;
+  const [exams, atts] = await Promise.all([Store.list("exams", [["open", "==", true]]), Store.list("attempts", [["learnerUid", "==", uid]])]);
+  const mine = exams.filter(e => e.assigned === "all" || (Array.isArray(e.assigned) && e.assigned.includes(uid))).sort((a, b) => (a.milestone || "").localeCompare(b.milestone || ""));
+  const aBy = Object.fromEntries(atts.map(a => [a.examId, a]));
+  const tone = ["#E3F5EA|#1E9E5A", "#F1ECFF|#7B61FF", "#EAF2FF|#2F80ED", "#FFF0E2|#D9721A"];
+  const card = (e, i) => {
+    const a = aBy[e.id]; const nq = e.questions?.length || 0; const [bg, fg] = tone[i % tone.length].split("|");
+    let right = `<a class="btn sm" href="#/lambai/${e.id}">Làm bài</a>`;
+    if (a?.status === "dang-lam") right = `<a class="btn sm" href="#/lambai/${e.id}">Làm tiếp</a><span class="tag amber">Đang làm</span>`;
+    if (a?.status === "da-nop") right = `<span class="tag">Đã nộp, chờ chấm</span>`;
+    if (a?.status === "da-cham") right = `<span class="tag ok">Đã hoàn thành</span><a class="link" href="#/lambai/${e.id}">Điểm: ${a.percent}/100</a>`;
+    const ms = S.cfg.milestones.find(m => m.id === e.milestone);
+    return `<div class="ex"><span class="xi" style="background:${bg};color:${fg}">${ic("quiz", 22)}</span><div class="xt"><b>${esc(e.title)}</b><div class="m"><span>Mốc ${esc(e.milestone)}${ms ? ` – ${esc(ms.name)}` : ""}</span><span>${ic("file", 14)} ${nq} câu</span><span>${ic("clock", 14)} ${e.durationMin} phút</span></div></div><div class="xr">${right}</div></div>`;
+  };
+  const graded = atts.filter(a => a.status === "da-cham").sort((a, b) => String(b.gradedAt).localeCompare(String(a.gradedAt)));
+  const tabs = `<div class="tabs"><a href="#/luonggia" class="${tab !== "ketqua" ? "on" : ""}">Bài kiểm tra</a><a href="#/luonggia/ketqua" class="${tab === "ketqua" ? "on" : ""}">Kết quả</a></div>`;
+  if (tab === "ketqua") return `<h1>Lượng giá kiến thức</h1>${tabs}${graded.length ? `<div class="tbl-wrap"><table><thead><tr><th>Bài</th><th>Mốc</th><th>Điểm</th><th>Ngày chấm</th><th></th></tr></thead><tbody>${graded.map(a => `<tr><td><b>${esc(a.examTitle || a.examId)}</b></td><td>${esc(a.milestone || "")}</td><td class="num"><b>${a.percent}</b>/100</td><td>${fmtDate(a.gradedAt)}</td><td><a class="link" href="#/lambai/${a.examId}">Xem bài</a></td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">Chưa có bài nào được chấm.</div>`}`;
+  return `<h1>Lượng giá kiến thức</h1>${tabs}<p class="muted">Bài gồm trắc nghiệm và tự luận. Điểm hiện sau khi lãnh đạo khoa chấm xong.</p>
+    ${mine.length ? mine.map(card).join("") : `<div class="empty">Hiện chưa có bài lượng giá nào đang mở.</div>`}`;
+}
+
+async function vLearnerEvals(uid) {
+  const cfg = S.cfg;
+  const [reviews, comments, atts] = await Promise.all([Store.list("reviews", [["learnerUid", "==", uid], ["published", "==", true]]), Store.list("comments", [["learnerUid", "==", uid], ["visibleToLearner", "==", true]]), Store.list("attempts", [["learnerUid", "==", uid]])]);
+  const w = weekOf(S.me.startDate);
+  const rows = cfg.milestones.map(m => {
+    const r = reviews.find(x => x.milestone === m.id); const res = r ? msResult(cfg, r) : null; const st = cfg.stages.find(s => s.id === m.stage);
+    const cm = comments.filter(c => c.milestone === m.id).sort((a, b) => a.at.localeCompare(b.at));
+    const due = w != null && w >= m.week;
+    const chip = res ? `<span class="tag ok">Đã đánh giá</span>` : due ? `<span class="tag amber">Chờ đánh giá</span>` : `<span class="tag grey">Tuần ${m.week}</span>`;
+    const ex = atts.filter(a => a.milestone === m.id && a.status === "da-cham");
+    return `<details class="ex ev" style="display:block"><summary style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span class="xi" style="background:${["", "#EAF2FF", "#E3F7F7", "#F1ECFF", "#FFF0E2", "#E3F5EA"][st.no]};color:${stageColor(st.no)}">${ic("clip", 22)}</span>
+        <span class="xt"><b>Mốc ${m.id}: ${esc(m.name)}</b><span class="m"><span>Giai đoạn ${st.no} · tuần ${m.week}</span>${r ? `<span>${fmtDate(r.at)}</span>` : ""}${cm.length ? `<span>${ic("msg", 14)} ${cm.length} nhận xét</span>` : ""}</span></span>
+        <span class="xr">${res ? `<span class="pt">${res.total}<small>/100</small></span>` : `<span class="pt" style="color:#B6C2D3">–</span>`}${chip}</span></summary>
+      <div style="margin-top:14px">
+      ${r ? `<div class="tbl-wrap"><table><thead><tr><th>Kiến thức (${cfg.weights.kt}%)</th><th>Kỹ năng (${cfg.weights.kn}%)</th><th>Sản phẩm (${cfg.weights.sp}%)</th><th>Thái độ (${cfg.weights.td}%)</th><th>Tự chủ</th></tr></thead><tbody><tr class="num"><td>${r.scores.kt}</td><td>${r.scores.kn}</td><td>${r.scores.sp}</td><td>${r.scores.td}</td><td>${r.autonomy ? "Mức " + r.autonomy : "–"}</td></tr></tbody></table></div>
+        <p style="margin-top:10px"><b>Kết luận:</b> <span class="tag ${res.pass ? "ok" : "red"}">${res.pass ? "Đạt" : "Chưa đạt"}</span></p>
+        ${r.strengths ? `<p><b>Điểm mạnh:</b> ${nl(r.strengths)}</p>` : ""}${r.improve ? `<p><b>Cần cải thiện:</b> ${nl(r.improve)}</p>` : ""}${r.plan ? `<p><b>Kế hoạch bổ sung:</b> ${nl(r.plan)}</p>` : ""}${(r.critical || []).length ? `<p class="tag red">Có lỗi điểm liệt – trao đổi với người hướng dẫn</p>` : ""}` : `<p class="muted small">${due ? "Lãnh đạo khoa chưa công bố kết quả mốc này." : `Mốc này đánh giá ở tuần ${m.week}.`}</p>`}
+      <dl class="kv" style="margin:10px 0"><dt>Kiến thức</dt><dd>${esc(m.knowledge)}</dd><dt>Sản phẩm</dt><dd>${esc(m.products)}</dd>${ex.length ? `<dt>Bài lượng giá</dt><dd>${ex.map(a => `${esc(a.examTitle)}: <b>${a.percent}%</b>`).join(", ")}</dd>` : ""}</dl>
+      ${cm.length ? `<h4>Nhận xét của lãnh đạo khoa</h4><div class="thread">${cm.map(c => `<div class="c"><div class="m">${esc(c.byName)} · ${esc(ROLE_LABEL[c.byRole] || "")} · ${fmtDT(c.at)}</div>${nl(c.text)}</div>`).join("")}</div>` : ""}</div></details>`;
+  }).join("");
+  return `<h1>Đánh giá thực hành</h1><p class="muted">Kết quả 6 mốc đánh giá và nhận xét của lãnh đạo khoa. Bấm vào từng mốc để xem chi tiết.</p>${rows}`;
+}
+
+async function vLearnerResults(uid) {
+  const cfg = S.cfg;
+  const [reviews, atts] = await Promise.all([Store.list("reviews", [["learnerUid", "==", uid], ["published", "==", true]]), Store.list("attempts", [["learnerUid", "==", uid]])]);
+  const cs = courseScore(cfg, reviews);
+  const done = reviews.length;
+  const graded = atts.filter(a => a.status === "da-cham");
+  const avgExam = graded.length ? Math.round(graded.reduce((s, a) => s + a.percent, 0) / graded.length * 10) / 10 : null;
+  const msRows = cfg.milestones.map(m => { const r = reviews.find(x => x.milestone === m.id); const res = r ? msResult(cfg, r) : null;
+    return `<tr><td><b>${m.id}</b> ${esc(m.name)}</td><td class="num">${res ? res.total : "–"}</td><td>${res ? `<span class="tag ${res.pass ? "ok" : "red"}">${res.pass ? "Đạt" : "Chưa đạt"}</span>` : `<span class="tag grey">Chưa có</span>`}</td></tr>`; }).join("");
+  const today = new Date();
+  return `<h1>Kết quả và chứng nhận</h1>
+    <div class="home-top"><div class="card"><h2>Điểm cuối khóa</h2><div class="donut-wrap">${donut(cs ? cs.v : done * 100 / 6, 150, cs ? "#1E9E5A" : "#2F80ED", cs ? "điểm" : "mốc đã có")}
+      <div>${cs ? `<div style="font-size:1.25rem;font-weight:700">${esc(cs.cls.name)}</div><div class="small muted">${esc(cs.cls.action)}</div>` : `<div class="muted">Đã có ${done}/6 mốc</div><div class="small muted">${esc(cfg.courseFormula)}</div>`}</div></div></div>
+      <div class="card"><div class="stats">
+        <div class="stat st-blue"><span class="si">${ic("clip", 19)}</span><b>${done}/6</b><span>Mốc đã đánh giá</span></div>
+        <div class="stat st-green"><span class="si">${ic("check", 19)}</span><b>${reviews.filter(r => msResult(cfg, r)?.pass).length}</b><span>Mốc đạt</span></div>
+        <div class="stat st-orange"><span class="si">${ic("quiz", 19)}</span><b>${graded.length}</b><span>Bài lượng giá đã chấm</span></div>
+        <div class="stat st-grey"><span class="si">${ic("star", 19)}</span><b>${avgExam ?? "–"}</b><span>Điểm lượng giá trung bình</span></div></div></div></div>
+    <div class="card"><h2>Kết quả từng mốc</h2><div class="tbl-wrap"><table><thead><tr><th>Mốc</th><th>Điểm</th><th>Kết luận</th></tr></thead><tbody>${msRows}</tbody></table></div></div>
+    <div class="card"><div class="card-h"><h2>Giấy chứng nhận</h2>${cs && cs.cls.name !== "Chưa đạt" ? `<button class="btn ghost sm" data-act="print">${ic("printer", 16)} In giấy chứng nhận</button>` : ""}</div>
+      ${cs && cs.cls.name !== "Chưa đạt" ? `<div class="cert"><div class="h">${esc(cfg.hospitalName || "BỆNH VIỆN")}</div><div class="small">${esc(cfg.department || "KHOA DƯỢC")}</div>
+        <h2>GIẤY CHỨNG NHẬN</h2><div>Hoàn thành lộ trình học việc 6 tháng – định hướng Dược lâm sàng</div><div style="margin-top:14px">Chứng nhận dược sĩ</div><div class="nm">${esc(S.me.name)}</div>
+        <div>đã hoàn thành chương trình với kết quả: <b>${cs.v} điểm – xếp loại ${esc(cs.cls.name)}</b></div>
+        <div style="margin-top:6px" class="small">Thời gian: ${fmtDate(S.me.startDate)} – ${fmtDate(new Date(new Date(S.me.startDate + "T00:00:00").getTime() + cfg.totalWeeks * 7 * 864e5).toISOString())}</div>
+        <div style="display:flex;justify-content:flex-end;margin-top:26px"><div style="text-align:center;min-width:220px"><i>Ngày ${today.getDate()} tháng ${today.getMonth() + 1} năm ${today.getFullYear()}</i><div style="font-weight:600;margin-top:4px">TRƯỞNG KHOA DƯỢC</div><div style="height:70px"></div></div></div></div>`
+      : `<div class="empty">Giấy chứng nhận có khi đủ kết quả 6 mốc và đạt từ ${cfg.passScore} điểm trở lên.</div>`}</div>`;
+}
+
+/* =====================================================================
+   LÃNH ĐẠO: TỔNG QUAN HỌC VIÊN
+   ===================================================================== */
+const C_DONE = "#1E9E5A", C_DOING = "#2F80ED", C_TODO = "#C7D2E1";
+function stackedBars(rows) {
+  if (!rows.length) return `<div class="empty">Chưa có học viên.</div>`;
+  const bw = 34, gap = 30, left = 40, top = 10, H = 190, W = Math.max(520, left + rows.length * (bw + gap) + 10);
+  const y = v => top + H - H * v / 100;
+  const grid = [0, 25, 50, 75, 100].map(v => `<line x1="${left}" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="#E7EDF6"/><text x="${left - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748B">${v}%</text>`).join("");
+  const bars = rows.map((r, i) => {
+    const x = left + 14 + i * (bw + gap); const t = r.total || 1;
+    const seg = [[r.done, C_DONE, "Hoàn thành"], [r.doing, C_DOING, "Đang học"], [r.todo, C_TODO, "Chưa học"]];
+    let acc = 0; const rects = seg.map(([v, c, l], k) => { if (!v) return ""; const h0 = y(acc * 100 / t), h1 = y((acc + v) * 100 / t); acc += v;
+      return `<rect x="${x}" y="${h1 + (k > 0 ? 0 : 0)}" width="${bw}" height="${Math.max(0, h0 - h1 - 2)}" rx="4" fill="${c}"><title>${esc(r.name)} – ${l}: ${v}/${r.total} việc (${Math.round(v * 100 / t)}%)</title></rect>`; }).join("");
+    const short = r.name.trim().split(/\s+/).slice(-1)[0];
+    return `<g class="bar-hit"><a href="#/hocvien/${r.id}">${rects}<text x="${x + bw / 2}" y="${top + H + 18}" text-anchor="middle" font-size="12" fill="#3A4A63">${esc(short)}</text></a></g>`;
+  }).join("");
+  return `<div style="overflow-x:auto"><svg width="${W}" height="${top + H + 28}" viewBox="0 0 ${W} ${top + H + 28}" role="img" aria-label="Tiến độ hoàn thành theo học viên">${grid}${bars}</svg></div>`;
+}
+function multiDonut(parts, total, size = 170, label = "lượt làm bài") {
+  const r = size / 2 - 16, c = 2 * Math.PI * r; let off = 0; const gap = total > 1 ? 3 : 0;
+  const arcs = parts.filter(p => p.v > 0).map(p => { const len = c * p.v / total; const s = `<circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${p.c}" stroke-width="22" stroke-dasharray="${Math.max(0, len - gap)} ${c}" stroke-dashoffset="${-off}" transform="rotate(-90 ${size / 2} ${size / 2})"><title>${p.l}: ${p.v} (${Math.round(p.v * 100 / total)}%)</title></circle>`; off += len; return s; }).join("");
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Phân bố kết quả lượng giá"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="#EEF2F7" stroke-width="22"/>${arcs}
+    <text x="50%" y="46%" text-anchor="middle" dominant-baseline="central" font-size="28" font-weight="700" fill="#17233A">${total}</text><text x="50%" y="62%" text-anchor="middle" font-size="11" fill="#64748B">${esc(label)}</text></svg>`;
+}
+async function loadStaffData() {
+  const [users, progs, reviews, atts] = await Promise.all([allUsers(true), Store.list("progress"), Store.list("reviews"), Store.list("attempts")]);
+  const learners = users.filter(u => u.role === "hocvien" && u.active !== false).sort((a, b) => (a.name || "").localeCompare(b.name || "", "vi"));
+  const pBy = Object.fromEntries(progs.map(p => [p.id, p]));
+  return { users, progs, reviews, atts, learners, pBy };
+}
+function learnerStatus(cfg, u, rv) {
+  const w = weekOf(u.startDate); const cs = courseScore(cfg, rv);
+  if (cs) return cs.cls.name === "Chưa đạt" ? ["red", "Chưa đạt"] : ["ok", "Đã hoàn thành"];
+  if (w == null || w === 0) return ["grey", "Chưa bắt đầu"];
+  if (w > cfg.totalWeeks) return ["amber", "Chưa hoàn thành"];
+  return ["", "Đang học"];
+}
+async function vStaffHome() {
+  const cfg = S.cfg; const d = await loadStaffData();
+  const nProducts = d.progs.reduce((s, p) => s + Object.keys(p.products || {}).length, 0);
+  const graded = d.atts.filter(a => a.status === "da-cham");
+  const due = (S.notifs || []).filter(n => n.task && n.icon === "clip").length;
+  const waiting = d.atts.filter(a => a.status === "da-nop").length;
+  const rows = d.learners.map(u => ({ id: u.id, name: u.name, ...taskStats(cfg, d.pBy[u.id], weekOf(u.startDate)) }));
+  const parts = [{ l: "Giỏi (≥ 90)", c: "#1E9E5A", v: graded.filter(a => a.percent >= 90).length }, { l: "Khá (70–89)", c: "#2F80ED", v: graded.filter(a => a.percent >= 70 && a.percent < 90).length },
+    { l: "Trung bình (50–69)", c: "#E8A317", v: graded.filter(a => a.percent >= 50 && a.percent < 70).length }, { l: "Yếu (< 50)", c: "#D9452B", v: graded.filter(a => a.percent < 50).length }];
+  const kpi = (icon, bg, fg, v, l, href) => `<a class="kpi" href="${href}" style="text-decoration:none;color:inherit"><span class="si" style="background:${bg};color:${fg}">${ic(icon, 24)}</span><div><b>${v}</b><span>${l}</span></div></a>`;
+  return `<div class="row" style="justify-content:space-between"><h1 style="margin:0">Tổng quan đào tạo</h1><button class="btn ghost sm" data-act="exportCSVall">${ic("download", 16)} Xuất báo cáo</button></div><div style="height:14px"></div>
+    <div class="kpis">${kpi("users", "#EAF2FF", "#1663D6", d.learners.length, "Dược sĩ đang tham gia", "#/hocvien")}${kpi("clip", "#FFF0E2", "#D9721A", due, "Mốc đến hạn chưa đánh giá", "#/thongbao")}
+      ${kpi("file", "#E3F5EA", "#1E9E5A", nProducts, "Sản phẩm học viên đã nộp", "#/hocvien")}${kpi("quiz", "#F1ECFF", "#7B61FF", d.atts.filter(a => a.status !== "dang-lam").length, `Bài lượng giá đã làm${waiting ? ` · ${waiting} chờ chấm` : ""}`, "#/de")}</div>
+    <div class="charts">
+      <div class="card chart"><div class="card-h"><h2>Tiến độ hoàn thành theo học viên</h2><div class="legend"><span><i style="background:${C_DONE}"></i>Hoàn thành</span><span><i style="background:${C_DOING}"></i>Đang học</span><span><i style="background:${C_TODO}"></i>Chưa học</span></div></div>${stackedBars(rows)}</div>
+      <div class="card chart"><h2>Kết quả lượng giá</h2>${graded.length ? `<div class="donut-wrap" style="flex-wrap:wrap">${multiDonut(parts, graded.length)}<ul class="dleg" style="flex:1;min-width:170px">${parts.map(p => `<li><i style="background:${p.c}"></i><span>${p.l}</span><b class="num">${p.v} · ${Math.round(p.v * 100 / graded.length)}%</b></li>`).join("")}</ul></div>` : `<div class="empty">Chưa có bài lượng giá nào được chấm.</div>`}</div>
+    </div>
+    <div class="card"><div class="card-h"><h2>Việc cần làm</h2><a class="link" href="#/thongbao">Xem tất cả</a></div>${(S.notifs || []).filter(n => n.task).slice(0, 6).map(notifItem).join("") || `<p class="muted small">Không có việc tồn đọng.</p>`}</div>`;
+}
+let ovQ = "";
+async function vOverview() {
+  const cfg = S.cfg; const d = await loadStaffData();
+  const uBy = Object.fromEntries(d.users.map(u => [u.id, u]));
+  const rows = d.learners.map((u, i) => {
+    const w = weekOf(u.startDate); const st = w ? stageOfWeek(cfg, Math.max(1, Math.min(w, cfg.totalWeeks))) : null; const tp = totalProgress(cfg, d.pBy[u.id]);
+    const rv = d.reviews.filter(r => r.learnerUid === u.id);
+    const totals = rv.map(r => msTotal(cfg, r)).filter(v => v != null); const avg = totals.length ? Math.round(totals.reduce((a, b) => a + b, 0) / totals.length * 10) / 10 : null;
+    const cells = cfg.milestones.map(m => { const r = rv.find(x => x.milestone === m.id); const res = r ? msResult(cfg, r) : null; const due = w != null && w >= m.week;
+      return `<td class="ms-cell num">${res ? `<span class="tag ${res.pass ? "ok" : "red"}" title="${r.published ? "Đã công bố" : "Chưa công bố"}">${Math.round(res.total)}${r.published ? "" : "*"}</span>` : due ? `<span class="tag amber" title="Đến hạn đánh giá">cần</span>` : `<span class="muted">·</span>`}</td>`; }).join("");
+    const [tone, label] = learnerStatus(cfg, u, rv);
+    return `<tr data-name="${esc((u.name + " " + (u.cohort || "") + " " + u.email).toLowerCase())}"><td class="num">${i + 1}</td><td><a href="#/hocvien/${u.id}"><b>${esc(u.name)}</b></a><div class="small muted">${u.mentorUid && uBy[u.mentorUid] ? `HD: ${esc(uBy[u.mentorUid].name)}` : esc(u.email)}</div></td>
+      <td>${esc(u.cohort || "–")}</td><td class="nowrap">${w == null ? "–" : w > cfg.totalWeeks ? "Đã qua 26 tuần" : `Tuần ${w}`}${st ? ` <span class="tag" style="background:${stageColor(st.no)};color:#fff">GĐ ${st.no}</span>` : ""}</td>
+      <td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar" style="width:90px"><i style="width:${tp}%;background:${tp >= 80 ? "var(--ok)" : "var(--g500)"}"></i></div><span class="num small">${tp}%</span></div></td>${cells}<td class="num"><b>${avg ?? "–"}</b></td><td><span class="tag ${tone}">${label}</span></td></tr>`;
+  }).join("");
+  return `<div class="row" style="justify-content:space-between"><h1 style="margin:0">Quản lý học viên</h1><div class="row"><button class="btn ghost sm" data-act="exportCSV">${ic("download", 16)} Xuất báo cáo</button>${isAdmin() ? `<a class="btn sm" href="#/nguoidung">${ic("plus", 16)} Thêm học viên</a>` : ""}</div></div>
+    <p class="muted" style="margin-top:8px">Điểm có dấu * là chưa công bố cho học viên. Ô “cần” là mốc đã đến hạn nhưng chưa chấm. Điểm TB là trung bình các mốc đã chấm.</p>
+    <form class="search" data-form="ovSearch" style="max-width:360px;margin-bottom:12px">${ic("search", 18)}<input type="search" name="q" placeholder="Tìm theo tên, khóa, email…" value="${esc(ovQ)}" data-input="ovFilter" aria-label="Tìm học viên"></form>
+    ${rows ? `<div class="tbl-wrap"><table id="ovTable"><thead><tr><th>STT</th><th>Họ và tên</th><th>Khóa</th><th>Tuần</th><th>Tiến độ</th>${cfg.milestones.map(m => `<th class="ms-cell" title="${esc(m.name)}">${m.id}</th>`).join("")}<th>Điểm TB</th><th>Trạng thái</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      : `<div class="empty">Chưa có học viên. ${isAdmin() ? `<a href="#/nguoidung">Thêm học viên</a>` : "Quản trị thêm học viên trong mục Người dùng."}</div>`}`;
+}
+function examTabs(cur) {
+  return `<div class="tabs"><a href="#/de" class="${cur === "de" ? "on" : ""}">Bài kiểm tra</a><a href="#/nganhang" class="${cur === "nh" ? "on" : ""}">Ngân hàng câu hỏi mẫu</a><a href="#/ketquald" class="${cur === "kq" ? "on" : ""}">Kết quả</a></div>`;
+}
+async function vBank() {
+  const cfg = S.cfg;
+  return `<h1>Lượng giá</h1>${examTabs("nh")}<p class="muted">Câu hỏi mẫu soạn từ các văn bản của lộ trình. Khi sửa đề, bấm “Thêm câu mẫu của mốc” để đưa vào đề.</p>
+    ${cfg.milestones.map(m => { const qs = SAMPLE_Q[m.id] || []; return `<details class="panel"><summary style="cursor:pointer"><b>${m.id} – ${esc(m.name)}</b> <span class="muted small">· ${qs.length} câu</span></summary><div style="margin-top:12px">
+      ${qs.map((q, i) => `<div class="q"><div class="qn">Câu ${i + 1} · ${q.type === "mcq" ? "trắc nghiệm" : "tự luận"} · ${q.points} điểm</div><div>${nl(q.text)}</div>${q.type === "mcq" ? `<ol type="A" style="margin:6px 0 0">${q.options.map((o, k) => `<li style="${k === q.answer ? "color:var(--ok);font-weight:600" : ""}">${esc(o)}${k === q.answer ? " ✓" : ""}</li>`).join("")}</ol>` : `<p class="small muted" style="margin:6px 0 0">Gợi ý chấm: ${esc(q.rubric)}</p>`}</div>`).join("")}</div></details>`; }).join("")}`;
+}
+async function vAllResults() {
+  const atts = (await Store.list("attempts")).filter(a => a.status === "da-cham").sort((a, b) => String(b.gradedAt).localeCompare(String(a.gradedAt)));
+  return `<h1>Lượng giá</h1>${examTabs("kq")}${atts.length ? `<div class="tbl-wrap"><table><thead><tr><th>Học viên</th><th>Bài</th><th>Mốc</th><th>Điểm</th><th>Người chấm</th><th>Ngày</th><th></th></tr></thead><tbody>
+    ${atts.map(a => `<tr><td><b>${esc(a.learnerName)}</b></td><td>${esc(a.examTitle || "")}</td><td>${esc(a.milestone || "")}</td><td class="num"><span class="tag ${a.percent >= 70 ? "ok" : a.percent >= 50 ? "amber" : "red"}">${a.percent}</span></td><td>${esc(a.gradedByName || "")}</td><td>${fmtDate(a.gradedAt)}</td><td>${can("grade") ? `<a class="link" href="#/cham/${a.id}">Xem</a>` : ""}</td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">Chưa có bài nào được chấm.</div>`}`;
+}
+
+/* =====================================================================
+   LÃNH ĐẠO: HỒ SƠ HỌC VIÊN + NHẬN XÉT TỪNG MỐC
+   ===================================================================== */
+async function vLearnerProfile(uid, msId) {
+  const cfg = S.cfg;
+  const [u, prog, reviews, comments, atts, users] = await Promise.all([Store.get("users", uid), Store.get("progress", uid), Store.list("reviews", [["learnerUid", "==", uid]]), Store.list("comments", [["learnerUid", "==", uid]]), Store.list("attempts", [["learnerUid", "==", uid]]), allUsers()]);
+  if (!u) return `<div class="empty">Không tìm thấy học viên.</div>`;
+  const w = weekOf(u.startDate);
+  const cur = cfg.milestones.find(m => m.id === msId) || cfg.milestones.find(m => w != null && m.week >= w) || cfg.milestones[0];
+  const st = cfg.stages.find(s => s.id === cur.stage);
+  const r = reviews.find(x => x.milestone === cur.id) || null;
+  const mentor = users.find(x => x.id === u.mentorUid);
+  const cs = courseScore(cfg, reviews);
+  const msTabs = `<div class="tabs">${cfg.milestones.map(m => { const s = cfg.stages.find(x => x.id === m.stage); const rr = reviews.find(x => x.milestone === m.id); const res = rr ? msResult(cfg, rr) : null; return `<button class="${m.id === cur.id ? "on" : ""}" style="--sc:${stageColor(s.no)}" data-act="goStage" data-href="#/hocvien/${uid}/${m.id}">${m.id}${res ? ` · ${res.total}` : ""}</button>`; }).join("")}</div>`;
+  const examAtt = atts.filter(a => a.milestone === cur.id && a.status === "da-cham");
+  const locked = r?.locked && !isAdmin();
+  const editable = can("review") && !locked;
+  return `<div class="row" style="justify-content:space-between"><div><a href="#/hocvien" class="small">Tổng quan học viên</a><h1 style="margin-top:4px">${esc(u.name)}</h1></div>
+    ${cs ? `<div class="row"><span class="muted small">Cuối khóa</span><div class="score">${cs.v}</div><span class="tag">${esc(cs.cls.name)}</span></div>` : ""}</div>
+    <dl class="kv" style="margin-bottom:14px"><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Bắt đầu</dt><dd>${fmtDate(u.startDate) || "–"}</dd><dt>Hướng dẫn chính</dt><dd>${esc(mentor?.name || "–")}</dd><dt>Khóa</dt><dd>${esc(u.cohort || "–")}</dd></dl>
+    ${rail(cfg, w, reviews)}
+    <h2>Đánh giá theo mốc</h2>${msTabs}
+    <div class="grid-review">
+      <div class="panel">${reviewForm(cfg, u, cur, r, examAtt, editable, locked)}</div>
+      <div>
+        <div class="panel"><h3>Mốc ${cur.id} gồm những gì</h3><dl class="kv"><dt>Kiến thức</dt><dd>${esc(cur.knowledge)}</dd><dt>Kỹ năng</dt><dd>${esc(cur.skills)}</dd><dt>Sản phẩm</dt><dd>${esc(cur.products)}</dd><dt>Tự chủ tối thiểu</dt><dd>${esc(cur.autonomy)}</dd></dl></div>
+        <div class="panel"><h3>Nhận xét của lãnh đạo khoa</h3>${commentThread(comments.filter(c => c.milestone === cur.id), uid, cur.id)}</div>
+        <div class="panel"><h3>Tiến độ giai đoạn ${st.no}</h3>${progressSummary(st, prog)}</div>
+      </div></div>
+    <h2 style="margin-top:8px">Tiến độ các giai đoạn</h2>
+    ${cfg.stages.map(s => { const p = stageProgress(s, prog); return `<details class="panel"><summary style="cursor:pointer"><b>GĐ ${s.no}: ${esc(s.name)}</b> <span class="muted small">· ${p.n}/${p.total} việc · ${p.pct}%</span></summary><div style="margin-top:12px">${stagePanel(cfg, s, prog, false)}</div></details>`; }).join("")}`;
+}
+function progressSummary(st, prog) {
+  const p = stageProgress(st, prog);
+  return `<div class="row small" style="margin-bottom:8px"><div class="bar" style="width:160px"><i style="width:${p.pct}%"></i></div><span class="num">${p.n}/${p.total}</span></div>
+    <ul style="margin:0;padding-left:18px" class="small">${st.products.map((pr, i) => { const id = `${st.id}_p${i}`; const sub = prog?.products?.[id]; return `<li>${esc(pr)}: ${sub ? `<span>${esc(sub.text).slice(0, 120)}</span>${sub.link ? ` <a href="${esc(sub.link)}" target="_blank" rel="noopener">tệp</a>` : ""}` : `<span class="muted">chưa nộp</span>`}</li>`; }).join("")}</ul>`;
+}
+function reviewForm(cfg, u, m, r, examAtt, editable, locked) {
+  const sc = r?.scores || {}; const res = r ? msResult(cfg, r) : null;
+  const dis = editable ? "" : "disabled";
+  const cl = (m.checklists || []).map(k => {
+    const c = cfg.checklists[k]; if (!c) return ""; const v = r?.checklists?.[k] || [];
+    return `<details style="margin:10px 0"><summary style="cursor:pointer"><b>${esc(c.name)}</b> <span class="small muted">(0 = không làm/sai · 1 = chưa đủ · 2 = đúng, đủ; * = tiêu chí bắt buộc)</span></summary>
+      <div class="tbl-wrap" style="margin-top:8px"><table><tbody>${c.items.map((it, i) => `<tr><td>${i + 1}. ${esc(it)}</td><td class="nowrap">${[0, 1, 2].map(s => `<label style="margin-right:8px"><input type="radio" name="cl_${k}_${i}" value="${s}" ${v[i] === s ? "checked" : ""} ${dis}> ${s}</label>`).join("")}</td></tr>`).join("")}</tbody></table></div>
+      ${editable ? `<button type="button" class="btn sm ghost" style="margin-top:8px" data-act="useChecklist" data-k="${k}" data-n="${c.items.length}">Tính % bảng kiểm và đưa vào điểm kỹ năng</button>` : ""}</details>`;
+  }).join("");
+  return `<form data-form="review" data-uid="${u.id}" data-ms="${m.id}">
+    <div class="row" style="justify-content:space-between"><h3 style="margin:0">Phiếu đánh giá mốc ${m.id}</h3>${res ? `<div class="row"><div class="score">${res.total}</div><span class="tag ${res.pass ? "ok" : "red"}">${res.pass ? "Đạt" : "Chưa đạt"}</span></div>` : ""}</div>
+    ${locked ? `<p class="tag amber" style="margin:8px 0">Phiếu đã chốt – chỉ quản trị mở lại được.</p>` : ""}
+    ${!can("review") ? `<p class="small muted">Bạn chỉ có quyền xem phiếu này.</p>` : ""}
+    <p class="small muted">Điểm từng phần thang 100. Đạt khi tổng ≥ ${cfg.passScore}, không phần nào dưới ${cfg.minPartPercent} và không mắc lỗi điểm liệt.</p>
+    <div class="row" style="align-items:flex-end">
+      ${[["kt", "Kiến thức"], ["kn", "Kỹ năng"], ["sp", "Sản phẩm"], ["td", "Thái độ"]].map(([k, l]) => `<label class="f" style="margin:0"><span>${l} (${cfg.weights[k]}%)</span><input type="number" min="0" max="100" step="any" name="${k}" value="${sc[k] ?? ""}" ${dis}></label>`).join("")}
+    </div>
+    ${examAtt.length ? `<p class="small" style="margin-top:8px">Bài lượng giá mốc này: ${examAtt.map(a => `<b>${a.percent}%</b> (${esc(a.examTitle || "")})`).join(", ")} ${editable ? `<button type="button" class="btn sm ghost" data-act="useExam" data-v="${examAtt[examAtt.length - 1].percent}">Dùng làm điểm kiến thức</button>` : ""}</p>` : `<p class="small muted" style="margin-top:8px">Chưa có bài lượng giá đã chấm cho mốc này.</p>`}
+    ${cl}
+    <label class="f" style="margin-top:10px"><span>Mức tự chủ đạt được (tối thiểu: ${esc(m.autonomy)})</span><select name="autonomy" ${dis}><option value="">–</option>${cfg.autonomy.map(a => `<option value="${a.level}" ${String(r?.autonomy) === String(a.level) ? "selected" : ""}>Mức ${a.level}: ${esc(a.desc)}</option>`).join("")}</select></label>
+    <fieldset style="border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 10px"><legend class="small" style="color:var(--red)">Lỗi điểm liệt (có lỗi là chưa đạt)</legend>
+      ${cfg.criticalErrors.map((c, i) => `<label class="check small" style="margin:4px 0"><input type="checkbox" name="crit" value="${i}" ${(r?.critical || []).includes(i) ? "checked" : ""} ${dis}><span>${esc(c)}</span></label>`).join("")}</fieldset>
+    <label class="f"><span>Điểm mạnh</span><textarea name="strengths" rows="2" ${dis}>${esc(r?.strengths || "")}</textarea></label>
+    <label class="f"><span>Cần cải thiện</span><textarea name="improve" rows="2" ${dis}>${esc(r?.improve || "")}</textarea></label>
+    <label class="f"><span>Kế hoạch bổ sung (nếu chưa đạt)</span><textarea name="plan" rows="2" ${dis}>${esc(r?.plan || "")}</textarea></label>
+    ${can("publish") ? `<label class="check" style="margin:6px 0"><input type="checkbox" name="published" ${r?.published ? "checked" : ""} ${dis}><span>Công bố kết quả cho học viên</span></label>
+      <label class="check" style="margin:6px 0 12px"><input type="checkbox" name="locked" ${r?.locked ? "checked" : ""} ${isAdmin() || (editable) ? "" : "disabled"}><span>Chốt phiếu (khóa chỉnh sửa)</span></label>` : `<p class="small muted">${r?.published ? "Đã công bố cho học viên." : "Chưa công bố – trưởng khoa hoặc quản trị công bố."}</p>`}
+    ${editable ? `<button class="btn" type="submit">Lưu phiếu đánh giá</button>` : ""}
+    ${r ? `<p class="small muted" style="margin-top:10px">Cập nhật lần cuối: ${esc(r.reviewerName || "")} · ${fmtDT(r.at)}</p>` : ""}</form>`;
+}
+function commentThread(list, uid, msId) {
+  const l = list.sort((a, b) => a.at.localeCompare(b.at));
+  return `<div class="thread">${l.length ? l.map(c => `<div class="c"><div class="m">${esc(c.byName)} · ${esc(ROLE_LABEL[c.byRole] || "")} · ${fmtDT(c.at)} ${c.visibleToLearner ? "" : `<span class="tag grey">nội bộ</span>`} ${(c.byUid === S.user.uid || isAdmin()) ? `<button class="btn sm ghost" style="padding:0 6px" data-act="delComment" data-id="${c.id}">Xóa</button>` : ""}</div>${nl(c.text)}</div>`).join("") : `<p class="small muted">Chưa có nhận xét cho mốc này.</p>`}</div>
+    ${can("review") ? `<form data-form="comment" data-uid="${uid}" data-ms="${msId}" style="margin-top:10px"><textarea name="text" rows="3" required placeholder="Nhận xét giai đoạn của học viên"></textarea>
+      <div class="row" style="margin-top:6px"><label class="check small"><input type="checkbox" name="vis" checked><span>Học viên xem được</span></label><button class="btn sm" type="submit">Thêm nhận xét</button></div></form>` : ""}`;
+}
+
+/* =====================================================================
+   LỘ TRÌNH ĐÀO TẠO (xem) & LỘ TRÌNH ĐÁNH GIÁ (lãnh đạo)
+   ===================================================================== */
+async function vRoadmapView(stageId) {
+  const cfg = S.cfg; const st = cfg.stages.find(s => s.id === stageId) || cfg.stages[0];
+  return `<h1>Lộ trình đào tạo</h1><p class="muted">${esc(cfg.title)} – nội dung học viên nhìn thấy.</p>${rail(cfg, null, [], { stageAct: "goStageRoad" })}
+    ${stageTabs(cfg, st, null, "#/daotao/").replace(/ · 0%/g, "")}${stagePanel(cfg, st, null, false)}`;
+}
+async function vEvalRoadmap() {
+  const cfg = S.cfg; const w = cfg.weights;
+  return `<h1>Lộ trình đánh giá</h1><p class="muted">Dành cho quản trị, trưởng khoa và phó khoa. Học viên không xem được trang này.</p>
+    <div class="panel"><h2>Nguyên tắc và thang điểm</h2>
+      <div class="tbl-wrap"><table><thead><tr><th>Phần</th><th>Hình thức</th><th>Trọng số</th></tr></thead><tbody>
+      <tr><td>Kiến thức</td><td>Bài lượng giá trắc nghiệm + tự luận trong app</td><td class="num">${w.kt}%</td></tr>
+      <tr><td>Kỹ năng</td><td>Quan sát làm thật theo bảng kiểm</td><td class="num">${w.kn}%</td></tr>
+      <tr><td>Sản phẩm</td><td>Chấm sản phẩm cuối giai đoạn theo tiêu chí</td><td class="num">${w.sp}%</td></tr>
+      <tr><td>Thái độ</td><td>Nhận xét của đồng nghiệp khoa Dược, khoa lâm sàng</td><td class="num">${w.td}%</td></tr></tbody></table></div>
+      <p style="margin-top:12px"><b>Điều kiện đạt mỗi mốc:</b> tổng ≥ ${cfg.passScore}/100, không phần nào dưới ${cfg.minPartPercent}% và không mắc lỗi điểm liệt.</p>
+      <ul>${cfg.criticalErrors.map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>
+    <div class="panel"><h2>Lịch đánh giá theo mốc</h2><div class="tbl-wrap"><table><thead><tr><th>Mốc</th><th>Tuần</th><th>Kiến thức</th><th>Kỹ năng quan sát</th><th>Sản phẩm chấm</th><th>Tự chủ tối thiểu</th></tr></thead><tbody>
+      ${cfg.milestones.map(m => `<tr><td class="nowrap"><b>${m.id}</b> ${esc(m.name)}</td><td class="num">${m.week}</td><td>${esc(m.knowledge)}</td><td>${esc(m.skills)}</td><td>${esc(m.products)}</td><td>${esc(m.autonomy)}</td></tr>`).join("")}</tbody></table></div></div>
+    <div class="grid2"><div class="panel"><h2>Mức tự chủ</h2><div class="tbl-wrap"><table><thead><tr><th>Mức</th><th>Mô tả</th><th>Giao việc</th></tr></thead><tbody>${cfg.autonomy.map(a => `<tr><td class="num">${a.level}</td><td>${esc(a.desc)}</td><td>${esc(a.use)}</td></tr>`).join("")}</tbody></table></div></div>
+      <div class="panel"><h2>Xếp loại cuối khóa</h2><p class="small muted">${esc(cfg.courseFormula)}</p><div class="tbl-wrap"><table><thead><tr><th>Xếp loại</th><th>Điểm</th><th>Xử lý</th></tr></thead><tbody>${cfg.classification.map((c, i) => `<tr><td>${esc(c.name)}</td><td class="num nowrap">${i === 0 ? "≥ " + c.min : i === cfg.classification.length - 1 ? `< ${cfg.classification[i - 1].min} hoặc có lỗi điểm liệt` : `${c.min}–${cfg.classification[i - 1].min - 1}`}</td><td>${esc(c.action)}</td></tr>`).join("")}</tbody></table></div></div></div>
+    <div class="panel"><h2>Tiêu chí chấm sản phẩm và ca bình bệnh án</h2><div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th><th>Chưa đạt (1)</th><th>Cần cải thiện (2)</th><th>Đạt (3)</th><th>Xuất sắc (4)</th></tr></thead><tbody>${cfg.productRubric.map(p => `<tr><td><b>${esc(p.name)}</b></td>${p.levels.map(l => `<td>${esc(l)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Tổng 20 điểm × 5 = điểm sản phẩm trên thang 100.</p></div>
+    <div class="panel"><h2>Bảng kiểm kỹ năng</h2><p class="small muted">Mỗi tiêu chí 0 / 1 / 2. Đạt khi ≥ 80% điểm tối đa và các tiêu chí có dấu * không bị 0.</p>
+      ${Object.entries(cfg.checklists).map(([k, c]) => `<h3 style="margin-top:14px">${esc(c.name)}</h3><ol>${c.items.map(i => `<li>${esc(i)}</li>`).join("")}</ol>`).join("")}</div>`;
+}
+
+/* =====================================================================
+   LƯỢNG GIÁ: DANH SÁCH ĐỀ (lãnh đạo)
+   ===================================================================== */
+async function vExams() {
+  const [exams, atts] = await Promise.all([Store.list("exams"), Store.list("attempts")]);
+  const rows = exams.sort((a, b) => (a.milestone || "").localeCompare(b.milestone || "") || (a.title || "").localeCompare(b.title || "")).map(e => {
+    const as = atts.filter(a => a.examId === e.id); const pending = as.filter(a => a.status === "da-nop").length;
+    const nm = (e.questions || []).filter(q => q.type === "mcq").length, ne = (e.questions || []).filter(q => q.type === "essay").length;
+    return `<tr><td><b>${esc(e.title)}</b><div class="small muted">${nm} trắc nghiệm · ${ne} tự luận · ${e.durationMin} phút</div></td><td>${esc(e.milestone)}</td>
+      <td>${e.open ? `<span class="tag">Đang mở</span>` : `<span class="tag grey">Đóng</span>`}</td><td class="num">${as.filter(a => a.status !== "dang-lam").length}${pending ? ` <span class="tag amber">${pending} chờ chấm</span>` : ""}</td>
+      <td class="nowrap">${can("createExam") ? `<a class="btn sm ghost" href="#/de/${e.id}">Sửa đề</a> ` : ""}${can("grade") || isStaff() ? `<a class="btn sm" href="#/baithi/${e.id}">Bài làm</a>` : ""}</td></tr>`;
+  }).join("");
+  return `<div class="row" style="justify-content:space-between"><h1>Lượng giá</h1>${can("createExam") ? `<button class="btn" data-act="newExam">${ic("plus", 17)} Tạo đề mới</button>` : ""}</div>${examTabs("de")}
+    <p class="muted">Đề gồm câu trắc nghiệm (chấm tự động khi chấm bài) và câu tự luận (lãnh đạo chấm theo đáp án gợi ý). Đáp án lưu riêng, học viên không đọc được.</p>
+    ${rows ? `<div class="tbl-wrap"><table><thead><tr><th>Đề</th><th>Mốc</th><th>Trạng thái</th><th>Bài nộp</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<div class="empty">Chưa có đề nào. ${can("createExam") ? "Bấm “Tạo đề mới”, có sẵn câu hỏi mẫu cho từng mốc." : ""}</div>`}`;
+}
+let examDraft = null;
+async function vExamEdit(id) {
+  if (!can("createExam")) return `<div class="empty">Bạn chưa được phân quyền tạo, sửa đề.</div>`;
+  const cfg = S.cfg;
+  if (!examDraft || examDraft.id !== id) {
+    const [e, k] = await Promise.all([Store.get("exams", id), Store.get("examKeys", id)]);
+    if (!e) return `<div class="empty">Không tìm thấy đề.</div>`;
+    examDraft = { ...e, questions: (e.questions || []).map(q => ({ ...q, answer: k?.answers?.[q.id], rubric: k?.rubrics?.[q.id] || "" })) };
+  }
+  const e = examDraft; const users = await allUsers();
+  const learners = users.filter(u => u.role === "hocvien");
+  const maxPts = e.questions.reduce((a, q) => a + Number(q.points || 0), 0);
+  const qhtml = e.questions.map((q, i) => `<div class="q" data-qi="${i}">
+    <div class="row" style="justify-content:space-between"><div class="qn">Câu ${i + 1} · ${q.type === "mcq" ? "trắc nghiệm" : "tự luận"}</div>
+      <div class="row" style="gap:6px"><button type="button" class="btn sm ghost" data-act="qMove" data-i="${i}" data-d="-1" aria-label="Lên">↑</button><button type="button" class="btn sm ghost" data-act="qMove" data-i="${i}" data-d="1" aria-label="Xuống">↓</button><button type="button" class="btn sm danger" data-act="qDel" data-i="${i}">Xóa</button></div></div>
+    <label class="f"><span>Nội dung câu hỏi</span><textarea rows="2" data-qf="text" data-i="${i}">${esc(q.text)}</textarea></label>
+    ${q.type === "mcq" ? `${(q.options || []).map((o, k) => `<div class="row" style="flex-wrap:nowrap;margin-bottom:6px"><input type="radio" name="ans_${i}" ${q.answer === k ? "checked" : ""} data-qf="answer" data-i="${i}" data-k="${k}" title="Đáp án đúng" style="accent-color:var(--g700)"><input type="text" value="${esc(o)}" data-qf="opt" data-i="${i}" data-k="${k}"><button type="button" class="btn sm ghost" data-act="optDel" data-i="${i}" data-k="${k}" aria-label="Xóa phương án">×</button></div>`).join("")}
+      <button type="button" class="btn sm ghost" data-act="optAdd" data-i="${i}">Thêm phương án</button> <span class="small muted">Chọn nút tròn ở phương án đúng.</span>`
+      : `<label class="f"><span>Đáp án gợi ý / thang chấm (chỉ lãnh đạo thấy)</span><textarea rows="2" data-qf="rubric" data-i="${i}">${esc(q.rubric || "")}</textarea></label>`}
+    <label class="f" style="margin-top:8px"><span>Điểm</span><input type="number" min="0" step="any" value="${q.points}" data-qf="points" data-i="${i}"></label></div>`).join("");
+  return `<a href="#/de" class="small">Lượng giá</a><h1 style="margin-top:4px">Sửa đề</h1>
+    <div class="panel"><div class="grid2">
+      <label class="f"><span>Tên đề</span><input type="text" value="${esc(e.title)}" data-ef="title"></label>
+      <label class="f"><span>Mốc đánh giá</span><select data-ef="milestone">${cfg.milestones.map(m => `<option value="${m.id}" ${e.milestone === m.id ? "selected" : ""}>${m.id} – ${esc(m.name)}</option>`).join("")}</select></label>
+      <label class="f"><span>Thời gian làm bài (phút)</span><input type="number" min="1" value="${e.durationMin}" data-ef="durationMin"></label>
+      <label class="f"><span>Giao cho</span><select data-ef="assignedMode"><option value="all" ${e.assigned === "all" ? "selected" : ""}>Tất cả học viên</option><option value="some" ${e.assigned !== "all" ? "selected" : ""}>Chọn học viên</option></select></label></div>
+      ${e.assigned !== "all" ? `<div class="row" style="margin-bottom:10px">${learners.map(u => `<label class="check small"><input type="checkbox" data-ef="assignee" value="${u.id}" ${(e.assigned || []).includes(u.id) ? "checked" : ""}><span>${esc(u.name)}</span></label>`).join("")}</div>` : ""}
+      <div class="row"><label class="check"><input type="checkbox" data-ef="open" ${e.open ? "checked" : ""}><span>Mở cho học viên làm bài</span></label><label class="check"><input type="checkbox" data-ef="shuffle" ${e.shuffle ? "checked" : ""}><span>Đảo thứ tự câu cho từng học viên</span></label></div></div>
+    <div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 style="margin:0">Câu hỏi (${e.questions.length} câu · ${maxPts} điểm)</h2>
+      <div class="row"><button class="btn sm ghost" data-act="qAdd" data-t="mcq">Thêm trắc nghiệm</button><button class="btn sm ghost" data-act="qAdd" data-t="essay">Thêm tự luận</button><button class="btn sm ghost" data-act="qSample">Thêm câu mẫu của mốc</button></div></div>
+    ${qhtml || `<div class="empty">Chưa có câu hỏi.</div>`}
+    <details class="panel"><summary style="cursor:pointer"><b>Nhập nhanh nhiều câu</b> <span class="small muted">– dán văn bản theo mẫu</span></summary>
+      <p class="small muted" style="margin-top:8px">Mỗi câu cách nhau một dòng trống. Trắc nghiệm: dòng đầu là câu hỏi, các dòng sau là phương án, thêm dấu * trước phương án đúng. Tự luận: bắt đầu bằng [TL], cuối câu ghi | điểm.</p>
+      <pre class="mono" style="background:var(--g050);padding:10px;border-radius:8px;white-space:pre-wrap">Kê đơn thuốc gây nghiện bệnh cấp tính tối đa?\nA. 3 ngày\nB. 5 ngày\n*C. 7 ngày\nD. 10 ngày\n\n[TL] Trình bày quy trình báo cáo ADR tại bệnh viện. | 5</pre>
+      <textarea id="bulkQ" rows="8"></textarea><button class="btn sm" style="margin-top:8px" data-act="qBulk">Thêm vào đề</button></details>
+    <div class="row" style="position:sticky;bottom:0;background:var(--paper);padding:12px 0;border-top:1px solid var(--line)"><button class="btn" data-act="examSave">Lưu đề</button><a class="btn ghost" href="#/de">Đóng</a><span class="sp" style="flex:1"></span><button class="btn danger sm" data-act="examDel">Xóa đề</button></div>`;
+}
+function syncExamDraftFromDOM() {
+  if (!examDraft) return;
+  document.querySelectorAll("[data-qf]").forEach(el => {
+    const i = +el.dataset.i; const q = examDraft.questions[i]; if (!q) return; const f = el.dataset.qf;
+    if (f === "text") q.text = el.value; else if (f === "rubric") q.rubric = el.value; else if (f === "points") q.points = Number(el.value || 0);
+    else if (f === "opt") q.options[+el.dataset.k] = el.value; else if (f === "answer" && el.checked) q.answer = +el.dataset.k;
+  });
+  document.querySelectorAll("[data-ef]").forEach(el => {
+    const f = el.dataset.ef;
+    if (f === "title") examDraft.title = el.value; else if (f === "milestone") examDraft.milestone = el.value; else if (f === "durationMin") examDraft.durationMin = Number(el.value || 1);
+    else if (f === "open") examDraft.open = el.checked; else if (f === "shuffle") examDraft.shuffle = el.checked;
+    else if (f === "assignedMode") { if (el.value === "all") examDraft.assigned = "all"; else if (examDraft.assigned === "all") examDraft.assigned = []; }
+  });
+  if (examDraft.assigned !== "all") { const sel = [...document.querySelectorAll('[data-ef="assignee"]')]; if (sel.length) examDraft.assigned = sel.filter(x => x.checked).map(x => x.value); }
+}
+const newQid = () => "q" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+function parseBulk(txt) {
+  return txt.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean).map(b => {
+    if (/^\[TL\]/i.test(b)) { const m = b.replace(/^\[TL\]\s*/i, "").split("|"); return { id: newQid(), type: "essay", text: m[0].trim(), points: Number((m[1] || "").trim()) || 1, rubric: "" }; }
+    const lines = b.split("\n").map(s => s.trim()).filter(Boolean); const text = lines.shift(); let answer = 0;
+    const options = lines.map((l, k) => { if (l.startsWith("*")) { answer = k; l = l.slice(1).trim(); } return l.replace(/^[A-Ha-h][.)]\s*/, ""); });
+    return { id: newQid(), type: "mcq", text, options, answer, points: 1 };
+  });
+}
+
+/* =====================================================================
+   LƯỢNG GIÁ: BÀI LÀM & CHẤM
+   ===================================================================== */
+async function vAttempts(examId) {
+  const [e, atts, users] = await Promise.all([Store.get("exams", examId), Store.list("attempts", [["examId", "==", examId]]), allUsers()]);
+  if (!e) return `<div class="empty">Không tìm thấy đề.</div>`;
+  const label = { "dang-lam": ["amber", "Đang làm"], "da-nop": ["", "Chờ chấm"], "da-cham": ["grey", "Đã chấm"] };
+  const rows = atts.sort((a, b) => (a.learnerName || "").localeCompare(b.learnerName || "", "vi")).map(a => `<tr><td><b>${esc(a.learnerName || users.find(u => u.id === a.learnerUid)?.name)}</b></td><td><span class="tag ${label[a.status][0]}">${label[a.status][1]}</span></td><td>${fmtDT(a.submittedAt)}</td><td class="num">${a.status === "da-cham" ? `${a.total}/${a.maxTotal} (${a.percent}%)` : "–"}</td>
+    <td class="nowrap">${a.status !== "dang-lam" && can("grade") ? `<a class="btn sm" href="#/cham/${a.id}">${a.status === "da-cham" ? "Xem, chấm lại" : "Chấm bài"}</a>` : ""} ${can("grade") ? `<button class="btn sm danger" data-act="attDel" data-id="${a.id}">Cho làm lại</button>` : ""}</td></tr>`).join("");
+  return `<a href="#/de" class="small">Lượng giá</a><h1 style="margin-top:4px">${esc(e.title)}</h1><p class="muted">Mốc ${esc(e.milestone)} · ${e.questions.length} câu</p>
+    ${!can("grade") ? `<p class="small muted">Bạn chưa được phân quyền chấm bài.</p>` : ""}
+    ${rows ? `<div class="tbl-wrap"><table><thead><tr><th>Học viên</th><th>Trạng thái</th><th>Nộp lúc</th><th>Điểm</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<div class="empty">Chưa có học viên làm bài.</div>`}`;
+}
+async function vGrade(aid) {
+  if (!can("grade")) return `<div class="empty">Bạn chưa được phân quyền chấm bài.</div>`;
+  const a = await Store.get("attempts", aid); if (!a) return `<div class="empty">Không tìm thấy bài làm.</div>`;
+  const [e, k] = await Promise.all([Store.get("exams", a.examId), Store.get("examKeys", a.examId)]);
+  const qs = e.questions;
+  const body = qs.map((q, i) => {
+    const ans = a.answers?.[q.id];
+    if (q.type === "mcq") {
+      const right = k?.answers?.[q.id]; const ok = ans === right;
+      return `<div class="q"><div class="qn">Câu ${i + 1} · trắc nghiệm · ${ok ? `<b style="color:var(--g700)">đúng +${q.points}</b>` : `<b style="color:var(--red)">sai</b>`}</div><div>${nl(q.text)}</div>${q.options.map((o, j) => `<div class="opt ${j === right ? "right" : ans === j ? "wrong" : ""}"><input type="radio" disabled ${ans === j ? "checked" : ""}><span>${esc(o)}${j === right ? " (đáp án)" : ""}</span></div>`).join("")}</div>`;
+    }
+    return `<div class="q"><div class="qn">Câu ${i + 1} · tự luận · tối đa ${q.points} điểm</div><div>${nl(q.text)}</div>
+      <div class="dls" style="margin:8px 0">${nl(ans || "(không trả lời)")}</div>${k?.rubrics?.[q.id] ? `<p class="small"><b>Đáp án gợi ý:</b> ${nl(k.rubrics[q.id])}</p>` : ""}
+      <div class="row" style="align-items:flex-end"><label class="f" style="margin:0"><span>Điểm</span><input type="number" min="0" max="${q.points}" step="any" data-essay="${q.id}" value="${a.essayScores?.[q.id] ?? ""}"></label><label class="f" style="margin:0;flex:1"><span>Nhận xét câu này</span><input type="text" data-essaycm="${q.id}" value="${esc(a.essayComments?.[q.id] || "")}"></label></div></div>`;
+  }).join("");
+  return `<a href="#/baithi/${a.examId}" class="small">Bài làm – ${esc(e.title)}</a><h1 style="margin-top:4px">Chấm bài: ${esc(a.learnerName)}</h1><p class="muted">Nộp lúc ${fmtDT(a.submittedAt)}${a.status === "da-cham" ? ` · Đã chấm ${a.percent}% bởi ${esc(a.gradedByName)}` : ""}</p>
+    ${body}<label class="f"><span>Nhận xét chung cho học viên</span><textarea id="genCm" rows="3">${esc(a.generalComment || "")}</textarea></label>
+    <button class="btn" data-act="gradeSave" data-aid="${aid}">Lưu điểm và trả kết quả</button>`;
+}
+
+/* =====================================================================
+   QUẢN TRỊ: NGƯỜI DÙNG & PHÂN QUYỀN
+   ===================================================================== */
+async function vUsers() {
+  if (!isAdmin()) return `<div class="empty">Chỉ quản trị dùng được trang này.</div>`;
+  const users = await allUsers(true);
+  const staff = users.filter(u => ["truongkhoa", "phokhoa", "admin"].includes(u.role));
+  const order = { "cho-duyet": 0, admin: 1, truongkhoa: 2, phokhoa: 3, hocvien: 4 };
+  const rows = users.sort((a, b) => (order[a.role] ?? 9) - (order[b.role] ?? 9) || (a.name || "").localeCompare(b.name || "", "vi")).map(u => {
+    const self = u.id === S.user.uid;
+    return `<tr data-uid="${u.id}"><td><input type="text" value="${esc(u.name)}" data-uf="name" aria-label="Họ tên"><div class="small muted">${esc(u.email)}</div></td>
+      <td><select data-uf="role" ${self ? "disabled" : ""}>${Object.entries(ROLE_LABEL).map(([k, l]) => `<option value="${k}" ${u.role === k ? "selected" : ""}>${l}</option>`).join("")}</select>
+        <label class="check small" style="margin-top:6px"><input type="checkbox" data-uf="active" ${u.active !== false ? "checked" : ""} ${self ? "disabled" : ""}><span>Đang hoạt động</span></label></td>
+      <td>${["truongkhoa", "phokhoa"].includes(u.role) ? PERMS.map(([k, l]) => `<label class="check small" style="margin:2px 0"><input type="checkbox" data-perm="${k}" ${u.perms?.[k] ? "checked" : ""}><span>${l}</span></label>`).join("") : u.role === "admin" ? `<span class="small muted">Toàn quyền</span>` : u.role === "hocvien" ? `<label class="f" style="margin:0"><span>Ngày bắt đầu</span><input type="date" data-uf="startDate" value="${esc(u.startDate || "")}"></label>
+        <label class="f" style="margin:6px 0 0"><span>Hướng dẫn chính</span><select data-uf="mentorUid"><option value="">–</option>${staff.map(s => `<option value="${s.id}" ${u.mentorUid === s.id ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select></label>
+        <label class="f" style="margin:6px 0 0"><span>Khóa</span><input type="text" data-uf="cohort" value="${esc(u.cohort || "")}" placeholder="Khóa 1/2026"></label>` : `<span class="small muted">Chọn vai trò để phân quyền</span>`}</td>
+      <td><button class="btn sm" data-act="userSave" data-uid="${u.id}">Lưu</button></td></tr>`;
+  }).join("");
+  return `<h1>Người dùng và phân quyền</h1>
+    <div class="panel"><h2>Tạo tài khoản</h2><p class="small muted">Tạo tài khoản đăng nhập cho trưởng khoa, phó khoa hoặc học viên. Người dùng cũng có thể tự đăng ký rồi chờ bạn duyệt ở bảng dưới.</p>
+      <form data-form="newUser"><div class="grid2">
+        <label class="f"><span>Họ và tên</span><input type="text" name="name" required></label>
+        <label class="f"><span>Email</span><input type="email" name="email" required></label>
+        <label class="f"><span>Mật khẩu ban đầu (ít nhất 6 ký tự)</span><input type="text" name="pw" required minlength="6"></label>
+        <label class="f"><span>Vai trò</span><select name="role"><option value="hocvien">Học viên</option><option value="truongkhoa">Trưởng khoa</option><option value="phokhoa">Phó khoa</option><option value="admin">Quản trị</option></select></label>
+        <label class="f"><span>Ngày bắt đầu (học viên)</span><input type="date" name="startDate"></label>
+        <label class="f"><span>Khóa (học viên)</span><input type="text" name="cohort" placeholder="Khóa 1/2026"></label></div>
+        <button class="btn" type="submit">Tạo tài khoản</button></form></div>
+    <div class="tbl-wrap"><table><thead><tr><th>Người dùng</th><th>Vai trò</th><th>Quyền / thông tin học</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="small muted" style="margin-top:10px">Không xóa được tài khoản đăng nhập từ ứng dụng; bỏ chọn “Đang hoạt động” để khóa người dùng.</p>`;
+}
+
+/* =====================================================================
+   QUẢN TRỊ: CẤU HÌNH LỘ TRÌNH
+   ===================================================================== */
+async function vConfig() {
+  if (!(isAdmin() || can("editRoadmap"))) return `<div class="empty">Bạn chưa được phân quyền sửa lộ trình.</div>`;
+  return `<h1>Cấu hình lộ trình</h1>
+    <p class="muted">Toàn bộ nội dung giai đoạn, mốc, trọng số, lỗi điểm liệt và bảng kiểm nằm trong khối dữ liệu dưới đây. Sửa xong bấm Lưu; mọi người thấy nội dung mới ở lần tải trang sau.</p>
+    <div class="panel"><textarea id="cfgJson" class="mono" style="min-height:460px" spellcheck="false">${esc(JSON.stringify(S.cfg, null, 2))}</textarea>
+      <div class="row" style="margin-top:10px"><button class="btn" data-act="cfgSave">Lưu cấu hình</button><button class="btn ghost" data-act="cfgDownload">Tải tệp JSON</button><button class="btn ghost" data-act="cfgReset">Khôi phục nội dung gốc</button></div>
+      <p class="small muted" style="margin-top:10px">Lưu ý: mã giai đoạn (s1…s5) và mã mốc (M1…M6) gắn với tiến độ và phiếu đánh giá đã lưu – không đổi mã khi đã có học viên.</p></div>`;
+}
+
+/* =====================================================================
+   EVENTS
+   ===================================================================== */
+const actions = {
+  async logout() { await AuthSvc.signOut(); location.hash = ""; },
+  async demoLogin(el) { await AuthSvc.signIn(el.dataset.email); },
+  async demoReset() { if (!confirm("Xóa toàn bộ dữ liệu demo và tạo lại dữ liệu mẫu?")) return; AuthSvc.resetAll(); await AuthSvc.signOut(); location.hash = ""; location.reload(); },
+  toSignup(el, ev) { ev.preventDefault(); renderLogin("up"); },
+  toLogin() { renderLogin("in"); },
+  async forgot() { const e = prompt("Nhập email để nhận liên kết đặt lại mật khẩu:"); if (!e) return; try { await AuthSvc.reset(e); toast("Đã gửi email đặt lại mật khẩu."); } catch (x) { toast(errMsg(x), true); } },
+  pickStage(el) { const base = role() === "hocvien" ? "#/lotrinh/" : null; if (base) location.hash = base + el.dataset.stage; },
+  goStageRoad(el) { location.hash = "#/daotao/" + el.dataset.stage; },
+  goStage(el) { location.hash = el.dataset.href; },
+  async submitExam(el) { if (!confirm("Nộp bài? Sau khi nộp bạn không sửa được nữa.")) return; await submitAttempt(el.dataset.aid, false); },
+  useExam(el) { const f = el.closest("form"); f.kt.value = el.dataset.v; toast("Đã đưa điểm bài lượng giá vào phần kiến thức."); },
+  useChecklist(el) {
+    const f = el.closest("form"); const k = el.dataset.k, n = +el.dataset.n; let s = 0, miss = 0;
+    for (let i = 0; i < n; i++) { const c = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); if (!c) miss++; else s += +c.value; }
+    if (miss) return toast(`Còn ${miss} tiêu chí chưa chấm.`, true);
+    f.kn.value = Math.round(s * 100 / (2 * n)); toast(`Bảng kiểm ${k}: ${f.kn.value}% – đã đưa vào điểm kỹ năng.`);
+  },
+  async delComment(el) { if (!confirm("Xóa nhận xét này?")) return; try { await Store.del("comments", el.dataset.id); route(); } catch (e) { toast(errMsg(e), true); } },
+  exportCSV() {
+    const t = document.getElementById("ovTable"); if (!t) return;
+    const rows = [...t.querySelectorAll("tr")].map(tr => [...tr.children].map(td => `"${td.innerText.replace(/\s+/g, " ").trim().replace(/"/g, '""')}"`).join(","));
+    const blob = new Blob(["﻿" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `hoc-vien-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
+  },
+  async newExam() {
+    const m = S.cfg.milestones[0].id;
+    const id = await Store.add("exams", { title: "Đề lượng giá mới", milestone: m, durationMin: 30, open: false, shuffle: false, assigned: "all", questions: [], createdBy: S.user.uid, createdAt: nowISO() });
+    await Store.set("examKeys", id, { answers: {}, rubrics: {} }, false);
+    examDraft = null; location.hash = "#/de/" + id;
+  },
+  qAdd(el) { syncExamDraftFromDOM(); examDraft.questions.push(el.dataset.t === "mcq" ? { id: newQid(), type: "mcq", text: "", options: ["", "", "", ""], answer: 0, points: 1 } : { id: newQid(), type: "essay", text: "", points: 2, rubric: "" }); route(); },
+  qSample() { syncExamDraftFromDOM(); const list = SAMPLE_Q[examDraft.milestone] || []; if (!list.length) return toast("Mốc này chưa có câu mẫu.", true); list.forEach(q => examDraft.questions.push({ ...clean(q), id: newQid() })); toast(`Đã thêm ${list.length} câu mẫu của ${examDraft.milestone}.`); route(); },
+  qBulk() { syncExamDraftFromDOM(); const v = document.getElementById("bulkQ").value; const qs = parseBulk(v); if (!qs.length) return toast("Không đọc được câu hỏi nào.", true); examDraft.questions.push(...qs); toast(`Đã thêm ${qs.length} câu.`); route(); },
+  qDel(el) { syncExamDraftFromDOM(); examDraft.questions.splice(+el.dataset.i, 1); route(); },
+  qMove(el) { syncExamDraftFromDOM(); const i = +el.dataset.i, j = i + +el.dataset.d; const q = examDraft.questions; if (j < 0 || j >= q.length) return;[q[i], q[j]] = [q[j], q[i]]; route(); },
+  optAdd(el) { syncExamDraftFromDOM(); examDraft.questions[+el.dataset.i].options.push(""); route(); },
+  optDel(el) { syncExamDraftFromDOM(); const q = examDraft.questions[+el.dataset.i]; const k = +el.dataset.k; q.options.splice(k, 1); if (q.answer >= q.options.length) q.answer = 0; else if (q.answer > k) q.answer--; route(); },
+  async examSave() {
+    syncExamDraftFromDOM(); const e = examDraft;
+    const bad = e.questions.findIndex(q => !q.text.trim() || (q.type === "mcq" && (q.options.filter(o => o.trim()).length < 2 || q.answer == null)));
+    if (bad >= 0) return toast(`Câu ${bad + 1} chưa đủ nội dung hoặc phương án.`, true);
+    if (e.assigned !== "all" && !e.assigned.length) return toast("Chọn ít nhất một học viên hoặc giao cho tất cả.", true);
+    const pub = { title: e.title, milestone: e.milestone, durationMin: e.durationMin, open: e.open, shuffle: e.shuffle, assigned: e.assigned, updatedAt: nowISO(), updatedBy: S.user.uid,
+      questions: e.questions.map(q => q.type === "mcq" ? { id: q.id, type: "mcq", text: q.text, options: q.options, points: q.points } : { id: q.id, type: "essay", text: q.text, points: q.points }) };
+    const key = { answers: Object.fromEntries(e.questions.filter(q => q.type === "mcq").map(q => [q.id, q.answer])), rubrics: Object.fromEntries(e.questions.filter(q => q.type === "essay").map(q => [q.id, q.rubric || ""])) };
+    try { await Store.set("exams", e.id, pub, false); await Store.set("examKeys", e.id, key, false); toast("Đã lưu đề."); examDraft = null; route(); } catch (x) { toast(errMsg(x), true); }
+  },
+  async examDel() { if (!confirm("Xóa đề này? Bài làm đã nộp vẫn còn trong dữ liệu.")) return; try { await Store.del("exams", examDraft.id); await Store.del("examKeys", examDraft.id); examDraft = null; location.hash = "#/de"; } catch (x) { toast(errMsg(x), true); } },
+  async attDel(el) { if (!confirm("Xóa bài làm này để học viên làm lại?")) return; try { await Store.del("attempts", el.dataset.id); route(); } catch (x) { toast(errMsg(x), true); } },
+  async gradeSave(el) {
+    const aid = el.dataset.aid; const a = await Store.get("attempts", aid); const [e, k] = await Promise.all([Store.get("exams", a.examId), Store.get("examKeys", a.examId)]);
+    let total = 0, max = 0; const mcqResult = {}, essayScores = {}, essayComments = {};
+    for (const q of e.questions) {
+      max += Number(q.points || 0);
+      if (q.type === "mcq") { const ok = a.answers?.[q.id] === k?.answers?.[q.id]; mcqResult[q.id] = ok; if (ok) total += Number(q.points || 0); }
+      else {
+        const inp = document.querySelector(`[data-essay="${q.id}"]`); const v = inp.value === "" ? null : Math.min(Number(inp.value), q.points);
+        if (v == null) return toast("Còn câu tự luận chưa nhập điểm.", true);
+        essayScores[q.id] = v; total += v; essayComments[q.id] = document.querySelector(`[data-essaycm="${q.id}"]`).value;
+      }
+    }
+    const percent = max ? Math.round(total * 1000 / max) / 10 : 0;
+    try { await Store.set("attempts", aid, { mcqResult, essayScores, essayComments, total: Math.round(total * 100) / 100, maxTotal: max, percent, status: "da-cham", gradedBy: S.user.uid, gradedByName: S.me.name, gradedAt: nowISO(), generalComment: document.getElementById("genCm").value }); toast(`Đã chấm: ${percent}%.`); location.hash = "#/baithi/" + a.examId; }
+    catch (x) { toast(errMsg(x), true); }
+  },
+  async userSave(el) {
+    const tr = el.closest("tr"); const uid = el.dataset.uid; const g = f => tr.querySelector(`[data-uf="${f}"]`);
+    const patch = { name: g("name").value.trim() };
+    if (g("role") && !g("role").disabled) patch.role = g("role").value;
+    if (g("active") && !g("active").disabled) patch.active = g("active").checked;
+    const perms = {}; tr.querySelectorAll("[data-perm]").forEach(x => perms[x.dataset.perm] = x.checked);
+    if (Object.keys(perms).length) patch.perms = perms;
+    else if (["truongkhoa", "phokhoa"].includes(patch.role)) patch.perms = DEFAULT_PERMS[patch.role];
+    if (patch.role === "hocvien" || g("startDate")) { if (g("startDate")) { patch.startDate = g("startDate").value; patch.mentorUid = g("mentorUid").value; patch.cohort = g("cohort").value; } }
+    if (patch.role && patch.role !== "cho-duyet" && patch.active === undefined) patch.active = true;
+    try { await Store.set("users", uid, patch); toast("Đã lưu người dùng."); S.usersCache = null; route(); } catch (x) { toast(errMsg(x), true); }
+  },
+  async cfgSave() {
+    let data; try { data = JSON.parse(document.getElementById("cfgJson").value); } catch (e) { return toast("Dữ liệu chưa đúng định dạng JSON: " + e.message, true); }
+    if (!Array.isArray(data.stages) || !Array.isArray(data.milestones) || !data.weights) return toast("Thiếu stages, milestones hoặc weights.", true);
+    try { await Store.set("config", "roadmap", { data, updatedAt: nowISO(), updatedBy: S.user.uid }, false); S.cfg = data; toast("Đã lưu cấu hình lộ trình."); } catch (x) { toast(errMsg(x), true); }
+  },
+  cfgDownload() { const blob = new Blob([document.getElementById("cfgJson").value], { type: "application/json" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "lo-trinh-hoc-viec.json"; a.click(); },
+  cfgReset() { if (!confirm("Thay nội dung trong ô bằng lộ trình gốc? (Chưa lưu cho đến khi bấm Lưu)")) return; document.getElementById("cfgJson").value = JSON.stringify(ROADMAP_DEFAULT, null, 2); }
+};
+const forms = {
+  async login(f) { try { await AuthSvc.signIn(f.email.value.trim(), f.pw.value); } catch (e) { toast(errMsg(e), true); } },
+  async signup(f) {
+    try { const name = f.name.value.trim(); const email = f.email.value.trim(); pendingName = name; const uid = await AuthSvc.signUp(email, f.pw.value);
+      await ensureUserDoc({ uid, email }, name); } catch (e) { toast(errMsg(e), true); }
+  },
+  async product(f) {
+    const id = f.dataset.id; try { await Store.set("progress", S.user.uid, { learnerUid: S.user.uid, products: { [id]: { text: f.text.value, link: f.link.value.trim(), at: nowISO() } }, tasks: { [id]: true } }); toast("Đã lưu sản phẩm."); route(); } catch (e) { toast(errMsg(e), true); }
+  },
+  async review(f) {
+    const cfg = S.cfg; const uid = f.dataset.uid, ms = f.dataset.ms; const m = cfg.milestones.find(x => x.id === ms);
+    const num = n => f[n].value === "" ? null : Math.max(0, Math.min(100, Number(f[n].value)));
+    const scores = { kt: num("kt"), kn: num("kn"), sp: num("sp"), td: num("td") };
+    if (Object.values(scores).some(v => v == null)) return toast("Nhập đủ 4 phần điểm.", true);
+    const checklists = {}; (m.checklists || []).forEach(k => { const n = cfg.checklists[k]?.items.length || 0; const arr = []; for (let i = 0; i < n; i++) { const c = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); arr.push(c ? +c.value : null); } checklists[k] = arr; });
+    const data = { learnerUid: uid, milestone: ms, scores, checklists, autonomy: f.autonomy.value ? +f.autonomy.value : null, critical: [...f.querySelectorAll('input[name="crit"]:checked')].map(x => +x.value),
+      strengths: f.strengths.value, improve: f.improve.value, plan: f.plan.value, reviewerUid: S.user.uid, reviewerName: S.me.name, at: nowISO() };
+    if (f.published) data.published = f.published.checked; else data.published = (await Store.get("reviews", `${uid}_${ms}`))?.published || false;
+    if (f.locked && !f.locked.disabled) data.locked = f.locked.checked;
+    try { await Store.set("reviews", `${uid}_${ms}`, data); const res = msResult(cfg, data); toast(`Đã lưu: ${res.total} điểm – ${res.pass ? "Đạt" : "Chưa đạt"}.`); route(); } catch (e) { toast(errMsg(e), true); }
+  },
+  async comment(f) {
+    try { await Store.add("comments", { learnerUid: f.dataset.uid, milestone: f.dataset.ms, text: f.text.value.trim(), visibleToLearner: f.vis.checked, byUid: S.user.uid, byName: S.me.name, byRole: role(), at: nowISO() }); toast("Đã thêm nhận xét."); route(); } catch (e) { toast(errMsg(e), true); }
+  },
+  async newUser(f) {
+    const r = f.role.value; const email = f.email.value.trim();
+    try {
+      const uid = await AuthSvc.createUser(email, f.pw.value);
+      const doc = { name: f.name.value.trim(), email, role: r, active: true, createdAt: nowISO(), createdBy: S.user.uid };
+      if (DEFAULT_PERMS[r]) doc.perms = DEFAULT_PERMS[r];
+      if (r === "hocvien") { doc.startDate = f.startDate.value || ""; doc.cohort = f.cohort.value.trim(); }
+      await Store.set("users", uid, doc, false); S.usersCache = null; toast(`Đã tạo tài khoản ${email}.`); route();
+    } catch (e) { toast(errMsg(e), true); }
+  }
+};
+document.addEventListener("click", async ev => {
+  const el = ev.target.closest("[data-act]"); if (!el) return;
+  const f = actions[el.dataset.act]; if (!f) return;
+  if (el.tagName === "A" || el.type === "button" || el.tagName === "BUTTON") ev.preventDefault();
+  try { await f(el, ev); } catch (e) { console.error(e); toast(errMsg(e), true); }
+});
+document.addEventListener("submit", async ev => {
+  const f = ev.target.closest("[data-form]"); if (!f) return; ev.preventDefault();
+  const b = f.querySelector('[type="submit"]'); if (b) b.disabled = true;
+  try { await forms[f.dataset.form](f); } finally { if (b && b.isConnected) b.disabled = false; }
+});
+document.addEventListener("change", async ev => {
+  const el = ev.target;
+  if (el.dataset.change === "tick") { try { await Store.set("progress", S.user.uid, { learnerUid: S.user.uid, tasks: { [el.dataset.id]: el.checked } }); el.nextElementSibling?.classList.toggle("done-line", el.checked); } catch (e) { toast(errMsg(e), true); el.checked = !el.checked; } }
+  if (el.dataset.change === "ans") saveAnswer(el.dataset.aid, el.dataset.q, +el.value);
+  if (el.dataset.change === "demoSwitch") { await AuthSvc.signIn(el.value); location.hash = ""; }
+  if (el.dataset.ef === "assignedMode") { syncExamDraftFromDOM(); route(); }
+});
+document.addEventListener("input", ev => {
+  const el = ev.target;
+  if (el.dataset.input === "ansText") { const k = el.dataset.q; clearTimeout(saveTimers[k]); saveTimers[k] = setTimeout(() => saveAnswer(el.dataset.aid, k, el.value), 800); }
+});
+window.addEventListener("hashchange", () => { if (!location.hash.startsWith("#/de/")) examDraft = examDraft && location.hash === "#/de/" + examDraft.id ? examDraft : null; if (!location.hash.startsWith("#/lambai")) clearInterval(examTimer); route(); });
+
+
+/* ---------- thao tác bổ sung cho giao diện mới ---------- */
+Object.assign(actions, {
+  sheet() { document.getElementById("sheet")?.classList.add("open"); },
+  sheetClose(el, ev) { if (ev.target === el) el.classList.remove("open"); },
+  goStageRoadL(el) { location.hash = "#/lotrinh/" + el.dataset.stage; },
+  docCat(el) { docCat = el.dataset.k; route(); },
+  docEdit(el) { docEdit = el.dataset.id; route(); },
+  docCancel() { docEdit = null; route(); },
+  async docDel(el) { if (!confirm("Xóa tài liệu này khỏi thư viện?")) return; try { await Store.del("docs", el.dataset.id); toast("Đã xóa tài liệu."); route(); } catch (e) { toast(errMsg(e), true); } },
+  async docSeed() {
+    try { for (const [title, category, type, stage] of DOCS_SEED) await Store.add("docs", { title, category, type, stage, url: "", sizeNote: "", date: nowISO(), addedBy: S.user.uid });
+      toast(`Đã nạp ${DOCS_SEED.length} văn bản. Bấm biểu tượng sửa để gắn đường dẫn tệp.`); route(); } catch (e) { toast(errMsg(e), true); }
+  },
+  print() { window.print(); },
+  async exportCSVall() {
+    const cfg = S.cfg; const d = await loadStaffData();
+    const head = ["Họ tên", "Email", "Khóa", "Ngày bắt đầu", "Tuần", "Tiến độ %", ...cfg.milestones.map(m => m.id), "Điểm cuối khóa", "Xếp loại"];
+    const lines = d.learners.map(u => { const rv = d.reviews.filter(r => r.learnerUid === u.id); const cs = courseScore(cfg, rv);
+      return [u.name, u.email, u.cohort || "", u.startDate || "", weekOf(u.startDate) ?? "", totalProgress(cfg, d.pBy[u.id]), ...cfg.milestones.map(m => { const r = rv.find(x => x.milestone === m.id); return r ? msTotal(cfg, r) ?? "" : ""; }), cs?.v ?? "", cs?.cls.name ?? ""]; });
+    const csv = [head, ...lines].map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(",")).join("\n");
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" })); a.download = `bao-cao-hoc-viec-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
+  }
+});
+Object.assign(forms, {
+  search(f) { S.docQ = f.q.value.trim(); if (location.hash.startsWith("#/tailieu")) route(); else location.hash = "#/tailieu"; },
+  ovSearch() { },
+  async doc(f) {
+    const data = { title: f.title.value.trim(), url: f.url.value.trim(), category: f.category.value, type: f.type.value, stage: f.stage.value, sizeNote: f.sizeNote.value.trim() };
+    try { if (f.dataset.id) await Store.set("docs", f.dataset.id, data); else await Store.add("docs", { ...data, date: nowISO(), addedBy: S.user.uid });
+      toast(f.dataset.id ? "Đã lưu tài liệu." : "Đã thêm tài liệu."); docEdit = null; route(); } catch (e) { toast(errMsg(e), true); }
+  }
+});
+document.addEventListener("input", ev => {
+  if (ev.target.dataset.input === "ovFilter") { ovQ = ev.target.value; const q = ovQ.toLowerCase().trim(); document.querySelectorAll("#ovTable tbody tr").forEach(tr => tr.style.display = !q || tr.dataset.name.includes(q) ? "" : "none"); }
+});
+
+/* =====================================================================
+   BOOT
+   ===================================================================== */
+let pendingName = "";
+async function ensureUserDoc(u, name) {
+  let me = await Store.get("users", u.uid);
+  if (!me) {
+    const isBoot = ADMIN_EMAILS.map(x => x.toLowerCase()).includes((u.email || "").toLowerCase());
+    me = { name: name || pendingName || u.email.split("@")[0], email: u.email, role: isBoot ? "admin" : "cho-duyet", active: isBoot, createdAt: nowISO() };
+    await Store.set("users", u.uid, me, false); me.id = u.uid;
+  }
+  S.me = me; return me;
+}
+async function boot() {
+  try { if (DEMO) initDemo(); else await initFirebase(); }
+  catch (e) { $app.innerHTML = `<div class="login"><div class="panel"><h2>Không kết nối được Firebase</h2><p>${esc(errMsg(e))}</p><p class="small muted">Kiểm tra cấu hình FIREBASE_CONFIG và kết nối mạng.</p></div></div>`; return; }
+  AuthSvc.onChange(async u => {
+    S.user = u; S.me = null; S.usersCache = null; pickedStage = null; examDraft = null;
+    if (u) { try { await ensureUserDoc(u); await loadCfg(); } catch (e) { toast(errMsg(e), true); } }
+    route();
+  });
+}
+boot();
+</script>
+</body>
+</html>
