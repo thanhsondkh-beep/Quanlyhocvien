@@ -1846,6 +1846,8 @@ function wTable(rows, rel, o = {}) {
   return `<w:tbl><w:tblPr><w:tblW w:w="${widths.reduce((a, b) => a + b, 0)}" w:type="dxa"/><w:tblBorders>${bd}</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${widths.map(w => `<w:gridCol w:w="${w}"/>`).join("")}</w:tblGrid>${tr}</w:tbl>${wPara("", { after: 60 })}`;
 }
 const DOTS = "…………………………………………………………………………………………………………";
+/* dòng chấm chấm tới hết lề phải: dùng tab dot-leader nên không bao giờ tràn dòng */
+function wLeader(prefix, o = {}) { return `<w:p><w:pPr><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="${W_TEXT - 20}"/></w:tabs><w:spacing w:before="0" w:after="${o.after ?? 120}" w:line="360" w:lineRule="auto"/></w:pPr>${prefix ? wRun(prefix + " ") : ""}<w:r><w:rPr><w:color w:val="8C8C8C"/></w:rPr><w:tab/></w:r></w:p>`; }
 function wBlock(b) {
   switch (b.t) {
     case "title": return wPara(b.text, { b: true, sz: 30, align: "center", before: 120, after: 60 });
@@ -1853,8 +1855,8 @@ function wBlock(b) {
     case "h": return wPara(b.text, { b: true, sz: 26, before: 180, after: 80, keep: true, color: "1F3A68" });
     case "p": return wPara(b.text, { i: b.i, b: b.b, sz: b.sz });
     case "note": return wPara(b.text, { i: true, sz: 22, color: "595959" });
-    case "lines": return Array.from({ length: b.n || 3 }, () => wPara(DOTS, { color: "8C8C8C", after: 120 })).join("");
-    case "fields": return b.items.map(x => wPara(`${x}: ${DOTS.slice(0, 60)}`, { after: 100 })).join("");
+    case "lines": return Array.from({ length: b.n || 3 }, () => wLeader("", { after: 60 })).join("");
+    case "fields": return b.items.map(x => wLeader(`${x}:`, { after: 60 })).join("");
     case "check": return b.items.map(x => wPara(`☐  ${x}`, { after: 60 })).join("");
     case "kv": return wTable(b.rows.map(([k, v]) => [{ t: k, b: true, shade: "F2F4F7" }, v ?? ""]), b.rel || [3, 7]);
     case "box": return wTable([Object.assign([{ t: b.text || "", i: true, sz: 20 }], { h: b.h || 3000 })], [1]);
