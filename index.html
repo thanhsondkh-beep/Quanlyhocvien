@@ -72,6 +72,12 @@ main{padding:24px 28px 60px;max-width:1240px;width:100%;min-width:0}
 .card-h h2,.card-h h3{margin:0}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.clrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 4px;border-bottom:1px solid var(--line);font-size:.9rem} .clrow.star>span:first-child{font-weight:600}
+.clopts{display:flex;gap:4px;flex-shrink:0} .clopts label{cursor:pointer} .clopts input{position:absolute;opacity:0;pointer-events:none} .clopts span{display:inline-grid;place-items:center;width:34px;height:30px;border:1px solid var(--line);border-radius:8px;font-weight:600;background:#fff}
+.clopts input:checked+span{background:var(--g700);color:#fff;border-color:var(--g700)} .clopts input:focus-visible+span{outline:2px solid var(--g700)} .clopts input:disabled+span{opacity:.6}
+.atrow{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px} .atrow>b{display:block;font-size:.9rem;margin-bottom:6px}
+.atopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px} .atopts label{display:flex;gap:6px;align-items:flex-start;font-size:.8rem;line-height:1.3;border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer}
+.atopts label:has(input:checked){border-color:var(--g700);background:var(--g050)} .atopts input{margin-top:2px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 16px} .schedrow td{background:var(--g050);padding:10px}
 .grid-review{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
 .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--g700);background:var(--g700);color:#fff;padding:9px 16px;border-radius:10px;cursor:pointer;font-weight:600;text-decoration:none;font-size:.92rem}
@@ -386,12 +392,12 @@ const ROADMAP_DEFAULT = {
       readings: ["Ôn NĐ 131 Điều 7 + QĐ 3809 Chương 1", "QĐ 3809 – Chương 3, 2 theo khoa luân chuyển", "QĐ 5631/QĐ-BYT – mục II–IV, Phụ lục 2–6", "QĐ 3809 – Chương 4 (nếu có ung thư)"] }
   ],
   milestones: [
-    { id: "M1", stage: "s1", week: 2, name: "Định hướng", knowledge: "15 câu: TT 22/2011, Luật Dược Điều 80, NĐ 131 Điều 6–7", skills: "Tra cứu thuốc trên HIS và ứng dụng của khoa", products: "Sơ đồ tổ chức, sổ tay 20 thuốc", autonomy: "Mức 1 với mọi vị trí", checklists: [] },
-    { id: "M2", stage: "s2", week: 6, name: "Kho, cấp phát", knowledge: "20 câu + 2 tình huống (hàng thiếu khi kiểm nhập; lệch số thuốc gây nghiện tủ trực)", skills: "Bảng kiểm A (kiểm nhập), B (cấp phát), C (tủ trực, thuốc KSĐB)", products: "Biên bản kiểm nhập, biên bản kiểm tra tủ trực, bảng thuốc lạnh/LASA", autonomy: "Mức 3 kiểm nhập, cấp phát; mức 2 thuốc KSĐB", checklists: ["A"] },
-    { id: "M3", stage: "s3", week: 10, name: "Danh mục, BHYT", knowledge: "20 câu: TT 21/2013, TT 37/2024, TT 27/2025 + 1 bài phân tích ABC/VEN", skills: "Bảng kiểm D (ABC/VEN), dự trù bổ sung", products: "Báo cáo ABC/VEN, phiếu đề xuất thuốc", autonomy: "Mức 3", checklists: [] },
-    { id: "M4", stage: "s4", week: 14, name: "Kê đơn, ADR", knowledge: "10 đơn thuốc cài lỗi (tìm ≥ 80% lỗi trong 45 phút) + 1 ca ADR (điền báo cáo, quy kết Naranjo)", skills: "Bảng kiểm E (duyệt đơn), F (thông tin thuốc)", products: "100 đơn đã duyệt, bản tin thuốc, báo cáo ADR", autonomy: "Mức 3 duyệt đơn ngoại trú", checklists: ["E"] },
-    { id: "M5", stage: "s5", week: 19, name: "Giữa kỳ DLS", knowledge: "Vấn đáp 1 ca tim mạch hoặc đái tháo đường (20 phút)", skills: "Bảng kiểm G (đi buồng), H (tư vấn)", products: "5 phiếu theo dõi người bệnh, 5 can thiệp", autonomy: "Mức 2 đi buồng", checklists: ["G"] },
-    { id: "M6", stage: "s5", week: 26, name: "Cuối khóa", knowledge: "Bài viết tổng hợp 60 phút + ca lâm sàng không chuẩn bị trước", skills: "Quan sát 1 buổi đi buồng thật, 1 ca duyệt kháng sinh Nhóm 1", products: "2 ca bình bệnh án, báo cáo chuyên đề, sổ can thiệp", autonomy: "Mức 3 đi buồng; mức 4 duyệt đơn", checklists: ["G"] }
+    { id: "M1", stage: "s1", week: 2, name: "Định hướng", knowledge: "15 câu: TT 22/2011, Luật Dược Điều 80, NĐ 131 Điều 6–7", skills: "Tra cứu thuốc trên HIS và ứng dụng của khoa", products: "Sơ đồ tổ chức, sổ tay 20 thuốc", autonomy: "Mức 1 với mọi vị trí", checklists: ["O"] },
+    { id: "M2", stage: "s2", week: 6, name: "Kho, cấp phát", knowledge: "20 câu + 2 tình huống (hàng thiếu khi kiểm nhập; lệch số thuốc gây nghiện tủ trực)", skills: "Bảng kiểm A (kiểm nhập), B (cấp phát), C (tủ trực, thuốc KSĐB)", products: "Biên bản kiểm nhập, biên bản kiểm tra tủ trực, bảng thuốc lạnh/LASA", autonomy: "Mức 3 kiểm nhập, cấp phát; mức 2 thuốc KSĐB", checklists: ["A", "B", "C"] },
+    { id: "M3", stage: "s3", week: 10, name: "Danh mục, BHYT", knowledge: "20 câu: TT 21/2013, TT 37/2024, TT 27/2025 + 1 bài phân tích ABC/VEN", skills: "Bảng kiểm D (ABC/VEN), dự trù bổ sung", products: "Báo cáo ABC/VEN, phiếu đề xuất thuốc", autonomy: "Mức 3", checklists: ["D"] },
+    { id: "M4", stage: "s4", week: 14, name: "Kê đơn, ADR", knowledge: "10 đơn thuốc cài lỗi (tìm ≥ 80% lỗi trong 45 phút) + 1 ca ADR (điền báo cáo, quy kết Naranjo)", skills: "Bảng kiểm E (duyệt đơn), F (thông tin thuốc)", products: "100 đơn đã duyệt, bản tin thuốc, báo cáo ADR", autonomy: "Mức 3 duyệt đơn ngoại trú", checklists: ["E", "F"] },
+    { id: "M5", stage: "s5", week: 19, name: "Giữa kỳ DLS", knowledge: "Vấn đáp 1 ca tim mạch hoặc đái tháo đường (20 phút)", skills: "Bảng kiểm G (đi buồng), H (tư vấn)", products: "5 phiếu theo dõi người bệnh, 5 can thiệp", autonomy: "Mức 2 đi buồng", checklists: ["G", "H"] },
+    { id: "M6", stage: "s5", week: 26, name: "Cuối khóa", knowledge: "Bài viết tổng hợp 60 phút + ca lâm sàng không chuẩn bị trước", skills: "Quan sát 1 buổi đi buồng thật, 1 ca duyệt kháng sinh Nhóm 1", products: "2 ca bình bệnh án, báo cáo chuyên đề, sổ can thiệp", autonomy: "Mức 3 đi buồng; mức 4 duyệt đơn", checklists: ["G", "K"] }
   ],
   criticalErrors: [
     "Sai lệch số lượng thuốc gây nghiện, hướng thần, tiền chất mà không báo cáo ngay",
@@ -421,8 +427,22 @@ const ROADMAP_DEFAULT = {
   checklists: {
     A: { name: "Bảng kiểm A – Kiểm nhập thuốc", items: ["Đối chiếu tên, hàm lượng, đơn vị tính với hóa đơn và kết quả thầu*", "Kiểm số lô, hạn dùng*", "Kiểm hãng, nước sản xuất, quy cách đóng gói", "Kiểm tra cảm quan", "Kiểm điều kiện bảo quản khi nhận (thuốc lạnh)", "Biên bản riêng cho thuốc kiểm soát đặc biệt*", "Lập biên bản khi hư hỏng, thừa, thiếu", "Vào sổ/phần mềm đúng, đủ"] },
     E: { name: "Bảng kiểm E – Duyệt đơn thuốc", items: ["Kiểm hành chính, thẩm quyền người kê, mẫu đơn (thường / N / H)", "Chỉ định phù hợp chẩn đoán (ICD)*", "Chống chỉ định, dị ứng*", "Liều, số lần, thời điểm, đường dùng; đối tượng đặc biệt", "Số ngày kê đúng giới hạn", "Trùng hoạt chất, tương tác cần xử trí", "Điều kiện thanh toán BHYT", "Trao đổi với bác sĩ đúng kênh, ghi nhận kết quả"] },
-    G: { name: "Bảng kiểm G – Đi buồng dược lâm sàng", items: ["Chuẩn bị: đọc bệnh án, tóm tắt dữ kiện lâm sàng, cận lâm sàng", "Phỏng vấn tiền sử dùng thuốc (kể cả thuốc tự mua, đông y)", "Tính chức năng thận và kiểm liều theo thận*", "Xác định đúng vấn đề liên quan đến thuốc, xếp ưu tiên", "Đề xuất can thiệp có bằng chứng, nói rõ ràng với bác sĩ", "Hướng dẫn điều dưỡng (pha, tốc độ truyền, thời điểm)", "Kế hoạch theo dõi hiệu quả, ADR", "Ghi phiếu theo dõi, sổ can thiệp đầy đủ"] }
-  }
+    G: { name: "Bảng kiểm G – Đi buồng dược lâm sàng", items: ["Chuẩn bị: đọc bệnh án, tóm tắt dữ kiện lâm sàng, cận lâm sàng", "Phỏng vấn tiền sử dùng thuốc (kể cả thuốc tự mua, đông y)", "Tính chức năng thận và kiểm liều theo thận*", "Xác định đúng vấn đề liên quan đến thuốc, xếp ưu tiên", "Đề xuất can thiệp có bằng chứng, nói rõ ràng với bác sĩ", "Hướng dẫn điều dưỡng (pha, tốc độ truyền, thời điểm)", "Kế hoạch theo dõi hiệu quả, ADR", "Ghi phiếu theo dõi, sổ can thiệp đầy đủ"] },
+    O: { name: "Bảng kiểm O – Định hướng, tra cứu thuốc", items: ["Nêu đúng chức năng, nhiệm vụ chính của khoa Dược (TT 22/2011)*", "Chỉ đúng các bộ phận, người phụ trách trong khoa", "Nêu được luồng cung ứng thuốc: dự trù – mua – nhập – cấp phát", "Tra cứu thuốc trên HIS: tồn kho, giá, điều kiện thanh toán", "Tra cứu thông tin thuốc trên ứng dụng của khoa, tờ HDSD, Dược thư", "Nhận diện khu vực và quy định riêng của thuốc gây nghiện, hướng thần, tiền chất*", "Tuân thủ nội quy kho, bảo mật thông tin người bệnh*", "Ghi sổ học việc đầy đủ, đúng hạn"] },
+    B: { name: "Bảng kiểm B – Cấp phát thuốc", items: ["Kiểm phiếu lĩnh: mẫu phiếu, chữ ký, thẩm quyền (thường / gây nghiện / hướng thần)*", "Đối chiếu tên, hàm lượng, dạng bào chế, số lượng với phiếu lĩnh*", "Kiểm hạn dùng, cảm quan trước khi phát", "Xuất theo nguyên tắc hết hạn trước – xuất trước (FEFO)", "Thuốc kiểm soát đặc biệt: phiếu riêng, giao nhận có ký đủ*", "Đóng gói, dán nhãn; thuốc lạnh vận chuyển đúng điều kiện", "Ký giao nhận với điều dưỡng khoa lâm sàng", "Xuất trên phần mềm đúng, đủ, kịp thời"] },
+    C: { name: "Bảng kiểm C – Kiểm tra tủ trực, thuốc kiểm soát đặc biệt", items: ["Đối chiếu danh mục, cơ số tủ trực đã được duyệt", "Đếm số lượng thực tế, đối chiếu sổ theo dõi*", "Kiểm hạn dùng, cảm quan, ghi nhận thuốc cận hạn", "Thuốc gây nghiện, hướng thần: tủ khóa riêng, người giữ khóa, sổ theo dõi*", "Điều kiện bảo quản: nhiệt độ phòng, tủ lạnh có nhiệt kế và sổ ghi", "Thuốc LASA, nguy cơ cao: nhãn cảnh báo, để tách riêng", "Sai lệch được báo cáo ngay theo quy định*", "Lập biên bản kiểm tra có chữ ký hai bên"] },
+    D: { name: "Bảng kiểm D – Phân tích ABC/VEN", items: ["Lấy dữ liệu sử dụng đúng kỳ, đủ trường: số lượng, đơn giá, thành tiền*", "Sắp xếp giảm dần theo giá trị, tính % và % tích lũy đúng*", "Phân hạng A/B/C đúng ngưỡng (khoảng 75–80% / 15–20% / 5–10%)", "Phân loại V/E/N có căn cứ (phác đồ, ý kiến HĐT&ĐT)", "Lập ma trận ABC/VEN, chỉ ra nhóm AN, BN", "So sánh với kỳ trước hoặc kết quả thầu", "Đề xuất can thiệp cụ thể, khả thi", "Bảng biểu rõ ràng, kết luận ngắn gọn"] },
+    F: { name: "Bảng kiểm F – Trả lời thông tin thuốc", items: ["Ghi nhận người hỏi, thời điểm, mức độ khẩn", "Làm rõ câu hỏi, thu thập thông tin người bệnh liên quan*", "Phân loại câu hỏi, chọn nguồn tra cứu phù hợp", "Dùng nguồn tin cậy, còn cập nhật (tờ HDSD, Dược thư, cơ sở dữ liệu)*", "Tổng hợp, đánh giá thông tin, không sao chép máy móc", "Trả lời đúng hạn, rõ ràng, có trích nguồn*", "Lưu phiếu trả lời thông tin thuốc", "Theo dõi phản hồi sau khi trả lời"] },
+    H: { name: "Bảng kiểm H – Tư vấn người bệnh", items: ["Xác nhận đúng người bệnh, đúng đơn thuốc*", "Hỏi tiền sử dị ứng, thuốc đang dùng (kể cả tự mua, đông y)", "Hướng dẫn tên thuốc, mục đích, liều, thời điểm dùng*", "Hướng dẫn kỹ thuật dùng thuốc đặc biệt (bút tiêm insulin, bình xịt…)", "Dặn tác dụng không mong muốn thường gặp, dấu hiệu cần quay lại khám*", "Hướng dẫn bảo quản thuốc tại nhà", "Ngôn ngữ dễ hiểu, cho người bệnh nhắc lại để kiểm tra", "Ghi nhận lượt tư vấn"] },
+    K: { name: "Bảng kiểm K – Duyệt kháng sinh cần phê duyệt (Nhóm 1)", items: ["Phiếu yêu cầu sử dụng kháng sinh đủ thông tin", "Chỉ định phù hợp chẩn đoán nhiễm khuẩn, có xét nghiệm vi sinh khi cần*", "Lựa chọn phù hợp hướng dẫn điều trị, phổ tác dụng, dữ liệu kháng thuốc", "Liều, khoảng cách liều theo chức năng thận, cân nặng*", "Kiểm dị ứng, chống chỉ định, tương tác*", "Đề xuất xuống thang, chuyển đường uống, thời gian dùng", "Phản hồi bác sĩ đúng thời hạn quy định", "Ghi phiếu duyệt, sổ theo dõi đầy đủ"] }
+  },
+  attitudeRubric: [
+    { name: "Chuyên cần, đúng giờ", levels: ["Vắng, muộn nhiều lần", "Muộn đôi lần", "Đủ buổi, đúng giờ", "Đủ, đúng giờ, ở lại khi cần"] },
+    { name: "Chủ động học hỏi", levels: ["Chờ giao mới làm", "Hỏi khi được nhắc", "Tự hỏi, tự đọc", "Tự tìm việc, chia sẻ lại"] },
+    { name: "Phối hợp, giao tiếp", levels: ["Va chạm, thiếu lễ độ", "Rụt rè, chưa rõ ràng", "Phối hợp tốt trong khoa", "Được khoa lâm sàng phản hồi tốt"] },
+    { name: "Tuân thủ quy định", levels: ["Vi phạm quy trình", "Cần nhắc nhở", "Tuân thủ đầy đủ", "Tuân thủ, nhắc người khác"] },
+    { name: "Trách nhiệm, tiếp thu", levels: ["Đổ lỗi, không sửa", "Sửa khi bị nhắc nhiều lần", "Nhận và sửa lỗi", "Tự phát hiện, tự sửa"] }
+  ]
 };
 
 const ROLE_LABEL = { admin: "Quản trị", truongkhoa: "Trưởng khoa", phokhoa: "Phó khoa", hocvien: "Học viên", "cho-duyet": "Chờ duyệt" };
@@ -659,7 +679,16 @@ function courseScore(cfg, reviews) {
 }
 /* học viên có được xem điểm số không (mặc định: không) */
 const hideSc = () => role() === "hocvien" && !S.cfg?.learnerSeeScores;
-async function loadCfg() { let c = null; try { c = await Store.get("config", "roadmap"); } catch (e) { } S.cfg = c?.data ? c.data : ROADMAP_DEFAULT; }
+async function loadCfg() { let c = null; try { c = await Store.get("config", "roadmap"); } catch (e) { } S.cfg = c?.data ? migrateCfg(c.data) : ROADMAP_DEFAULT; }
+/* bổ sung bảng kiểm, bảng chấm thái độ mới vào cấu hình đã lưu từ trước */
+function migrateCfg(c) {
+  const D = ROADMAP_DEFAULT; c.checklists = c.checklists || {};
+  Object.keys(D.checklists).forEach(k => { if (!c.checklists[k]) c.checklists[k] = D.checklists[k]; });
+  if (!c.attitudeRubric) c.attitudeRubric = D.attitudeRubric;
+  const OLD = { M1: "[]", M2: '["A"]', M3: "[]", M4: '["E"]', M5: '["G"]', M6: '["G"]' };
+  (c.milestones || []).forEach(m => { const d = D.milestones.find(x => x.id === m.id); if (d && JSON.stringify(m.checklists || []) === OLD[m.id]) m.checklists = d.checklists; });
+  return c;
+}
 async function allUsers(force) { if (!S.usersCache || force) S.usersCache = await Store.list("users"); return S.usersCache; }
 function seededShuffle(arr, seed) { const a = [...arr]; let h = 0; for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0; for (let i = a.length - 1; i > 0; i--) { h = (h * 1103515245 + 12345) >>> 0; const j = h % (i + 1);[a[i], a[j]] = [a[j], a[i]]; } return a; }
 
@@ -722,6 +751,7 @@ function navFor() {
       { g: "Theo dõi", href: "#/trangchu", label: "Tổng quan đào tạo", short: "Tổng quan", icon: "chart" },
       { g: "Theo dõi", href: "#/hocvien", label: "Quản lý học viên", short: "Học viên", icon: "users" },
       { g: "Theo dõi", href: "#/sanpham", label: "Sản phẩm thu hoạch", short: "Sản phẩm", icon: "file", alias: ["#/chamsp"] },
+      { g: "Theo dõi", href: "#/kynang", label: "Kỹ năng – Thái độ", short: "Kỹ năng", icon: "checkc" },
       { g: "Theo dõi", href: "#/de", label: "Lượng giá", short: "Lượng giá", icon: "quiz", alias: ["#/nganhang", "#/ketquald", "#/baithi", "#/cham/"] },
       { g: "Theo dõi", href: "#/baigiang", label: "Bài giảng", short: "Bài giảng", icon: "play" },
       { g: "Theo dõi", href: "#/tailieu", label: "Tài liệu", short: "Tài liệu", icon: "book" },
@@ -779,7 +809,7 @@ async function route() {
     await refreshNotifs();
     const views = role() === "hocvien"
       ? { trangchu: vLearnerHome, lotrinh: () => a ? vLearnerStage(S.user.uid, a) : vLearnerRoadmap(S.user.uid), tailieu: vDocs, baigiang: vLessons, sanpham: () => vProducts(a), luonggia: () => vLearnerExams(a), lambai: () => vTakeExam(a), danhgia: () => vLearnerEvals(S.user.uid), ketqua: () => vLearnerResults(S.user.uid), thongbao: vNotifs }
-      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
+      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), kynang: () => parts[2] ? vSkillGrade(a, parts[2]) : vSkills(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
     views.doimatkhau = () => pwPanel(false);
     html = views[p] ? await views[p]() : `<div class="empty">Không tìm thấy trang. <a href="#/trangchu">Về trang chủ</a></div>`;
   } catch (e) { console.error(e); html = `<div class="empty">Không tải được dữ liệu: ${esc(errMsg(e))}</div>`; }
@@ -1361,8 +1391,14 @@ function reviewForm(cfg, u, m, r, examAtt, editable, locked) {
     const c = cfg.checklists[k]; if (!c) return ""; const v = r?.checklists?.[k] || [];
     return `<details style="margin:10px 0"><summary style="cursor:pointer"><b>${esc(c.name)}</b> <span class="small muted">(0 = không làm/sai · 1 = chưa đủ · 2 = đúng, đủ; * = tiêu chí bắt buộc)</span></summary>
       <div class="tbl-wrap" style="margin-top:8px"><table><tbody>${c.items.map((it, i) => `<tr><td>${i + 1}. ${esc(it)}</td><td class="nowrap">${[0, 1, 2].map(s => `<label style="margin-right:8px"><input type="radio" name="cl_${k}_${i}" value="${s}" ${v[i] === s ? "checked" : ""} ${dis}> ${s}</label>`).join("")}</td></tr>`).join("")}</tbody></table></div>
-      ${editable ? `<button type="button" class="btn sm ghost" style="margin-top:8px" data-act="useChecklist" data-k="${k}" data-n="${c.items.length}">Tính % bảng kiểm và đưa vào điểm kỹ năng</button>` : ""}</details>`;
+      </details>`;
   }).join("");
+  const clBlock = (m.checklists || []).length ? `<div class="panel" style="background:var(--g050);margin:12px 0"><b>Kỹ năng – bảng kiểm quan sát</b> <span class="small muted">· mỗi bước 0 / 1 / 2; điểm kỹ năng = trung bình % các bảng kiểm của mốc; bảng kiểm đạt khi ≥ 80% và không bước * nào bị 0</span>${cl}
+      ${editable ? `<button type="button" class="btn sm" data-act="useChecklist">Tính điểm kỹ năng từ bảng kiểm</button> <span id="clOut" class="small"></span>` : ""}</div>` : "";
+  const ar = cfg.attitudeRubric || []; const al = r?.attitude || [];
+  const atBlock = ar.length ? `<div class="panel" style="background:var(--g050);margin:12px 0"><b>Thái độ – ${ar.length} tiêu chí × 4 mức</b> <span class="small muted">· điểm thái độ = tổng mức × 5; nên hỏi ý kiến 1–2 người cùng làm (điều dưỡng, bác sĩ khoa lâm sàng) trước khi chấm</span>
+      <div style="margin-top:8px">${ar.map((a, i) => `<div class="atrow"><b>${i + 1}. ${esc(a.name)}</b><div class="atopts">${a.levels.map((l, n) => `<label><input type="radio" name="at_${i}" value="${n + 1}" ${al[i] === n + 1 ? "checked" : ""} ${dis} data-change="atCalc"><span><b>${n + 1}</b> ${esc(l)}</span></label>`).join("")}</div></div>`).join("")}</div>
+      <div class="small" style="margin-top:6px">Điểm thái độ: <b id="atOut">${al.length === ar.length && al.every(Boolean) ? al.reduce((a, b) => a + b, 0) * 100 / (ar.length * 4) : "–"}</b>/100 <span class="muted">(tự điền vào ô Thái độ khi chọn đủ ${ar.length} tiêu chí)</span></div></div>` : "";
   return `<form data-form="review" data-uid="${u.id}" data-ms="${m.id}">
     <div class="row" style="justify-content:space-between"><h3 style="margin:0">Phiếu đánh giá mốc ${m.id}</h3>${res ? `<div class="row"><div class="score">${res.total}</div><span class="tag ${res.pass ? "ok" : "red"}">${res.pass ? "Đạt" : "Chưa đạt"}</span></div>` : ""}</div>
     ${locked ? `<p class="tag amber" style="margin:8px 0">Phiếu đã chốt – chỉ quản trị mở lại được.</p>` : ""}
@@ -1373,7 +1409,7 @@ function reviewForm(cfg, u, m, r, examAtt, editable, locked) {
     </div>
     ${examAtt.length ? `<p class="small" style="margin-top:8px">Bài lượng giá mốc này: ${examAtt.map(a => `<b>${a.percent}%</b> (${esc(a.examTitle || "")})`).join(", ")} ${editable ? `<button type="button" class="btn sm ghost" data-act="useExam" data-v="${examAtt[examAtt.length - 1].percent}">Dùng làm điểm kiến thức</button>` : ""}</p>` : `<p class="small muted" style="margin-top:8px">Chưa có bài lượng giá đã chấm cho mốc này.</p>`}
     ${(() => { const ps = (S.profSubs || []).filter(s => s.stage === m.stage && s.grade?.score != null && s.status !== "da-nop"); if (!ps.length) return `<p class="small muted" style="margin-top:6px">Chưa có sản phẩm thu hoạch đã chấm của giai đoạn này.</p>`; const avg = Math.round(ps.reduce((a, s) => a + s.grade.score, 0) / ps.length * 10) / 10; return `<p class="small" style="margin-top:6px">Sản phẩm thu hoạch đã chấm: ${ps.map(s => `<b>${s.grade.score}</b> (${esc(s.productName)})`).join(", ")} – trung bình <b>${avg}</b> ${editable ? `<button type="button" class="btn sm ghost" data-act="useProduct" data-v="${avg}">Dùng làm điểm sản phẩm</button>` : ""}</p>`; })()}
-    ${cl}
+    ${clBlock}${atBlock}
     <label class="f" style="margin-top:10px"><span>Mức tự chủ đạt được (tối thiểu: ${esc(m.autonomy)})</span><select name="autonomy" ${dis}><option value="">–</option>${cfg.autonomy.map(a => `<option value="${a.level}" ${String(r?.autonomy) === String(a.level) ? "selected" : ""}>Mức ${a.level}: ${esc(a.desc)}</option>`).join("")}</select></label>
     <fieldset style="border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 10px"><legend class="small" style="color:var(--red)">Lỗi điểm liệt (có lỗi là chưa đạt)</legend>
       ${cfg.criticalErrors.map((c, i) => `<label class="check small" style="margin:4px 0"><input type="checkbox" name="crit" value="${i}" ${(r?.critical || []).includes(i) ? "checked" : ""} ${dis}><span>${esc(c)}</span></label>`).join("")}</fieldset>
@@ -1406,9 +1442,9 @@ async function vEvalRoadmap() {
     <div class="panel"><h2>Nguyên tắc và thang điểm</h2>
       <div class="tbl-wrap"><table><thead><tr><th>Phần</th><th>Hình thức</th><th>Trọng số</th></tr></thead><tbody>
       <tr><td>Kiến thức</td><td>Bài lượng giá trắc nghiệm + tự luận trong app</td><td class="num">${w.kt}%</td></tr>
-      <tr><td>Kỹ năng</td><td>Quan sát làm thật theo bảng kiểm</td><td class="num">${w.kn}%</td></tr>
+      <tr><td>Kỹ năng</td><td>Quan sát làm thật theo bảng kiểm (mỗi bước 0/1/2; điểm = % đạt, trung bình các bảng của mốc)</td><td class="num">${w.kn}%</td></tr>
       <tr><td>Sản phẩm</td><td>Chấm sản phẩm cuối giai đoạn theo tiêu chí</td><td class="num">${w.sp}%</td></tr>
-      <tr><td>Thái độ</td><td>Nhận xét của đồng nghiệp khoa Dược, khoa lâm sàng</td><td class="num">${w.td}%</td></tr></tbody></table></div>
+      <tr><td>Thái độ</td><td>${(cfg.attitudeRubric || []).length} tiêu chí × 4 mức (điểm = tổng mức × 5), người hướng dẫn chấm sau khi hỏi ý kiến đồng nghiệp khoa Dược, khoa lâm sàng</td><td class="num">${w.td}%</td></tr></tbody></table></div>
       <p style="margin-top:12px"><b>Điều kiện đạt mỗi mốc:</b> tổng ≥ ${cfg.passScore}/100, không phần nào dưới ${cfg.minPartPercent}% và không mắc lỗi điểm liệt.</p>
       <ul>${cfg.criticalErrors.map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>
     <div class="panel"><h2>Lịch đánh giá theo mốc</h2><div class="tbl-wrap"><table><thead><tr><th>Mốc</th><th>Tuần</th><th>Kiến thức</th><th>Kỹ năng quan sát</th><th>Sản phẩm chấm</th><th>Tự chủ tối thiểu</th></tr></thead><tbody>
@@ -1416,8 +1452,9 @@ async function vEvalRoadmap() {
     <div class="grid2"><div class="panel"><h2>Mức tự chủ</h2><div class="tbl-wrap"><table><thead><tr><th>Mức</th><th>Mô tả</th><th>Giao việc</th></tr></thead><tbody>${cfg.autonomy.map(a => `<tr><td class="num">${a.level}</td><td>${esc(a.desc)}</td><td>${esc(a.use)}</td></tr>`).join("")}</tbody></table></div></div>
       <div class="panel"><h2>Xếp loại cuối khóa</h2><p class="small muted">${esc(cfg.courseFormula)}</p><div class="tbl-wrap"><table><thead><tr><th>Xếp loại</th><th>Điểm</th><th>Xử lý</th></tr></thead><tbody>${cfg.classification.map((c, i) => `<tr><td>${esc(c.name)}</td><td class="num nowrap">${i === 0 ? "≥ " + c.min : i === cfg.classification.length - 1 ? `< ${cfg.classification[i - 1].min} hoặc có lỗi điểm liệt` : `${c.min}–${cfg.classification[i - 1].min - 1}`}</td><td>${esc(c.action)}</td></tr>`).join("")}</tbody></table></div></div></div>
     <div class="panel"><h2>Tiêu chí chấm sản phẩm và ca bình bệnh án</h2><div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th><th>Chưa đạt (1)</th><th>Cần cải thiện (2)</th><th>Đạt (3)</th><th>Xuất sắc (4)</th></tr></thead><tbody>${cfg.productRubric.map(p => `<tr><td><b>${esc(p.name)}</b></td>${p.levels.map(l => `<td>${esc(l)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Tổng 20 điểm × 5 = điểm sản phẩm trên thang 100.</p></div>
+    ${(cfg.attitudeRubric || []).length ? `<div class="panel"><h2>Tiêu chí chấm thái độ</h2><div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th><th>Mức 1</th><th>Mức 2</th><th>Mức 3</th><th>Mức 4</th></tr></thead><tbody>${cfg.attitudeRubric.map(p => `<tr><td><b>${esc(p.name)}</b></td>${p.levels.map(l => `<td>${esc(l)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Tổng ${cfg.attitudeRubric.length * 4} điểm × ${100 / (cfg.attitudeRubric.length * 4)} = điểm thái độ trên thang 100. Người hướng dẫn chấm sau khi hỏi ý kiến 1–2 người cùng làm.</p></div>` : ""}
     <div class="panel"><h2>Bảng kiểm kỹ năng</h2><p class="small muted">Mỗi tiêu chí 0 / 1 / 2. Đạt khi ≥ 80% điểm tối đa và các tiêu chí có dấu * không bị 0.</p>
-      ${Object.entries(cfg.checklists).map(([k, c]) => `<h3 style="margin-top:14px">${esc(c.name)}</h3><ol>${c.items.map(i => `<li>${esc(i)}</li>`).join("")}</ol>`).join("")}</div>`;
+      ${Object.entries(cfg.checklists).map(([k, c]) => `<h3 style="margin-top:14px">${esc(c.name)} <span class="small muted">· dùng ở mốc ${cfg.milestones.filter(m => (m.checklists || []).includes(k)).map(m => m.id).join(", ") || "–"}</span></h3><ol>${c.items.map(i => `<li>${esc(i)}</li>`).join("")}</ol>`).join("")}</div>`;
 }
 
 /* =====================================================================
@@ -1616,10 +1653,19 @@ const actions = {
   async submitExam(el) { if (!confirm("Nộp bài? Sau khi nộp bạn không sửa được nữa.")) return; await submitAttempt(el.dataset.aid, false); },
   useExam(el) { const f = el.closest("form"); f.kt.value = el.dataset.v; toast("Đã đưa điểm bài lượng giá vào phần kiến thức."); },
   useChecklist(el) {
-    const f = el.closest("form"); const k = el.dataset.k, n = +el.dataset.n; let s = 0, miss = 0;
-    for (let i = 0; i < n; i++) { const c = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); if (!c) miss++; else s += +c.value; }
-    if (miss) return toast(`Còn ${miss} tiêu chí chưa chấm.`, true);
-    f.kn.value = Math.round(s * 100 / (2 * n)); toast(`Bảng kiểm ${k}: ${f.kn.value}% – đã đưa vào điểm kỹ năng.`);
+    const f = el.closest("form"); const m = S.cfg.milestones.find(x => x.id === f.dataset.ms); const out = [], pcts = [];
+    for (const k of m.checklists || []) {
+      const c = S.cfg.checklists[k]; if (!c) continue; let s = 0, miss = 0, zeroStar = 0;
+      c.items.forEach((it, i) => { const x = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); if (!x) miss++; else { s += +x.value; if (+x.value === 0 && it.trim().endsWith("*")) zeroStar++; } });
+      if (miss === c.items.length) { out.push(`${k}: chưa chấm`); continue; }
+      if (miss) return toast(`Bảng kiểm ${k} còn ${miss} bước chưa chấm.`, true);
+      const p = Math.round(s * 100 / (2 * c.items.length)); pcts.push(p);
+      out.push(`${k}: ${p}% ${p >= 80 && !zeroStar ? "✓ đạt" : `✗ chưa đạt${zeroStar ? ` (${zeroStar} bước * bị 0)` : ""}`}`);
+    }
+    if (!pcts.length) return toast("Chưa chấm bảng kiểm nào.", true);
+    f.kn.value = Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+    const o = document.getElementById("clOut"); if (o) o.textContent = out.join(" · ") + ` → điểm kỹ năng ${f.kn.value}`;
+    toast(`Điểm kỹ năng: ${f.kn.value} (trung bình ${pcts.length} bảng kiểm).`);
   },
   async delComment(el) { if (!confirm("Xóa nhận xét này?")) return; try { await Store.del("comments", el.dataset.id); route(); } catch (e) { toast(errMsg(e), true); } },
   exportCSV() {
@@ -1732,7 +1778,8 @@ const forms = {
     const scores = { kt: num("kt"), kn: num("kn"), sp: num("sp"), td: num("td") };
     if (Object.values(scores).some(v => v == null)) return toast("Nhập đủ 4 phần điểm.", true);
     const checklists = {}; (m.checklists || []).forEach(k => { const n = cfg.checklists[k]?.items.length || 0; const arr = []; for (let i = 0; i < n; i++) { const c = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); arr.push(c ? +c.value : null); } checklists[k] = arr; });
-    const data = { learnerUid: uid, milestone: ms, scores, checklists, autonomy: f.autonomy.value ? +f.autonomy.value : null, critical: [...f.querySelectorAll('input[name="crit"]:checked')].map(x => +x.value),
+    const attitude = (cfg.attitudeRubric || []).map((_, i) => { const c = f.querySelector(`input[name="at_${i}"]:checked`); return c ? +c.value : null; });
+    const data = { learnerUid: uid, milestone: ms, scores, checklists, attitude, autonomy: f.autonomy.value ? +f.autonomy.value : null, critical: [...f.querySelectorAll('input[name="crit"]:checked')].map(x => +x.value),
       strengths: f.strengths.value, improve: f.improve.value, plan: f.plan.value, reviewerUid: S.user.uid, reviewerName: S.me.name, at: nowISO() };
     if (f.published) data.published = f.published.checked; else data.published = (await Store.get("reviews", `${uid}_${ms}`))?.published || false;
     if (f.locked && !f.locked.disabled) data.locked = f.locked.checked;
@@ -2223,6 +2270,10 @@ document.addEventListener("change", async ev => {
     try { toast("Đang tải mẫu lên…"); const old = await Store.get("templates", el.dataset.k).catch(() => null); const m = await putFile(file, file.name, "public", MAX_SUB_FILE);
       await Store.set("templates", el.dataset.k, { fileId: m.id, fileName: m.name, updatedAt: nowISO(), updatedBy: S.user.uid }, false); if (old?.fileId) await delFile(old.fileId); toast("Đã cập nhật mẫu."); route(); } catch (e) { toast(errMsg(e), true); }
   }
+  if (k === "atCalc") {
+    const f = el.closest("form"); const ar = S.cfg.attitudeRubric || []; const lv = ar.map((_, i) => +(f.querySelector(`input[name="at_${i}"]:checked`)?.value || 0));
+    const o = document.getElementById("atOut"); if (lv.every(Boolean)) { const v = lv.reduce((a, b) => a + b, 0) * 100 / (ar.length * 4); if (f.td) f.td.value = v; if (o) o.textContent = v; } else if (o) o.textContent = "–";
+  }
   if (k === "scoreVis") {
     const data = { ...S.cfg, learnerSeeScores: el.checked };
     try { await Store.set("config", "roadmap", { data, updatedAt: nowISO(), updatedBy: S.user.uid }, false); S.cfg = data; toast(el.checked ? "Học viên đã xem được điểm." : "Đã ẩn điểm với học viên."); route(); } catch (e) { el.checked = !el.checked; toast(errMsg(e), true); }
@@ -2245,6 +2296,102 @@ document.addEventListener("change", async ev => {
     toast(`Đã tải lên ${ok} bài giảng${skip.length ? `, bỏ qua ${skip.length} tệp` : ""}.`, !!skip.length && !ok); if (skip.length) console.warn("Bỏ qua:", skip); route();
   }
 });
+
+
+/* =====================================================================
+   ĐÁNH GIÁ KỸ NĂNG – THÁI ĐỘ (lãnh đạo, người hướng dẫn)
+   ===================================================================== */
+function clStat(c, v) {
+  if (!c) return null; const n = c.items.length; const done = (v || []).filter(x => x != null).length;
+  if (!done) return { state: "none" };
+  const s = v.reduce((a, b) => a + (b || 0), 0); const pct = Math.round(s * 100 / (2 * n));
+  const zeroStar = c.items.filter((it, i) => v[i] === 0 && it.trim().endsWith("*")).length;
+  return { state: done < n ? "part" : "done", pct, zeroStar, pass: done === n && pct >= 80 && !zeroStar, done, n };
+}
+function attScore(cfg, al) { const ar = cfg.attitudeRubric || []; return ar.length && al && al.length === ar.length && al.every(Boolean) ? al.reduce((a, b) => a + b, 0) * 100 / (ar.length * 4) : null; }
+function clChip(st) {
+  if (!st || st.state === "none") return `<span class="tag grey">Chưa chấm</span>`;
+  if (st.state === "part") return `<span class="tag amber">Đang chấm ${st.done}/${st.n}</span>`;
+  return `<span class="tag ${st.pass ? "ok" : "red"}">${st.pct}% · ${st.pass ? "Đạt" : "Chưa đạt"}</span>`;
+}
+async function vSkills(msId) {
+  const cfg = S.cfg; const m = cfg.milestones.find(x => x.id === msId) || cfg.milestones[0];
+  const [users, reviews] = await Promise.all([allUsers(), Store.list("reviews")]);
+  const learners = users.filter(u => u.role === "hocvien" && u.active !== false).sort((a, b) => (a.name || "").localeCompare(b.name || "", "vi"));
+  const rBy = Object.fromEntries(reviews.map(r => [r.id || `${r.learnerUid}_${r.milestone}`, r]));
+  const tabs = `<div class="tabs">${cfg.milestones.map(x => { const st = cfg.stages.find(s => s.id === x.stage); const n = learners.filter(u => { const r = rBy[`${u.id}_${x.id}`]; return r?.scores?.kn != null && r?.scores?.td != null; }).length;
+    return `<a class="${x.id === m.id ? "on" : ""}" style="--sc:${stageColor(st?.no || 1)}" href="#/kynang/${x.id}">${x.id} · ${n}/${learners.length}</a>`; }).join("")}</div>`;
+  const cls = m.checklists || [];
+  const head = `<tr><th>Học viên</th><th>Tuần</th>${cls.map(k => `<th>${esc(cfg.checklists[k]?.name.replace(/^Bảng kiểm /, "") || k)}</th>`).join("")}<th>Điểm kỹ năng</th><th>Thái độ</th><th></th></tr>`;
+  const rows = learners.map(u => {
+    const r = rBy[`${u.id}_${m.id}`]; const w = weekOf(u.startDate); const due = w != null && w >= m.week;
+    const kn = r?.scores?.kn, td = r?.scores?.td;
+    return `<tr><td><b>${esc(u.name)}</b></td><td class="num">${w ?? "–"}${due ? "" : ` <span class="small muted">(mốc tuần ${m.week})</span>`}</td>
+      ${cls.map(k => `<td>${clChip(clStat(cfg.checklists[k], r?.checklists?.[k]))}</td>`).join("")}
+      <td class="num">${kn != null ? `<b>${kn}</b>` : "–"}</td><td class="num">${td != null ? `<b>${td}</b>` : "–"}</td>
+      <td class="nowrap"><a class="btn sm ${kn != null && td != null ? "ghost" : ""}" href="#/kynang/${m.id}/${u.id}">${kn != null || td != null ? "Xem / sửa" : "Chấm"}</a></td></tr>`;
+  }).join("");
+  return `<h1>Đánh giá kỹ năng – thái độ</h1>
+    <p class="muted">Người hướng dẫn quan sát học viên làm việc thật và chấm bảng kiểm (mỗi bước 0 / 1 / 2), đồng thời chấm thái độ theo ${(cfg.attitudeRubric || []).length} tiêu chí × 4 mức. Điểm tự chuyển vào phiếu đánh giá mốc (Kỹ năng ${cfg.weights.kn}%, Thái độ ${cfg.weights.td}%).</p>${tabs}
+    <div class="panel"><div class="k small muted">Mốc ${m.id} · tuần ${m.week}</div><h2 style="margin:2px 0 6px">${esc(m.name)}</h2><dl class="kv" style="margin:0"><dt>Kỹ năng quan sát</dt><dd>${esc(m.skills)}</dd><dt>Bảng kiểm</dt><dd>${cls.length ? cls.map(k => esc(cfg.checklists[k]?.name || k)).join(" · ") : "Chưa gắn bảng kiểm – nhập điểm kỹ năng trực tiếp"}</dd><dt>Tự chủ tối thiểu</dt><dd>${esc(m.autonomy)}</dd></dl></div>
+    ${learners.length ? `<div class="tbl-wrap"><table><thead>${head}</thead><tbody>${rows}</tbody></table></div>` : `<div class="empty">Chưa có học viên.</div>`}
+    <p class="small muted">Bảng kiểm đạt khi ≥ 80% điểm tối đa và không bước bắt buộc (*) nào bị 0. Điểm kỹ năng = trung bình % các bảng kiểm đã chấm của mốc.</p>`;
+}
+async function vSkillGrade(msId, uid) {
+  const cfg = S.cfg; const m = cfg.milestones.find(x => x.id === msId); if (!m) return `<div class="empty">Không tìm thấy mốc.</div>`;
+  const [u, r] = await Promise.all([Store.get("users", uid), Store.get("reviews", `${uid}_${msId}`).catch(() => null)]);
+  if (!u) return `<div class="empty">Không tìm thấy học viên.</div>`;
+  const editable = can("review") && !(r?.locked && !isAdmin()); const dis = editable ? "" : "disabled";
+  const cls = m.checklists || [];
+  const clHtml = cls.map(k => { const c = cfg.checklists[k]; if (!c) return ""; const v = r?.checklists?.[k] || []; const st = clStat(c, v);
+    return `<div class="panel"><div class="row" style="justify-content:space-between"><h3 style="margin:0">${esc(c.name)}</h3><span id="clst_${k}">${clChip(st)}</span></div>
+      <p class="small muted" style="margin:4px 0 8px">0 = không làm / làm sai · 1 = làm chưa đủ · 2 = đúng, đủ · <b>*</b> bước bắt buộc (bị 0 là bảng kiểm chưa đạt)</p>
+      ${c.items.map((it, i) => `<div class="clrow ${it.trim().endsWith("*") ? "star" : ""}"><span>${i + 1}. ${esc(it)}</span><span class="clopts">${[0, 1, 2].map(s => `<label><input type="radio" name="cl_${k}_${i}" value="${s}" ${v[i] === s ? "checked" : ""} ${dis} data-change="skCalc"><span>${s}</span></label>`).join("")}</span></div>`).join("")}</div>`; }).join("");
+  const ar = cfg.attitudeRubric || []; const al = r?.attitude || [];
+  const atHtml = `<div class="panel"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Thái độ – ${ar.length} tiêu chí × 4 mức</h3><span class="small">Điểm: <b id="atOut">${attScore(cfg, al) ?? "–"}</b>/100</span></div>
+      <p class="small muted" style="margin:4px 0 8px">Điểm = tổng mức × 5. Nên hỏi ý kiến 1–2 người cùng làm (điều dưỡng, bác sĩ khoa lâm sàng, đồng nghiệp khoa Dược) trước khi chấm.</p>
+      ${ar.map((a, i) => `<div class="atrow"><b>${i + 1}. ${esc(a.name)}</b><div class="atopts">${a.levels.map((l, n) => `<label><input type="radio" name="at_${i}" value="${n + 1}" ${al[i] === n + 1 ? "checked" : ""} ${dis} data-change="atCalc"><span><b>${n + 1}</b> ${esc(l)}</span></label>`).join("")}</div></div>`).join("")}</div>`;
+  return `<a href="#/kynang/${m.id}" class="small">Đánh giá kỹ năng – thái độ · Mốc ${m.id}</a>
+    <h1 style="margin-top:4px">${esc(u.name)} – mốc ${m.id}: ${esc(m.name)}</h1>
+    <p class="muted" style="margin-top:-6px">Kỹ năng quan sát: ${esc(m.skills)}${r?.skillAt ? ` · Lần chấm gần nhất: ${esc(r.skillByName || "")}, ${fmtDT(r.skillAt)}` : ""}</p>
+    ${r?.locked ? `<p class="tag amber">Phiếu mốc đã chốt – ${isAdmin() ? "quản trị vẫn sửa được" : "chỉ xem"}.</p>` : ""}
+    <form data-form="skill" data-uid="${uid}" data-ms="${m.id}">
+      ${clHtml || `<div class="panel small muted">Mốc này chưa gắn bảng kiểm. Nhập điểm kỹ năng trực tiếp ở ô bên dưới (có thể gắn bảng kiểm trong Cấu hình lộ trình).</div>`}
+      ${atHtml}
+      <div class="panel" style="position:sticky;bottom:0;z-index:2">
+        <div class="row" style="align-items:flex-end">
+          <label class="f" style="margin:0;max-width:200px"><span>Điểm kỹ năng (${cfg.weights.kn}%)</span><input type="number" name="kn" min="0" max="100" step="any" value="${r?.scores?.kn ?? ""}" ${dis}></label>
+          <label class="f" style="margin:0;max-width:200px"><span>Điểm thái độ (${cfg.weights.td}%)</span><input type="number" name="td" min="0" max="100" step="any" value="${r?.scores?.td ?? ""}" ${dis}></label>
+          <label class="f" style="margin:0;flex:1;min-width:220px"><span>Ghi chú quan sát (chỉ lãnh đạo thấy)</span><input type="text" name="note" value="${esc(r?.skillNote || "")}" ${dis}></label>
+          ${editable ? `<button class="btn" type="submit">Lưu đánh giá</button>` : ""}</div>
+        <div id="skOut" class="small muted" style="margin-top:6px">Điểm tự tính khi chọn mức; vẫn sửa tay được nếu cần.</div></div>
+    </form>
+    <p class="small"><a class="link" href="#/hocvien/${uid}/${m.id}">Mở phiếu đánh giá mốc đầy đủ (kiến thức, sản phẩm, tự chủ, lỗi điểm liệt, kết luận)</a></p>`;
+}
+function skillCalc(f) {
+  const m = S.cfg.milestones.find(x => x.id === f.dataset.ms); const pcts = [];
+  (m.checklists || []).forEach(k => { const c = S.cfg.checklists[k]; if (!c) return;
+    const v = c.items.map((_, i) => { const x = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); return x ? +x.value : null; });
+    const st = clStat(c, v); const el = document.getElementById("clst_" + k); if (el) el.innerHTML = clChip(st); if (st?.state === "done") pcts.push(st.pct); });
+  if (pcts.length) f.kn.value = Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+  const o = document.getElementById("skOut"); if (o) o.textContent = pcts.length ? `Kỹ năng = trung bình ${pcts.length} bảng kiểm đã chấm xong = ${f.kn.value}` : "Chấm đủ các bước của một bảng kiểm để tính điểm kỹ năng.";
+}
+Object.assign(forms, {
+  async skill(f) {
+    const cfg = S.cfg; const uid = f.dataset.uid, ms = f.dataset.ms; const m = cfg.milestones.find(x => x.id === ms);
+    const checklists = {}; (m.checklists || []).forEach(k => { const c = cfg.checklists[k]; if (!c) return; checklists[k] = c.items.map((_, i) => { const x = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); return x ? +x.value : null; }); });
+    const attitude = (cfg.attitudeRubric || []).map((_, i) => { const x = f.querySelector(`input[name="at_${i}"]:checked`); return x ? +x.value : null; });
+    const num = n => f[n].value === "" ? null : Math.max(0, Math.min(100, Number(f[n].value)));
+    const kn = num("kn"), td = num("td");
+    if (kn == null && td == null) return toast("Chưa có điểm kỹ năng hoặc thái độ để lưu.", true);
+    const id = `${uid}_${ms}`; const old = await Store.get("reviews", id).catch(() => null);
+    const scores = { ...(old?.scores || {}) }; if (kn != null) scores.kn = kn; if (td != null) scores.td = td;
+    const data = { learnerUid: uid, milestone: ms, scores, checklists, attitude, skillNote: f.note.value.trim(), skillBy: S.user.uid, skillByName: S.me.name, skillAt: nowISO() };
+    if (!old) data.published = false;
+    try { await Store.set("reviews", id, data); toast(`Đã lưu: kỹ năng ${kn ?? "–"}, thái độ ${td ?? "–"}.`); location.hash = "#/kynang/" + ms; } catch (e) { toast(errMsg(e), true); }
+  }
+});
+document.addEventListener("change", ev => { if (ev.target.dataset.change === "skCalc") skillCalc(ev.target.closest("form")); });
 
 document.addEventListener("click", async ev => {
   const el = ev.target.closest("[data-act]"); if (!el) return;
