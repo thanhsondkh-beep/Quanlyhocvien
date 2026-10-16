@@ -72,6 +72,10 @@ main{padding:24px 28px 60px;max-width:1240px;width:100%;min-width:0}
 .card-h h2,.card-h h3{margin:0}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.rd{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px} .rd .rw{flex:0 0 64px;font-weight:700;color:var(--g700);font-size:.85rem;padding-top:2px}
+.rd .rb{flex:1;min-width:0} .rd .m{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px;font-size:.8rem;color:var(--muted)}
+.rd.done{background:#F6FBF8;border-color:#CBE9D7} .rd.done .rw{color:var(--ok)} .rd.late{border-left:4px solid var(--red)} .rd.now{border-left:4px solid var(--g700)}
+@media (max-width:640px){.rd{flex-direction:column;gap:4px}.rd .rw{flex:none}}
 .clrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 4px;border-bottom:1px solid var(--line);font-size:.9rem} .clrow.star>span:first-child{font-weight:600}
 .clopts{display:flex;gap:4px;flex-shrink:0} .clopts label{cursor:pointer} .clopts input{position:absolute;opacity:0;pointer-events:none} .clopts span{display:inline-grid;place-items:center;width:34px;height:30px;border:1px solid var(--line);border-radius:8px;font-weight:600;background:#fff}
 .clopts input:checked+span{background:var(--g700);color:#fff;border-color:var(--g700)} .clopts input:focus-visible+span{outline:2px solid var(--g700)} .clopts input:disabled+span{opacity:.6}
@@ -436,6 +440,31 @@ const ROADMAP_DEFAULT = {
     H: { name: "Bảng kiểm H – Tư vấn người bệnh", items: ["Xác nhận đúng người bệnh, đúng đơn thuốc*", "Hỏi tiền sử dị ứng, thuốc đang dùng (kể cả tự mua, đông y)", "Hướng dẫn tên thuốc, mục đích, liều, thời điểm dùng*", "Hướng dẫn kỹ thuật dùng thuốc đặc biệt (bút tiêm insulin, bình xịt…)", "Dặn tác dụng không mong muốn thường gặp, dấu hiệu cần quay lại khám*", "Hướng dẫn bảo quản thuốc tại nhà", "Ngôn ngữ dễ hiểu, cho người bệnh nhắc lại để kiểm tra", "Ghi nhận lượt tư vấn"] },
     K: { name: "Bảng kiểm K – Duyệt kháng sinh cần phê duyệt (Nhóm 1)", items: ["Phiếu yêu cầu sử dụng kháng sinh đủ thông tin", "Chỉ định phù hợp chẩn đoán nhiễm khuẩn, có xét nghiệm vi sinh khi cần*", "Lựa chọn phù hợp hướng dẫn điều trị, phổ tác dụng, dữ liệu kháng thuốc", "Liều, khoảng cách liều theo chức năng thận, cân nặng*", "Kiểm dị ứng, chống chỉ định, tương tác*", "Đề xuất xuống thang, chuyển đường uống, thời gian dùng", "Phản hồi bác sĩ đúng thời hạn quy định", "Ghi phiếu duyệt, sổ theo dõi đầy đủ"] }
   },
+  readingPlan: [
+    { id: "r01", week: 1, stage: "s1", title: "Thông tư 22/2011/TT-BYT", part: "Điều 2–15", depth: "ky", min: 90, key: "22/2011", lesson: 1, focus: "14 nhiệm vụ của khoa Dược, cơ cấu các bộ phận, tiêu chuẩn Trưởng khoa và các vị trí." },
+    { id: "r02", week: 1, stage: "s1", title: "Luật Dược 105/2016/QH13 và Luật 44/2024/QH15", part: "Điều 80–81", depth: "ky", min: 45, key: "105/2016", lesson: 1, focus: "Nội dung hoạt động dược lâm sàng; quyền và trách nhiệm của người làm dược lâm sàng." },
+    { id: "r03", week: 2, stage: "s1", title: "Nghị định 131/2020/NĐ-CP", part: "Điều 3–7", depth: "ky", min: 60, key: "131/2020", lesson: 2, focus: "Nhân lực dược lâm sàng, nội dung hoạt động ngoại trú và nội trú, người bệnh ưu tiên." },
+    { id: "r04", week: 2, stage: "s1", title: "QĐ 3809/QĐ-BYT", part: "Chương 1", depth: "ky", min: 60, key: "3809", lesson: 2, focus: "Quy trình dược lâm sàng chung: thu thập thông tin, xác định vấn đề liên quan đến thuốc, can thiệp, theo dõi." },
+    { id: "r05", week: 2, stage: "s1", title: "Nghị định 163/2025/NĐ-CP", part: "Mục lục, cấu trúc", depth: "tra", min: 20, key: "163/2025", focus: "Biết văn bản quy định những gì để tra cứu khi cần." },
+    { id: "r06", week: 3, stage: "s2", title: "Thông tư 23/2011/TT-BYT", part: "Toàn văn", depth: "ky", min: 60, key: "23/2011", lesson: 3, focus: "Cấp phát, kiểm nhập, tủ trực, theo dõi sử dụng thuốc cho người bệnh nội trú." },
+    { id: "r07", week: 5, stage: "s2", title: "Quy trình nội bộ của khoa Dược", part: "Kiểm nhập, cấp phát, bảo quản lạnh, LASA", depth: "ky", min: 45, key: "Quy trình", lesson: 4, focus: "Làm đúng theo quy trình đang áp dụng tại khoa; ghi lại chỗ còn chưa rõ để hỏi người hướng dẫn." },
+    { id: "r08", week: 6, stage: "s2", title: "Thông tư 18/2026/TT-BYT", part: "Điều 3, 5, 7", depth: "ky", min: 60, key: "18/2026", lesson: 5, focus: "Thuốc phải kiểm soát đặc biệt: bảo quản, cấp phát, sổ sách, báo cáo." },
+    { id: "r09", week: 6, stage: "s2", title: "QĐ 29/QĐ-BYT", part: "Mục 3.6.1.2", depth: "luot", min: 20, key: "29/QĐ", focus: "Phần liên quan đến khâu bảo quản, cấp phát." },
+    { id: "r10", week: 7, stage: "s3", title: "Thông tư 21/2013/TT-BYT", part: "Toàn văn, phụ lục phân tích ABC/VEN", depth: "ky", min: 60, key: "21/2013", lesson: 6, focus: "Tổ chức, nhiệm vụ Hội đồng Thuốc và Điều trị; xây dựng danh mục; phương pháp ABC/VEN." },
+    { id: "r11", week: 8, stage: "s3", title: "Thông tư 37/2024/TT-BYT", part: "Điều 8–13", depth: "ky", min: 60, key: "37/2024", lesson: 7, focus: "Nguyên tắc, điều kiện thanh toán BHYT; cách đọc cột ghi chú điều kiện thanh toán." },
+    { id: "r12", week: 9, stage: "s3", title: "Thông tư 27/2025/TT-BYT", part: "Toàn văn", depth: "luot", min: 30, key: "27/2025", focus: "Thuốc dược liệu, thuốc cổ truyền thuộc phạm vi BHYT." },
+    { id: "r13", week: 11, stage: "s4", title: "Thông tư 26/2025/TT-BYT", part: "Toàn văn", depth: "ky", min: 60, key: "26/2025", lesson: 8, focus: "Nguyên tắc kê đơn ngoại trú, số ngày kê, đơn thuốc gây nghiện, hướng thần." },
+    { id: "r14", week: 11, stage: "s4", title: "Thông tư 55/2025/TT-BYT", part: "Điều 3, 6–9", depth: "ky", min: 30, key: "55/2025", lesson: 8, focus: "Kê đơn thuốc cổ truyền, kết hợp." },
+    { id: "r15", week: 12, stage: "s4", title: "Thông tư 31/2025/TT-BYT", part: "Chương V", depth: "ky", min: 30, key: "31/2025", lesson: 9, focus: "Thông tin thuốc: nội dung, trách nhiệm, hình thức." },
+    { id: "r16", week: 13, stage: "s4", title: "QĐ 29/QĐ-BYT", part: "Mục III, Phụ lục 1, 3, 5, 7, 11", depth: "ky", min: 90, key: "29/QĐ", lesson: 9, focus: "Phát hiện, báo cáo, đánh giá phản ứng có hại của thuốc; thang quy kết." },
+    { id: "r17", week: 15, stage: "s5", title: "Ôn NĐ 131/2020 Điều 7 và QĐ 3809 Chương 1", part: "Ôn tập", depth: "on", min: 45, key: "3809", lesson: 10, focus: "Chuẩn bị đi buồng: nhắc lại các bước quy trình dược lâm sàng." },
+    { id: "r18", week: 15, stage: "s5", title: "QĐ 3809/QĐ-BYT", part: "Chương 3", depth: "ky", min: 120, key: "3809", lesson: 10, focus: "Quy trình dược lâm sàng cho nhóm bệnh trong chương; ghi lại các điểm cần theo dõi khi đi buồng." },
+    { id: "r19", week: 17, stage: "s5", title: "QĐ 3809/QĐ-BYT", part: "Chương 2 – theo khoa đang luân chuyển", depth: "ky", min: 90, key: "3809", focus: "Đọc phần ứng với khoa lâm sàng đang luân chuyển." },
+    { id: "r20", week: 19, stage: "s5", title: "QĐ 5631/QĐ-BYT", part: "Mục II–IV, Phụ lục 2–6", depth: "ky", min: 120, key: "5631", lesson: 11, focus: "Chương trình quản lý sử dụng kháng sinh, danh mục kháng sinh cần phê duyệt, nguyên tắc PK/PD." },
+    { id: "r21", week: 21, stage: "s5", title: "Tài liệu hướng dẫn dùng thuốc dạng đặc biệt", part: "Bút tiêm insulin, bình xịt, thuốc nhỏ mắt…", depth: "ky", min: 45, key: "", lesson: 12, focus: "Chuẩn bị tư vấn người bệnh ra viện; tự thực hành lại từng bước." },
+    { id: "r22", week: 21, stage: "s5", title: "QĐ 3809/QĐ-BYT", part: "Chương 4 (nếu khoa có người bệnh ung thư)", depth: "tuy", min: 60, key: "3809", focus: "Đọc khi luân chuyển khoa có người bệnh ung thư." },
+    { id: "r23", week: 24, stage: "s5", title: "Ôn tập tổng hợp trước đánh giá cuối khóa", part: "Các văn bản đã đọc kỹ", depth: "on", min: 120, key: "", focus: "Rà lại ghi chú của mình; ưu tiên NĐ 131, QĐ 3809, QĐ 5631, TT 26/2025." }
+  ],
   attitudeRubric: [
     { name: "Chuyên cần, đúng giờ", levels: ["Vắng, muộn nhiều lần", "Muộn đôi lần", "Đủ buổi, đúng giờ", "Đủ, đúng giờ, ở lại khi cần"] },
     { name: "Chủ động học hỏi", levels: ["Chờ giao mới làm", "Hỏi khi được nhắc", "Tự hỏi, tự đọc", "Tự tìm việc, chia sẻ lại"] },
@@ -685,6 +714,7 @@ function migrateCfg(c) {
   const D = ROADMAP_DEFAULT; c.checklists = c.checklists || {};
   Object.keys(D.checklists).forEach(k => { if (!c.checklists[k]) c.checklists[k] = D.checklists[k]; });
   if (!c.attitudeRubric) c.attitudeRubric = D.attitudeRubric;
+  if (!c.readingPlan) c.readingPlan = D.readingPlan;
   const OLD = { M1: "[]", M2: '["A"]', M3: "[]", M4: '["E"]', M5: '["G"]', M6: '["G"]' };
   (c.milestones || []).forEach(m => { const d = D.milestones.find(x => x.id === m.id); if (d && JSON.stringify(m.checklists || []) === OLD[m.id]) m.checklists = d.checklists; });
   return c;
@@ -738,6 +768,7 @@ function navFor() {
   if (role() === "hocvien") return [
     { g: "", href: "#/trangchu", label: "Trang chủ", short: "Trang chủ", icon: "home" },
     { g: "", href: "#/lotrinh", label: "Lộ trình học", short: "Lộ trình", icon: "route" },
+    { g: "", href: "#/docsach", label: "Lộ trình đọc", short: "Đọc", icon: "book" },
     { g: "", href: "#/baigiang", label: "Bài giảng", short: "Bài giảng", icon: "play" },
     { g: "", href: "#/luonggia", label: "Lượng giá", short: "Lượng giá", icon: "quiz", alias: ["#/lambai"] },
     { g: "", href: "#/sanpham", label: "Sản phẩm thu hoạch", short: "Sản phẩm", icon: "file" },
@@ -757,6 +788,7 @@ function navFor() {
       { g: "Theo dõi", href: "#/tailieu", label: "Tài liệu", short: "Tài liệu", icon: "book" },
       { g: "Theo dõi", href: "#/thongbao", label: "Việc cần làm", short: "Việc cần làm", icon: "bell", badge: true },
       { g: "Lộ trình", href: "#/daotao", label: "Lộ trình đào tạo", short: "Lộ trình", icon: "route" },
+      { g: "Lộ trình", href: "#/docsach", label: "Lộ trình đọc", short: "Đọc", icon: "book" },
       { g: "Lộ trình", href: "#/danhgia", label: "Lộ trình đánh giá", short: "Đánh giá", icon: "target" }
     ];
     if (isAdmin()) n.push({ g: "Quản trị", href: "#/nguoidung", label: "Người dùng và phân quyền", short: "Người dùng", icon: "shield" });
@@ -808,8 +840,8 @@ async function route() {
   try {
     await refreshNotifs();
     const views = role() === "hocvien"
-      ? { trangchu: vLearnerHome, lotrinh: () => a ? vLearnerStage(S.user.uid, a) : vLearnerRoadmap(S.user.uid), tailieu: vDocs, baigiang: vLessons, sanpham: () => vProducts(a), luonggia: () => vLearnerExams(a), lambai: () => vTakeExam(a), danhgia: () => vLearnerEvals(S.user.uid), ketqua: () => vLearnerResults(S.user.uid), thongbao: vNotifs }
-      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), kynang: () => parts[2] ? vSkillGrade(a, parts[2]) : vSkills(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
+      ? { trangchu: vLearnerHome, docsach: () => vReading(), lotrinh: () => a ? vLearnerStage(S.user.uid, a) : vLearnerRoadmap(S.user.uid), tailieu: vDocs, baigiang: vLessons, sanpham: () => vProducts(a), luonggia: () => vLearnerExams(a), lambai: () => vTakeExam(a), danhgia: () => vLearnerEvals(S.user.uid), ketqua: () => vLearnerResults(S.user.uid), thongbao: vNotifs }
+      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), docsach: () => vReading(a), kynang: () => parts[2] ? vSkillGrade(a, parts[2]) : vSkills(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
     views.doimatkhau = () => pwPanel(false);
     html = views[p] ? await views[p]() : `<div class="empty">Không tìm thấy trang. <a href="#/trangchu">Về trang chủ</a></div>`;
   } catch (e) { console.error(e); html = `<div class="empty">Không tải được dữ liệu: ${esc(errMsg(e))}</div>`; }
@@ -923,6 +955,8 @@ async function buildNotifs() {
     const [mySubs, lessons] = await Promise.all([Store.list("submissions", [["learnerUid", "==", uid]]).catch(() => []), Store.list("lessons").catch(() => [])]);
     mySubs.filter(s => s.status !== "da-nop" && s.grade?.at).forEach(s => out.push({ icon: s.status === "dat" ? "checkc" : "edit", tone: s.status === "dat" ? "green" : "orange", text: `Sản phẩm “${s.productName}” đã được chấm${hideSc() ? "" : `: ${s.grade.score} điểm`} – ${SUB_STATUS[s.status]?.[1] || ""}`, at: s.grade.at, href: "#/sanpham/" + s.stage }));
     lessons.filter(l => l.published && l.updatedAt && Date.now() - new Date(l.updatedAt).getTime() < 21 * 864e5).forEach(l => out.push({ icon: "play", tone: "blue", text: `Bài giảng mới: Bài ${l.no ?? ""} – ${l.title}`, at: l.updatedAt, href: "#/baigiang" }));
+    try { const pg = await Store.get("progress", uid); const wk = weekOf(S.me.startDate); const due = (S.cfg.readingPlan || []).filter(i => ["now", "late"].includes(readStatus(i, pg?.reads, wk)));
+      if (due.length) out.push({ icon: "book", tone: due.some(i => readStatus(i, pg?.reads, wk) === "late") ? "red" : "blue", text: `Lộ trình đọc: còn ${due.length} tài liệu cần đọc (${due.slice(0, 2).map(i => i.title).join(", ")}${due.length > 2 ? "…" : ""})`, at: "", href: "#/docsach" }); } catch (e) { }
     const aBy = Object.fromEntries(atts.map(a => [a.examId, a]));
     exams.filter(e => (e.assigned === "all" || (e.assigned || []).includes?.(uid)) && !aBy[e.id] && examWindow(e).k === "on").forEach(e => out.push({ icon: "quiz", tone: "orange", text: `Có bài lượng giá mới: ${e.title} (${e.questions?.length || 0} câu, ${e.durationMin} phút${e.openToMs ? `, hạn ${fmtMs(e.openToMs)}` : ""})`, at: e.updatedAt || e.createdAt, href: "#/lambai/" + e.id }));
     atts.filter(a => a.status === "da-cham").forEach(a => out.push({ icon: "checkc", tone: "green", text: `Bài ${a.examTitle || ""} đã được chấm${hideSc() ? ", xem nhận xét" : `: ${a.percent}%`}`, at: a.gradedAt, href: "#/lambai/" + a.examId }));
@@ -1064,7 +1098,7 @@ function stagePanel(cfg, st, prog, editable, docs = []) {
     <div class="tbl-wrap wk"><table><thead><tr><th>Tuần</th><th>Nội dung thực hành</th><th>Lồng ghép dược lâm sàng</th></tr></thead><tbody>${items}</tbody></table></div></div>
     <div class="grid2"><div class="panel"><h3>Sản phẩm cuối giai đoạn</h3>${prods}</div>
     <div><div class="panel"><h3>Tài liệu đọc trong giai đoạn</h3><ol style="margin:0 0 6px;padding-left:20px">${st.readings.map(r => `<li>${esc(r)}</li>`).join("")}</ol>
-      ${sdocs.length ? `<div style="margin-top:12px">${sdocs.map(docRow).join("")}</div>` : ""}<a class="link" href="#/tailieu">Mở thư viện tài liệu</a></div>
+      ${sdocs.length ? `<div style="margin-top:12px">${sdocs.map(docRow).join("")}</div>` : ""}<div class="row" style="gap:14px"><a class="link" href="#/docsach">Xem lộ trình đọc theo tuần</a><a class="link" href="#/tailieu">Mở thư viện tài liệu</a></div></div>
     ${ms.map(m => `<div class="panel"><h3>Mốc ${m.id} – tuần ${m.week}: ${esc(m.name)}</h3><dl class="kv"><dt>Kiến thức</dt><dd>${esc(m.knowledge)}</dd><dt>Sản phẩm</dt><dd>${esc(m.products)}</dd></dl></div>`).join("")}</div></div>`;
 }
 
@@ -1286,7 +1320,8 @@ async function loadStaffData() {
 function learnerStatus(cfg, u, rv) {
   const w = weekOf(u.startDate); const cs = courseScore(cfg, rv);
   if (cs) return cs.cls.name === "Chưa đạt" ? ["red", "Chưa đạt"] : ["ok", "Đã hoàn thành"];
-  if (w == null || w === 0) return ["grey", "Chưa bắt đầu"];
+  if (w == null) return ["grey", "Chưa bắt đầu"];
+  if (w === 0) return ["amber", `Bắt đầu ${fmtDate(u.startDate + "T00:00:00")}`];
   if (w > cfg.totalWeeks) return ["amber", "Chưa hoàn thành"];
   return ["", "Đang học"];
 }
@@ -1309,11 +1344,25 @@ async function vStaffHome() {
     </div>
     <div class="card"><div class="card-h"><h2>Việc cần làm</h2><a class="link" href="#/thongbao">Xem tất cả</a></div>${(S.notifs || []).filter(n => n.task).slice(0, 6).map(notifItem).join("") || `<p class="muted small">Không có việc tồn đọng.</p>`}</div>`;
 }
-let ovQ = "";
+let ovQ = "", ovSt = "all", ovEdit = null;
+const ovGroup = (cfg, u, rv) => { const w = weekOf(u.startDate); if (w == null || w === 0) return "chua"; const [, l] = learnerStatus(cfg, u, rv); return l === "Đang học" ? "dang" : "xong"; };
 async function vOverview() {
   const cfg = S.cfg; const d = await loadStaffData();
   const uBy = Object.fromEntries(d.users.map(u => [u.id, u]));
-  const rows = d.learners.map((u, i) => {
+  const mentors = d.users.filter(u => ["admin", "truongkhoa", "phokhoa"].includes(u.role) && u.active !== false);
+  const grp = Object.fromEntries(d.learners.map(u => [u.id, ovGroup(cfg, u, d.reviews.filter(r => r.learnerUid === u.id))]));
+  const cnt = k => d.learners.filter(u => k === "all" || grp[u.id] === k).length;
+  const canStart = isAdmin() || can("review");
+  const shown = d.learners.filter(u => ovSt === "all" || grp[u.id] === ovSt);
+  const editRow = u => { const today = new Date(); const p2 = n => String(n).padStart(2, "0"); const td = `${today.getFullYear()}-${p2(today.getMonth() + 1)}-${p2(today.getDate())}`;
+    return `<tr class="schedrow"><td colspan="${7 + cfg.milestones.length}"><form data-form="startLearner" data-uid="${u.id}" class="panel" style="margin:0">
+      <h3 style="margin:0 0 4px">${u.startDate ? "Đổi ngày bắt đầu" : "Cho bắt đầu học"}: ${esc(u.name)}</h3>
+      <p class="small muted" style="margin:0 0 10px">Tuần học, giai đoạn, mốc đánh giá, lộ trình đọc và hạn nộp của học viên đều tính từ ngày này. Có thể chọn ngày trong tương lai nếu học viên sắp vào.</p>
+      <div class="grid3"><label class="f"><span>Ngày bắt đầu học việc</span><input type="date" name="startDate" required value="${esc(u.startDate || td)}"></label>
+        <label class="f"><span>Khóa</span><input type="text" name="cohort" value="${esc(u.cohort || "")}" placeholder="VD: Khóa 1/2026"></label>
+        <label class="f"><span>Người hướng dẫn chính</span><select name="mentorUid"><option value="">–</option>${mentors.map(m => `<option value="${m.id}" ${u.mentorUid === m.id ? "selected" : ""}>${esc(m.name)}</option>`).join("")}</select></label></div>
+      <div class="row"><button class="btn" type="submit">${u.startDate ? "Lưu" : "Bắt đầu"}</button>${u.startDate ? `<button type="button" class="btn ghost danger" data-act="unstartLearner" data-uid="${u.id}">Đưa về “chưa bắt đầu”</button>` : ""}<button type="button" class="btn ghost" data-act="ovEditCancel">Hủy</button></div></form></td></tr>`; };
+  const rows = shown.map((u, i) => {
     const w = weekOf(u.startDate); const st = w ? stageOfWeek(cfg, Math.max(1, Math.min(w, cfg.totalWeeks))) : null; const tp = totalProgress(cfg, d.pBy[u.id]);
     const rv = d.reviews.filter(r => r.learnerUid === u.id);
     const totals = rv.map(r => msTotal(cfg, r)).filter(v => v != null); const avg = totals.length ? Math.round(totals.reduce((a, b) => a + b, 0) / totals.length * 10) / 10 : null;
@@ -1321,14 +1370,15 @@ async function vOverview() {
       return `<td class="ms-cell num">${res ? `<span class="tag ${res.pass ? "ok" : "red"}" title="${r.published ? "Đã công bố" : "Chưa công bố"}">${Math.round(res.total)}${r.published ? "" : "*"}</span>` : due ? `<span class="tag amber" title="Đến hạn đánh giá">cần</span>` : `<span class="muted">·</span>`}</td>`; }).join("");
     const [tone, label] = learnerStatus(cfg, u, rv);
     return `<tr data-name="${esc((u.name + " " + (u.cohort || "") + " " + u.email).toLowerCase())}"><td class="num">${i + 1}</td><td><a href="#/hocvien/${u.id}"><b>${esc(u.name)}</b></a><div class="small muted">${u.mentorUid && uBy[u.mentorUid] ? `HD: ${esc(uBy[u.mentorUid].name)}` : esc(u.email)}</div></td>
-      <td>${esc(u.cohort || "–")}</td><td class="nowrap">${w == null ? "–" : w > cfg.totalWeeks ? "Đã qua 26 tuần" : `Tuần ${w}`}${st ? ` <span class="tag" style="background:${stageColor(st.no)};color:#fff">GĐ ${st.no}</span>` : ""}</td>
-      <td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar" style="width:90px"><i style="width:${tp}%;background:${tp >= 80 ? "var(--ok)" : "var(--g500)"}"></i></div><span class="num small">${tp}%</span></div></td>${cells}<td class="num"><b>${avg ?? "–"}</b></td><td><span class="tag ${tone}">${label}</span></td></tr>`;
+      <td>${esc(u.cohort || "–")}</td><td class="nowrap">${w == null ? "–" : w === 0 ? "Chưa đến ngày" : w > cfg.totalWeeks ? "Đã qua 26 tuần" : `Tuần ${w}`}${st && w ? ` <span class="tag" style="background:${stageColor(st.no)};color:#fff">GĐ ${st.no}</span>` : ""}${u.startDate ? `<div class="small muted">từ ${fmtDate(u.startDate + "T00:00:00")}</div>` : ""}</td>
+      <td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar" style="width:90px"><i style="width:${tp}%;background:${tp >= 80 ? "var(--ok)" : "var(--g500)"}"></i></div><span class="num small">${tp}%</span></div></td>${cells}<td class="num"><b>${avg ?? "–"}</b></td><td><span class="tag ${tone}">${label}</span>${canStart ? `<div style="margin-top:6px">${u.startDate ? `<button class="btn sm ghost" data-act="ovEdit" data-uid="${u.id}">Đổi ngày</button>` : `<button class="btn sm ok" data-act="ovEdit" data-uid="${u.id}">${ic("play", 14)} Bắt đầu</button>`}</div>` : ""}</td></tr>${ovEdit === u.id ? editRow(u) : ""}`;
   }).join("");
   return `<div class="row" style="justify-content:space-between"><h1 style="margin:0">Quản lý học viên</h1><div class="row"><button class="btn ghost sm" data-act="exportCSV">${ic("download", 16)} Xuất báo cáo</button>${isAdmin() ? `<a class="btn sm" href="#/nguoidung">${ic("plus", 16)} Thêm học viên</a>` : ""}</div></div>
     <p class="muted" style="margin-top:8px">Điểm có dấu * là chưa công bố cho học viên. Ô “cần” là mốc đã đến hạn nhưng chưa chấm. Điểm TB là trung bình các mốc đã chấm.</p>
+    <div class="tabs">${[["all", "Tất cả"], ["chua", "Chưa bắt đầu"], ["dang", "Đang học"], ["xong", "Đã qua 26 tuần / có kết quả"]].map(([k, l]) => `<button class="${ovSt === k ? "on" : ""}" data-act="ovSt" data-k="${k}">${l} · ${cnt(k)}</button>`).join("")}</div>
     <form class="search" data-form="ovSearch" style="max-width:360px;margin-bottom:12px">${ic("search", 18)}<input type="search" name="q" placeholder="Tìm theo tên, khóa, email…" value="${esc(ovQ)}" data-input="ovFilter" aria-label="Tìm học viên"></form>
-    ${rows ? `<div class="tbl-wrap"><table id="ovTable"><thead><tr><th>STT</th><th>Họ và tên</th><th>Khóa</th><th>Tuần</th><th>Tiến độ</th>${cfg.milestones.map(m => `<th class="ms-cell" title="${esc(m.name)}">${m.id}</th>`).join("")}<th>Điểm TB</th><th>Trạng thái</th></tr></thead><tbody>${rows}</tbody></table></div>`
-      : `<div class="empty">Chưa có học viên. ${isAdmin() ? `<a href="#/nguoidung">Thêm học viên</a>` : "Quản trị thêm học viên trong mục Người dùng."}</div>`}`;
+    ${!rows && d.learners.length ? `<div class="empty">Không có học viên ở nhóm này.</div>` : ""}${rows ? `<div class="tbl-wrap"><table id="ovTable"><thead><tr><th>STT</th><th>Họ và tên</th><th>Khóa</th><th>Tuần</th><th>Tiến độ</th>${cfg.milestones.map(m => `<th class="ms-cell" title="${esc(m.name)}">${m.id}</th>`).join("")}<th>Điểm TB</th><th>Trạng thái</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      : d.learners.length ? "" : `<div class="empty">Chưa có học viên. ${isAdmin() ? `<a href="#/nguoidung">Thêm học viên</a>` : "Quản trị thêm học viên trong mục Người dùng."}</div>`}`;
 }
 function examTabs(cur) {
   return `<div class="tabs"><a href="#/de" class="${cur === "de" ? "on" : ""}">Bài kiểm tra</a><a href="#/nganhang" class="${cur === "nh" ? "on" : ""}">Ngân hàng câu hỏi mẫu</a><a href="#/ketquald" class="${cur === "kq" ? "on" : ""}">Kết quả</a></div>`;
@@ -2299,6 +2349,89 @@ document.addEventListener("change", async ev => {
 
 
 /* =====================================================================
+   LỘ TRÌNH ĐỌC TÀI LIỆU
+   ===================================================================== */
+const READ_DEPTH = { ky: ["Đọc kỹ", ""], luot: ["Đọc lướt", "grey"], tra: ["Tra cứu", "grey"], on: ["Ôn tập", "amber"], tuy: ["Tùy chọn", "grey"] };
+function readStatus(it, reads, week) {
+  if (reads?.[it.id]) return "done";
+  if (week == null) return "todo";
+  if (week > it.week + 1 && it.depth !== "tuy") return "late";
+  if (week >= it.week) return "now";
+  return "todo";
+}
+function readStats(cfg, reads, week) {
+  const plan = (cfg.readingPlan || []).filter(i => i.depth !== "tuy");
+  const done = plan.filter(i => reads?.[i.id]).length; const due = plan.filter(i => week != null && i.week <= week);
+  return { total: plan.length, done, due: due.length, dueDone: due.filter(i => reads?.[i.id]).length, late: plan.filter(i => readStatus(i, reads, week) === "late").length, now: plan.filter(i => readStatus(i, reads, week) === "now").length };
+}
+function findDoc(docs, key) { if (!key) return null; const k = key.toLowerCase(); return docs.find(d => (d.title || "").toLowerCase().includes(k) && (d.fileId || d.url)) || null; }
+function readItem(it, reads, week, docs, editable) {
+  const st = readStatus(it, reads, week); const r = reads?.[it.id]; const d = findDoc(docs, it.key); const dp = READ_DEPTH[it.depth] || READ_DEPTH.ky;
+  const stTag = { done: `<span class="tag ok">Đã đọc ${r?.at ? fmtDate(r.at) : ""}</span>`, now: `<span class="tag">Tuần này</span>`, late: `<span class="tag red">Chậm</span>`, todo: "" }[st];
+  const open = d ? (d.fileId ? `<button class="btn sm ghost" data-act="fileDl" data-id="${d.fileId}" data-name="${esc(d.fileName || d.title)}">${ic("download", 15)} Mở tài liệu</button>` : `<a class="btn sm ghost" href="${esc(d.url)}" target="_blank" rel="noopener">${ic("ext", 15)} Mở tài liệu</a>`) : "";
+  return `<div class="rd ${st}"><div class="rw">Tuần ${it.week}</div><div class="rb">
+      <div class="row" style="gap:8px"><b>${esc(it.title)}</b>${it.part ? `<span class="muted">– ${esc(it.part)}</span>` : ""}</div>
+      <div class="m"><span class="tag ${dp[1]}">${dp[0]}</span><span>${ic("clock", 13)} ~${it.min} phút</span>${it.lesson ? `<span>${ic("play", 12)} phục vụ Bài ${it.lesson}</span>` : ""}${stTag}</div>
+      ${it.focus ? `<div class="small" style="margin-top:4px"><b>Cần nắm:</b> ${esc(it.focus)}</div>` : ""}
+      ${r?.note ? `<div class="small muted" style="margin-top:4px"><b>Ghi chú của học viên:</b> ${esc(r.note)}</div>` : ""}
+      <div class="row" style="margin-top:8px;gap:8px">${open}${editable ? (r ? `<button class="btn sm ghost" data-act="readToggle" data-id="${it.id}">Bỏ đánh dấu</button>` : `<button class="btn sm" data-act="readToggle" data-id="${it.id}">${ic("check", 15)} Đánh dấu đã đọc</button>`) : ""}</div></div></div>`;
+}
+async function vReading(uidArg) {
+  const cfg = S.cfg; const staff = isStaff();
+  if (staff && !uidArg) return vReadingStaff();
+  const uid = staff ? uidArg : S.user.uid;
+  const [prog, docs, u] = await Promise.all([Store.get("progress", uid).catch(() => null), Store.list("docs").catch(() => []), staff ? Store.get("users", uid) : Promise.resolve(S.me)]);
+  const reads = prog?.reads || {}; const week = weekOf(u?.startDate); const s = readStats(cfg, reads, week);
+  const plan = cfg.readingPlan || [];
+  const nowItems = plan.filter(i => ["now", "late"].includes(readStatus(i, reads, week)));
+  const groups = cfg.stages.map(st => ({ st, items: plan.filter(i => i.stage === st.id) })).filter(g => g.items.length);
+  const pct = s.total ? Math.round(s.done * 100 / s.total) : 0;
+  return `${staff ? `<a class="small" href="#/docsach">Lộ trình đọc</a>` : ""}<h1 style="${staff ? "margin-top:4px" : ""}">Lộ trình đọc tài liệu${staff ? `: ${esc(u?.name || "")}` : ""}</h1>
+    <p class="muted">Đọc theo tuần, trước buổi bài giảng tương ứng. “Đọc kỹ” là phần sẽ có trong đề lượng giá; “đọc lướt”, “tra cứu” chỉ cần biết để tìm lại khi cần.</p>
+    <div class="home-top"><div class="card"><h2>Tiến độ đọc</h2><div class="donut-wrap">${donut(pct, 140)}<div><div style="font-size:1.2rem;font-weight:700">${s.done}/${s.total} tài liệu</div>
+      <div class="small muted" style="margin-top:4px">${week == null ? "Chưa có ngày bắt đầu" : `Tuần ${Math.min(week, cfg.totalWeeks)}: cần xong ${s.due}, đã đọc ${s.dueDone}`}</div></div></div></div>
+      <div class="card"><div class="stats">
+        <div class="stat st-green"><span class="si">${ic("check", 19)}</span><b>${s.done}</b><span>Đã đọc</span></div>
+        <div class="stat st-blue"><span class="si">${ic("book", 19)}</span><b>${s.now}</b><span>Cần đọc tuần này</span></div>
+        <div class="stat st-orange"><span class="si">${ic("clock", 19)}</span><b>${s.late}</b><span>Đang chậm</span></div>
+        <div class="stat st-grey"><span class="si">${ic("hourglass", 19)}</span><b>${s.total - s.done}</b><span>Còn lại</span></div></div></div></div>
+    ${nowItems.length ? `<div class="card"><h2>${staff ? "Tuần này và đang chậm" : "Việc đọc của bạn tuần này"}</h2>${nowItems.map(i => readItem(i, reads, week, docs, !staff)).join("")}</div>` : ""}
+    ${groups.map(g => `<h2 style="margin-top:18px">Giai đoạn ${g.st.no}: ${esc(g.st.name)} <span class="small muted">· tuần ${g.st.from}–${g.st.to}</span></h2>${g.items.map(i => readItem(i, reads, week, docs, !staff)).join("")}`).join("")}
+    <p class="small muted">Tài liệu có nút “Mở tài liệu” khi khoa đã tải tệp lên thư viện Tài liệu.</p>`;
+}
+async function vReadingStaff() {
+  const cfg = S.cfg;
+  const [users, progs] = await Promise.all([allUsers(), Store.list("progress")]);
+  const pBy = Object.fromEntries(progs.map(p => [p.id, p]));
+  const learners = users.filter(u => u.role === "hocvien" && u.active !== false).sort((a, b) => (a.name || "").localeCompare(b.name || "", "vi"));
+  const rows = learners.map(u => { const w = weekOf(u.startDate); const reads = pBy[u.id]?.reads || {}; const s = readStats(cfg, reads, w);
+    const lateList = (cfg.readingPlan || []).filter(i => readStatus(i, reads, w) === "late");
+    return `<tr><td><a class="link" href="#/docsach/${u.id}"><b>${esc(u.name)}</b></a></td><td class="num">${w ?? "–"}</td><td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar" style="width:120px"><i style="width:${s.total ? s.done * 100 / s.total : 0}%"></i></div><span class="num">${s.done}/${s.total}</span></div></td>
+      <td class="num">${s.dueDone}/${s.due}</td><td>${lateList.length ? `<span class="tag red">${lateList.length} chậm</span> <span class="small muted">${lateList.slice(0, 3).map(i => esc(i.title.replace(/^(Thông tư|Nghị định)\s*/, ""))).join(", ")}${lateList.length > 3 ? "…" : ""}</span>` : `<span class="tag ok">Đúng tiến độ</span>`}</td></tr>`; }).join("");
+  const plan = cfg.readingPlan || [];
+  return `<h1>Lộ trình đọc tài liệu</h1><p class="muted">Học viên tự đánh dấu “đã đọc” từng tài liệu. Bấm tên học viên để xem chi tiết và ghi chú. Sửa danh sách đọc trong Cấu hình lộ trình (mục <span class="mono">readingPlan</span>).</p>
+    ${learners.length ? `<div class="tbl-wrap"><table><thead><tr><th>Học viên</th><th>Tuần</th><th>Đã đọc</th><th>Đến hạn đã đọc</th><th>Tình trạng</th></tr></thead><tbody>${rows}</tbody></table></div>` : `<div class="empty">Chưa có học viên.</div>`}
+    <div class="panel"><h2>Danh sách đọc (${plan.length} mục)</h2><div class="tbl-wrap"><table><thead><tr><th>Tuần</th><th>Tài liệu</th><th>Phần</th><th>Mức</th><th>Phục vụ</th><th>Cần nắm</th></tr></thead><tbody>
+      ${plan.map(i => `<tr><td class="num">${i.week}</td><td><b>${esc(i.title)}</b></td><td>${esc(i.part || "")}</td><td class="nowrap">${(READ_DEPTH[i.depth] || READ_DEPTH.ky)[0]} · ${i.min}'</td><td class="nowrap">${i.lesson ? "Bài " + i.lesson : "–"}</td><td class="small">${esc(i.focus || "")}</td></tr>`).join("")}</tbody></table></div></div>`;
+}
+Object.assign(actions, {
+  ovSt(el) { ovSt = el.dataset.k; ovEdit = null; route(); },
+  ovEdit(el) { ovEdit = el.dataset.uid; route(); },
+  ovEditCancel() { ovEdit = null; route(); },
+  async unstartLearner(el) {
+    if (!confirm("Đưa học viên về trạng thái “chưa bắt đầu”? Tiến độ, bài nộp, điểm đã có vẫn giữ nguyên.")) return;
+    try { await Store.set("users", el.dataset.uid, { startDate: "" }); ovEdit = null; await allUsers(true); toast("Đã đưa về chưa bắt đầu."); route(); } catch (e) { toast(errMsg(e), true); }
+  },
+  async readToggle(el) {
+    const id = el.dataset.id; const uid = S.user.uid; const prog = await Store.get("progress", uid).catch(() => null); const cur = prog?.reads?.[id];
+    let note = "";
+    if (!cur) { note = prompt("Đánh dấu đã đọc. Ghi chú ngắn điều bạn rút ra (không bắt buộc):", "") ; if (note === null) return; }
+    const reads = { ...(prog?.reads || {}) }; if (cur) delete reads[id]; else reads[id] = { at: nowISO(), note: note.trim().slice(0, 300) };
+    try { await Store.set("progress", uid, { learnerUid: uid, tasks: prog?.tasks || {}, ...(prog?.products ? { products: prog.products } : {}), reads }, false); toast(cur ? "Đã bỏ đánh dấu." : "Đã ghi nhận đọc xong."); route(); } catch (e) { toast(errMsg(e), true); }
+  }
+});
+
+/* =====================================================================
    ĐÁNH GIÁ KỸ NĂNG – THÁI ĐỘ (lãnh đạo, người hướng dẫn)
    ===================================================================== */
 function clStat(c, v) {
@@ -2377,6 +2510,12 @@ function skillCalc(f) {
   const o = document.getElementById("skOut"); if (o) o.textContent = pcts.length ? `Kỹ năng = trung bình ${pcts.length} bảng kiểm đã chấm xong = ${f.kn.value}` : "Chấm đủ các bước của một bảng kiểm để tính điểm kỹ năng.";
 }
 Object.assign(forms, {
+  async startLearner(f) {
+    const data = { startDate: f.startDate.value, cohort: f.cohort.value.trim(), mentorUid: f.mentorUid.value };
+    if (!data.startDate) return toast("Chọn ngày bắt đầu.", true);
+    try { await Store.set("users", f.dataset.uid, data); ovEdit = null; await allUsers(true);
+      const w = weekOf(data.startDate); toast(w ? `Đã cập nhật – học viên đang ở tuần ${w}.` : `Học viên sẽ bắt đầu ngày ${fmtDate(data.startDate + "T00:00:00")}.`); route(); } catch (e) { toast(errMsg(e), true); }
+  },
   async skill(f) {
     const cfg = S.cfg; const uid = f.dataset.uid, ms = f.dataset.ms; const m = cfg.milestones.find(x => x.id === ms);
     const checklists = {}; (m.checklists || []).forEach(k => { const c = cfg.checklists[k]; if (!c) return; checklists[k] = c.items.map((_, i) => { const x = f.querySelector(`input[name="cl_${k}_${i}"]:checked`); return x ? +x.value : null; }); });
