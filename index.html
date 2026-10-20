@@ -79,6 +79,24 @@ main{padding:24px 28px 60px;max-width:1240px;width:100%;min-width:0}
 .clrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 4px;border-bottom:1px solid var(--line);font-size:.9rem} .clrow.star>span:first-child{font-weight:600}
 .clopts{display:flex;gap:4px;flex-shrink:0} .clopts label{cursor:pointer} .clopts input{position:absolute;opacity:0;pointer-events:none} .clopts span{display:inline-grid;place-items:center;width:34px;height:30px;border:1px solid var(--line);border-radius:8px;font-weight:600;background:#fff}
 .clopts input:checked+span{background:var(--g700);color:#fff;border-color:var(--g700)} .clopts input:focus-visible+span{outline:2px solid var(--g700)} .clopts input:disabled+span{opacity:.6}
+.qg{display:grid;grid-template-columns:240px minmax(0,1fr) 380px;gap:16px;align-items:start}
+.qgq{background:#fff;border:1px solid var(--line);border-radius:12px;max-height:80vh;overflow:auto;position:sticky;top:12px}
+.qgi{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none;font-size:.88rem}
+.qgi span{color:var(--muted)} .qgi small{color:var(--muted);font-size:.75rem} .qgi.on{background:var(--g050);border-left:4px solid var(--g700)}
+.qgv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}
+.qgprev{max-height:78vh;overflow:auto;border-top:1px solid var(--line);padding-top:10px}
+.qgdoc{font-family:"Times New Roman",serif;font-size:15px;line-height:1.5} .qgdoc table{border-collapse:collapse;width:100%;margin:8px 0} .qgdoc td,.qgdoc th{border:1px solid #bbb;padding:4px 6px;vertical-align:top} .qgdoc p{margin:0 0 6px}
+.qgf{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;position:sticky;top:12px}
+.qgc{padding:8px;border-radius:10px;margin-bottom:6px;border:1px solid transparent} .qgc.cur{border-color:var(--g700);background:var(--g050)}
+.qgn{font-weight:600;font-size:.9rem;margin-bottom:6px} .qgl{display:flex;gap:6px} .qgl label{cursor:pointer;flex:1}
+.qgl input{position:absolute;opacity:0;pointer-events:none} .qgl span{display:grid;place-items:center;height:36px;border:1px solid var(--line);border-radius:8px;font-weight:700;background:#fff}
+.qgl input:checked+span{background:var(--g700);color:#fff;border-color:var(--g700)} .qgl input:focus-visible+span{outline:2px solid var(--g700)} .qgd{margin-top:4px;min-height:1.2em}
+.qgs{display:flex;justify-content:space-between;align-items:center;margin:10px 0;padding:10px 0;border-top:1px solid var(--line)}
+.qgst{display:flex;gap:6px} .qgst label{cursor:pointer} .qgst input{position:absolute;opacity:0;pointer-events:none} .qgst span{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:20px;font-weight:600}
+.qgst input[value=dat]:checked+span{background:var(--ok);color:#fff;border-color:var(--ok)} .qgst input[value=can-sua]:checked+span{background:var(--amber);color:#fff;border-color:var(--amber)}
+.qgchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px} .chip{font:inherit;font-size:.78rem;padding:4px 10px;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:pointer} .chip:hover{background:var(--g050)}
+.qgf textarea{width:100%}
+@media (max-width:1100px){.qg{grid-template-columns:1fr}.qgq,.qgf{position:static;max-height:none}}
 .atrow{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px} .atrow>b{display:block;font-size:.9rem;margin-bottom:6px}
 .atopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px} .atopts label{display:flex;gap:6px;align-items:flex-start;font-size:.8rem;line-height:1.3;border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer}
 .atopts label:has(input:checked){border-color:var(--g700);background:var(--g050)} .atopts input{margin-top:2px}
@@ -781,7 +799,7 @@ function navFor() {
     const n = [
       { g: "Theo dõi", href: "#/trangchu", label: "Tổng quan đào tạo", short: "Tổng quan", icon: "chart" },
       { g: "Theo dõi", href: "#/hocvien", label: "Quản lý học viên", short: "Học viên", icon: "users" },
-      { g: "Theo dõi", href: "#/sanpham", label: "Sản phẩm thu hoạch", short: "Sản phẩm", icon: "file", alias: ["#/chamsp"] },
+      { g: "Theo dõi", href: "#/sanpham", label: "Sản phẩm thu hoạch", short: "Sản phẩm", icon: "file", alias: ["#/chamsp", "#/chamnhanh"] },
       { g: "Theo dõi", href: "#/kynang", label: "Kỹ năng – Thái độ", short: "Kỹ năng", icon: "checkc" },
       { g: "Theo dõi", href: "#/de", label: "Lượng giá", short: "Lượng giá", icon: "quiz", alias: ["#/nganhang", "#/ketquald", "#/baithi", "#/cham/"] },
       { g: "Theo dõi", href: "#/baigiang", label: "Bài giảng", short: "Bài giảng", icon: "play" },
@@ -841,7 +859,7 @@ async function route() {
     await refreshNotifs();
     const views = role() === "hocvien"
       ? { trangchu: vLearnerHome, docsach: () => vReading(), lotrinh: () => a ? vLearnerStage(S.user.uid, a) : vLearnerRoadmap(S.user.uid), tailieu: vDocs, baigiang: vLessons, sanpham: () => vProducts(a), luonggia: () => vLearnerExams(a), lambai: () => vTakeExam(a), danhgia: () => vLearnerEvals(S.user.uid), ketqua: () => vLearnerResults(S.user.uid), thongbao: vNotifs }
-      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), docsach: () => vReading(a), kynang: () => parts[2] ? vSkillGrade(a, parts[2]) : vSkills(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
+      : { trangchu: vStaffHome, baigiang: vLessons, sanpham: () => vProductsStaff(a), chamnhanh: () => vQuickGrade(a), docsach: () => vReading(a), kynang: () => parts[2] ? vSkillGrade(a, parts[2]) : vSkills(a), chamsp: () => vGradeProduct(a), hocvien: () => a ? vLearnerProfile(a, parts[2]) : vOverview(), daotao: () => vRoadmapView(a), danhgia: vEvalRoadmap, de: () => a ? vExamEdit(a) : vExams(), nganhang: vBank, ketquald: vAllResults, baithi: () => vAttempts(a), cham: () => vGrade(a), tailieu: vDocs, thongbao: vNotifs, nguoidung: vUsers, cauhinh: vConfig };
     views.doimatkhau = () => pwPanel(false);
     html = views[p] ? await views[p]() : `<div class="empty">Không tìm thấy trang. <a href="#/trangchu">Về trang chủ</a></div>`;
   } catch (e) { console.error(e); html = `<div class="empty">Không tải được dữ liệu: ${esc(errMsg(e))}</div>`; }
@@ -2208,7 +2226,7 @@ async function vProductsStaff(stageId) {
   const tplRows = st.products.map((p, i) => { const k = `${st.id}_p${i}`; const t = tBy[k];
     return `<div class="doc">${ic("file", 22)}<div class="dt"><b>${i + 1}. ${esc(p)}</b><div class="m"><span>${t ? `Mẫu riêng: ${esc(t.fileName)} · ${fmtDate(t.updatedAt)}` : "Mẫu mặc định do ứng dụng tạo"}</span></div></div>
       <div class="act">${tplButton(st.id, i)}${can("docs") ? `<label class="btn sm ghost">Tải mẫu riêng lên<input type="file" accept=".docx,.doc" data-change="tplUp" data-k="${k}" hidden></label>${t ? `<button class="btn sm ghost" data-act="tplReset" data-k="${k}">Dùng mẫu mặc định</button>` : ""}` : ""}</div></div>`; }).join("");
-  return `<h1>Sản phẩm thu hoạch</h1><p class="muted">Học viên tải mẫu Word, điền và nộp từng sản phẩm. Bấm vào trạng thái để mở bài và chấm theo 5 tiêu chí – 4 mức (điểm = tổng mức × 5).</p>
+  return `<div class="row" style="justify-content:space-between"><h1 style="margin:0">Sản phẩm thu hoạch</h1>${can("review") ? `<a class="btn ${pending.length ? "" : "ghost"}" href="#/chamnhanh">${ic("checkc", 17)} Chấm nhanh${pending.length ? ` (${pending.length} bài chờ)` : ""}</a>` : ""}</div><p class="muted" style="margin-top:8px">Học viên tải mẫu Word, điền và nộp từng sản phẩm. Khi nhãn chuyển sang “Chờ chấm”, bấm vào để mở bài, hoặc dùng “Chấm nhanh” để chấm lần lượt cả hàng chờ.</p>
     ${pending.length ? `<div class="panel"><h3>Chờ chấm (${pending.length})</h3>${pending.slice(0, 12).map(s => { const stx = cfg.stages.find(x => x.id === s.stage); return `<a class="nt" href="#/chamsp/${s.id}"><span class="d" style="background:#FFF0E2;color:#D9721A">${ic("hourglass", 17)}</span><span class="tx"><b>${esc(s.learnerName)}</b> – ${esc(s.productName)} <span class="muted">(GĐ ${stx?.no || "?"})</span></span><span class="tm">${relTime(s.submittedAt)}</span></a>`; }).join("")}</div>` : ""}
     ${tabs}<div class="stage-head" style="--sc:${stageColor(st.no)};margin-bottom:12px"><div class="k">Giai đoạn ${st.no} · Tuần ${st.from}–${st.to}</div><h2 style="margin:2px 0 0">${esc(st.name)}</h2></div>
     ${matrix}<h2 style="margin-top:18px">Mẫu Word của giai đoạn ${st.no}</h2>${tplRows}`;
@@ -2347,6 +2365,86 @@ document.addEventListener("change", async ev => {
   }
 });
 
+
+/* =====================================================================
+   CHẤM NHANH SẢN PHẨM: hàng chờ + xem bài ngay trên trang + phím tắt
+   ===================================================================== */
+let qgStage = "all";
+const QG_COMMENTS = ["Trích dẫn văn bản còn thiếu điều, khoản", "Cần cập nhật văn bản còn hiệu lực", "Phân tích đúng vấn đề chính", "Đề xuất chưa cụ thể, cần nêu rõ cách làm", "Trình bày rõ ràng, đúng mẫu", "Bổ sung nguồn tham khảo", "Sản phẩm dùng được cho khoa"];
+let mammothP = null;
+function loadMammoth() { if (window.mammoth) return Promise.resolve(window.mammoth); if (!mammothP) mammothP = new Promise((res, rej) => { const s = document.createElement("script"); s.src = "https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"; s.onload = () => res(window.mammoth); s.onerror = () => { mammothP = null; rej(new Error("Không tải được bộ đọc Word (cần mạng)")); }; document.head.appendChild(s); }); return mammothP; }
+async function qgPreview(fileId, name) {
+  const box = document.getElementById("qgPrev"); if (!box) return;
+  try {
+    const { blob } = await getFileBlob(fileId); const ext = extOf(name);
+    if (ext === "docx") { const m = await loadMammoth(); const r = await m.convertToHtml({ arrayBuffer: await blob.arrayBuffer() }); const d = document.createElement("div"); d.className = "qgdoc"; d.innerHTML = r.value; d.querySelectorAll("script,iframe,object").forEach(x => x.remove()); d.querySelectorAll("a").forEach(a => { a.target = "_blank"; a.rel = "noopener"; }); box.replaceChildren(d); }
+    else if (ext === "pdf") { const u = URL.createObjectURL(blob); box.innerHTML = `<iframe src="${u}" title="Bài nộp" style="width:100%;height:78vh;border:0"></iframe>`; }
+    else if (/^(png|jpe?g|gif|webp)$/.test(ext)) { const u = URL.createObjectURL(blob); box.innerHTML = `<img src="${u}" alt="Bài nộp" style="max-width:100%">`; }
+    else box.innerHTML = `<div class="empty">Không xem trước được tệp .${esc(ext)} – bấm “Tải bài” để mở bằng máy.</div>`;
+  } catch (e) { box.innerHTML = `<div class="empty">Không xem trước được: ${esc(errMsg(e))}. Bấm “Tải bài” để mở bằng máy.</div>`; }
+}
+async function vQuickGrade(id) {
+  const cfg = S.cfg; const rub = cfg.productRubric || [];
+  const subs = await Store.list("submissions", [["status", "==", "da-nop"]]).catch(() => []);
+  const queue = subs.filter(s => qgStage === "all" || s.stage === qgStage).sort((a, b) => String(a.submittedAt).localeCompare(String(b.submittedAt)));
+  const cur = id ? (queue.find(s => s.id === id) || await Store.get("submissions", id)) : queue[0];
+  const stOpt = `<select data-change="qgStage" aria-label="Lọc giai đoạn" style="max-width:200px"><option value="all">Tất cả giai đoạn</option>${cfg.stages.map(s => `<option value="${s.id}" ${qgStage === s.id ? "selected" : ""}>GĐ ${s.no}: ${esc(s.name)}</option>`).join("")}</select>`;
+  const list = queue.map((s, i) => { const st = cfg.stages.find(x => x.id === s.stage); return `<a class="qgi ${cur && s.id === cur.id ? "on" : ""}" href="#/chamnhanh/${s.id}"><b>${esc(s.learnerName)}</b><span>${esc(s.productName)}</span><small>GĐ ${st?.no ?? ""} · ${fmtDT(s.submittedAt)}${s.history?.length ? ` · nộp lại lần ${s.history.length + 1}` : ""}</small></a>`; }).join("");
+  const head = `<div class="row" style="justify-content:space-between;margin-bottom:10px"><div><a href="#/sanpham" class="small">Sản phẩm thu hoạch</a><h1 style="margin:2px 0 0">Chấm nhanh <span class="muted" style="font-weight:400">· ${queue.length} bài chờ</span></h1></div>${stOpt}</div>`;
+  if (!cur) return head + `<div class="empty">Không còn bài nào chờ chấm${qgStage !== "all" ? " ở giai đoạn này" : ""}. 🎉</div>`;
+  const g = cur.grade || {}; const pos = queue.findIndex(s => s.id === cur.id);
+  onAfter(() => { qgPreview(cur.fileId, cur.fileName); qgCalc(); });
+  return head + `<div class="qg">
+    <aside class="qgq">${list || `<p class="small muted">Hàng chờ trống.</p>`}</aside>
+    <section class="qgv"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div><b>${esc(cur.learnerName)}</b> · ${esc(cur.productName)}<div class="small muted">${esc(cur.fileName || "")} · ${fmtSize(cur.fileSize)}${cur.note ? ` · Ghi chú: ${esc(cur.note)}` : ""}</div></div>
+      <button class="btn sm ghost" data-act="fileDl" data-id="${cur.fileId}" data-name="${esc(cur.fileName)}">${ic("download", 15)} Tải bài</button></div>
+      <div id="qgPrev" class="qgprev"><div class="empty">Đang mở bài…</div></div></section>
+    <form class="qgf" data-form="quickGrade" data-id="${cur.id}" data-next="${esc(queue[pos + 1]?.id || queue[pos - 1]?.id || "")}">
+      <div class="small muted" style="margin-bottom:6px">Phím tắt: <b>1–4</b> chọn mức cho tiêu chí đang sáng, tự sang tiêu chí sau · <b>Ctrl + Enter</b> lưu và sang bài tiếp</div>
+      ${rub.map((r, i) => `<div class="qgc" data-ci="${i}"><div class="qgn">${i + 1}. ${esc(r.name)}</div><div class="qgl">${r.levels.map((lv, j) => `<label title="${esc(lv)}"><input type="radio" name="lv_${i}" value="${j + 1}" ${g.levels?.[i] === j + 1 ? "checked" : ""} data-change="qgPick"><span>${j + 1}</span></label>`).join("")}</div><div class="qgd small muted" id="qgd_${i}">${g.levels?.[i] ? esc(r.levels[g.levels[i] - 1]) : "–"}</div></div>`).join("")}
+      <div class="qgs"><div><span class="small muted">Điểm</span><div><b id="spScore" style="font-size:1.8rem">–</b><span class="muted">/100</span></div></div>
+        <div class="qgst"><label><input type="radio" name="status" value="dat" ${cur.status === "dat" ? "checked" : ""}><span>Đạt</span></label><label><input type="radio" name="status" value="can-sua" ${cur.status === "can-sua" ? "checked" : ""}><span>Cần sửa</span></label></div></div>
+      <div class="qgchips">${QG_COMMENTS.map(c => `<button type="button" class="chip" data-act="qgChip" data-t="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+      <textarea name="comment" rows="4" placeholder="Nhận xét cho học viên">${esc(g.comment || "")}</textarea>
+      <div class="row" style="margin-top:10px"><button class="btn" type="submit">Lưu &amp; bài tiếp ${ic("arrow", 16)}</button><a class="btn ghost sm" href="#/chamsp/${cur.id}">Trang chấm đầy đủ</a></div>
+    </form></div>`;
+}
+function qgCalc() {
+  const f = document.querySelector('form[data-form="quickGrade"]'); if (!f) return; const rub = S.cfg.productRubric || [];
+  const lv = rub.map((_, i) => +(f.querySelector(`input[name="lv_${i}"]:checked`)?.value || 0));
+  rub.forEach((r, i) => { const d = document.getElementById("qgd_" + i); if (d) d.textContent = lv[i] ? r.levels[lv[i] - 1] : "–"; });
+  const done = lv.every(Boolean); const sc = Math.round(lv.reduce((a, b) => a + b, 0) * 100 / (rub.length * 4));
+  const out = document.getElementById("spScore"); if (out) out.textContent = done ? sc : "–";
+  if (done && !f.dataset.touchedStatus) { const v = sc >= S.cfg.passScore ? "dat" : "can-sua"; const r = f.querySelector(`input[name="status"][value="${v}"]`); if (r) r.checked = true; }
+  const first = lv.findIndex(v => !v); f.querySelectorAll(".qgc").forEach((el, i) => el.classList.toggle("cur", i === (first < 0 ? -1 : first)));
+}
+Object.assign(actions, {
+  qgChip(el) { const t = document.querySelector('form[data-form="quickGrade"] textarea[name="comment"]'); if (!t) return; t.value = (t.value.trim() ? t.value.trim() + "\n" : "") + "- " + el.dataset.t; t.focus(); }
+});
+Object.assign(forms, {
+  async quickGrade(f) {
+    const rub = S.cfg.productRubric || []; const levels = rub.map((_, i) => { const c = f.querySelector(`input[name="lv_${i}"]:checked`); return c ? +c.value : null; });
+    if (levels.some(v => v == null)) return toast(`Chọn mức cho đủ ${rub.length} tiêu chí.`, true);
+    const status = f.querySelector('input[name="status"]:checked')?.value; if (!status) return toast("Chọn Đạt hoặc Cần sửa.", true);
+    const score = Math.round(levels.reduce((a, b) => a + b, 0) * 100 / (rub.length * 4));
+    try {
+      await Store.set("submissions", f.dataset.id, { status, grade: { levels, score, comment: f.comment.value.trim(), by: S.user.uid, byName: S.me.name, at: nowISO() } });
+      toast(`Đã lưu ${score} điểm – ${SUB_STATUS[status][1]}.`); location.hash = f.dataset.next ? "#/chamnhanh/" + f.dataset.next : "#/chamnhanh";
+    } catch (e) { toast(errMsg(e), true); }
+  }
+});
+document.addEventListener("change", ev => {
+  const el = ev.target;
+  if (el.dataset.change === "qgPick") qgCalc();
+  if (el.dataset.change === "qgStage") { qgStage = el.value; location.hash = "#/chamnhanh"; route(); }
+  if (el.name === "status" && el.closest('form[data-form="quickGrade"]')) el.closest("form").dataset.touchedStatus = "1";
+});
+document.addEventListener("keydown", ev => {
+  const f = document.querySelector('form[data-form="quickGrade"]'); if (!f) return;
+  if ((ev.ctrlKey || ev.metaKey) && ev.key === "Enter") { ev.preventDefault(); f.requestSubmit(); return; }
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName) && ev.target.type !== "radio") return;
+  if (/^[1-4]$/.test(ev.key)) { const c = f.querySelector(".qgc.cur") || f.querySelector(".qgc"); if (!c) return; const r = c.querySelector(`input[value="${ev.key}"]`); if (r) { r.checked = true; ev.preventDefault(); qgCalc(); } }
+});
 
 /* =====================================================================
    LỘ TRÌNH ĐỌC TÀI LIỆU
